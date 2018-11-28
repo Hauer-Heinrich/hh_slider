@@ -1,0 +1,95 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hh="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Content">
+    <f:if condition="{settings.cssFile}">
+        <f:section name="HeaderAssets">
+            <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/slider.min.css', extensionName:'hh_slider')}" media="all">
+        </f:section>
+    </f:if>
+
+    <f:if condition="{settings.jsFile}">
+        <f:section name="FooterAssets">
+            <script src="{f:uri.resource(path:'JavaScript/swiper.min.js', extensionName:'hh_slider')}" defer></script>
+        </f:section>
+    </f:if>
+
+    <div class="swiper-container swiper-container-{data.uid}">
+        <div class="swiper-wrapper">
+            <f:if condition="{data.tx_hhslider_content_type} == 1">
+                <f:if condition="{data_media}">
+                    <f:for each="{data_media}" as="file">
+                        <div class="swiper-slide">
+                            <f:image image="{file}" alt="{file.alternative}" title="{file.title}" />
+                        </div>
+                    </f:for>
+                </f:if>
+            </f:if>
+
+            <f:if condition="{data.tx_hhslider_content_type} == 2">
+                <f:if condition="{data_tx_hhslider_child_content}">
+                    <f:for each="{data_tx_hhslider_child_content}" as="content_item">
+                        <div class="swiper-slide">
+                            <f:cObject typoscriptObjectPath="tt_content" data="{content_item.data}" table="tt_content" />
+                        </div>
+                    </f:for>
+                </f:if>
+            </f:if>
+        </div>
+
+        <f:if condition="{data.tx_hhslider_pagination}">
+            <div class="swiper-pagination"></div>
+        </f:if>
+
+        <f:if condition="{data.tx_hhslider_arrows}">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </f:if>
+
+        <f:comment>
+        <!-- ToDO -->
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+
+        <f:if condition="{data.tx_hhslider_thumbnails}">
+            <f:then>
+                On<br />
+            </f:then>
+            <f:else>
+                Off<br />
+            </f:else>
+        </f:if>
+        </f:comment>
+    </div>
+    <hh:addHeaderData type="js">
+        <script>
+            window.addEventListener("load", function() {
+                <f:comment></f:comment>var hhSlider{data.uid} = new Swiper('.swiper-container-{data.uid}', {
+                    speed: <f:format.raw>{data.tx_hhslider_animation_speed}</f:format.raw>,
+                    effect: '<f:format.raw>{data.tx_hhslider_animation}</f:format.raw>',
+                    loop: {f:if(condition: '{data.tx_hhslider_loop}', then: 'true', else: 'false')},
+                    centeredSlides: {f:if(condition: '{data.tx_hhslider_centered_slides}', then: 'true', else: 'false')},
+
+                    <f:if condition="{data.tx_hhslider_autoplay}">
+                        autoplay: {
+                            delay:<f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>,
+                            disableOnInteraction: {f:if(condition: '{data.tx_hhslider_disable_on_interaction}', then: 'true', else: 'false')},
+                        },
+                    </f:if>
+
+                    slidesPerView: <f:format.raw>{data.tx_hhslider_slides_per_view}</f:format.raw>,
+                    navigation: {
+                        nextEl: 'swiper-button-next',
+                        prevEl: 'swiper-button-prev',
+                    },
+                    direction: '{data.tx_hhslider_animation_direction}'
+                });
+            });
+        </script>
+    </hh:addHeaderData>
+</f:section>
+
+</html>

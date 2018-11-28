@@ -1,0 +1,35 @@
+<f:if condition="{processedRow.header}">
+    <strong>{processedRow.header}</strong><br>
+</f:if>
+<f:if condition="{processedRow.subheader}">
+    {processedRow.subheader}<br>
+</f:if>
+
+<f:if condition="{processedRow.tx_hhslider_content_type}">
+    <strong><f:translate key="LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type" /></strong>
+    <f:switch expression="{row.tx_hhslider_content_type}">
+        <f:case value="1">Images</f:case>
+        <f:case value="2">Content</f:case>
+        <f:defaultCase></f:defaultCase>
+    </f:switch><br>
+</f:if>
+
+<f:if condition="{processedRow.media}">
+    <div>
+        <f:for each="{processedRow.media}" as="item">
+            <f:for each="{item.uid_local}" as="file">
+                <f:image src="{file.uid}" treatIdAsReference="1" width="50" />
+            </f:for>
+        </f:for>
+    </div>
+</f:if>
+
+<f:if condition="{processedRow.tx_hhslider_child_content}">
+    <f:for each="{processedRow.tx_hhslider_child_content}" as="item">
+        <ul>
+            <li>
+                <f:translate key="LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header" /> {item.header} (id={item.uid})<br/>
+            </li>
+        </ul>
+    </f:for>
+</f:if>
