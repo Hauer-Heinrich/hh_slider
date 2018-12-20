@@ -30,6 +30,7 @@ class TcaColPosItem implements FormDataProviderInterface {
         if (!is_array($result['processedTca']['columns']['colPos']['config']['items'])) {
             $result['processedTca']['columns']['colPos']['config']['items'] = [];
         }
+
         array_unshift(
             $result['processedTca']['columns']['colPos']['config']['items'],
             [
