@@ -39,7 +39,7 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
         if (!isset($this->supportedContentTypes[$row['CType']])) {
             return;
         }
-        
+
         $formDataGroup = GeneralUtility::makeInstance(TcaDatabaseRecord::class);
         $formDataCompiler = GeneralUtility::makeInstance(FormDataCompiler::class, $formDataGroup);
         $formDataCompilerInput = [
@@ -47,11 +47,11 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
             'tableName' => 'tt_content',
             'vanillaUid' => (int)$row['uid'],
         ];
-        
+
         try {
             $result = $formDataCompiler->compile($formDataCompilerInput);
             $processedRow = $this->getProcessedData($result['databaseRow'], $result['processedTca']['columns']);
-            
+
             $this->configureView($result['pageTsConfig'], $row['CType']);
             $this->view->assignMultiple(
                 [
@@ -59,7 +59,7 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
                     'processedRow' => $processedRow,
                 ]
             );
-    
+
             $itemContent = $this->view->render();
         } catch (Exception $exception) {
             $message = $GLOBALS['BE_USER']->errorMsg;
@@ -69,7 +69,7 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
 
             $itemContent = $message;
         }
-        
+
         $drawItem = false;
     }
 
@@ -86,7 +86,6 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
         list($extensionKey) = explode('_', $contentType, 2);
         $extensionKey .= '.';
         if (!empty($previewConfiguration[$contentType])) {
-            GeneralUtility::deprecationLog('Setting the complete template path with filename is deprecated and will be removed in hhslider_export 3.0');
             $templatePath = GeneralUtility::getFileAbsFileName($previewConfiguration[$contentType]);
             $this->view->setTemplatePathAndFilename($templatePath);
         } else {
