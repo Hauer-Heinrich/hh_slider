@@ -617,5 +617,9 @@ button.swiper-pagination-bullet {
 .hh-slider {
   max-width: 100%;
   position: relative; }
+  .hh-slider figcaption {
+    left: 45px;
+    position: absolute;
+    top: 10%; }
 
 /*# sourceMappingURL=slider.css.map */

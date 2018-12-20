@@ -17,26 +17,28 @@ tt_content.hhslider_hh_slider {
     }
     templateName = HhSlider
 
-    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-    dataProcessing.10 {
-        if.isTrue.field = media
-        references {
-            fieldName = media
-            table = tt_content
+    dataProcessing {
+        10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+        10 {
+            if.isTrue.field = assets
+            references {
+                fieldName = assets
+                table = tt_content
+            }
+            as = data_assets
         }
-        as = data_media
-    }
 
-    dataProcessing.20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-    dataProcessing.20 {
-        if.isTrue.field = tx_hhslider_child_content
-        table = tt_content
-        pidInList.field = pid
-        where = tx_hhslider_child_content_parent=###uid### AND deleted=0 AND hidden=0 AND colPos=###colPos###
-        orderBy = sorting
-        markers.colPos.value = 999
-        markers.uid.field = uid
-        as = data_tx_hhslider_child_content
+        20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+        20 {
+            if.isTrue.field = tx_hhslider_child_content
+            table = tt_content
+            pidInList.field = pid
+            where = tx_hhslider_child_content_parent=###uid### AND deleted=0 AND hidden=0 AND colPos=###colPos###
+            orderBy = sorting
+            markers.colPos.value = 999
+            markers.uid.field = uid
+            as = data_tx_hhslider_child_content
+        }
     }
 
     settings {

@@ -288,8 +288,12 @@ $tempTypes = array (
                     'enableRichtext' => 1,
                 ),
             ),
-            'media' => array (
+            'assets' => array (
                 'displayCond' => 'FIELD:tx_hhslider_content_type:=:1',
+                'label' => 'Images',
+                'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('assets', [],
+                    'jpg, jpeg, png, svg'
+                ),
             ),
         ),
 
@@ -300,7 +304,7 @@ $tempTypes = array (
                 subheader,
                 --palette--;;slider_header_config,
                 tx_hhslider_content_type,
-                media,
+                assets,
                 tx_hhslider_child_content,
             --div--;Options,
                 layout,

@@ -2,11 +2,14 @@
     xmlns:hh="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<div id="c{data.uid}" class="hh-slider layout-{data.layout}">
+<f:render partial="Assets/HeaderAsset" arguments="{_all}" />
+
+<div id="c{data.uid}" class="hh-slider frame {data.layout} {data.frame_class} frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
     <f:render partial="Header/All" arguments="{_all}" />
 
     <f:render section="Content" />
-
 </div>
+
+<f:render partial="Assets/FooterAsset" arguments="{_all}" />
 
 </html>
