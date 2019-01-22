@@ -2,7 +2,7 @@
     xmlns:hh="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<div class="swiper-container gallery-thumbs-{data.uid}">
+<div class="swiper-container gallery-thumbs gallery-thumbs-{data.uid}">
     <div class="swiper-wrapper">
         <f:if condition="{data.tx_hhslider_content_type} == 1">
             <f:if condition="{data_assets}">
@@ -34,10 +34,12 @@
         </f:if>
     </div>
 </div>
+
 <hh:addAssetsData type="js">
     <script>
+        var hhSliderGallery{data.uid};
         window.addEventListener("load", function() {
-            <f:comment></f:comment>var hhSliderGallery{data.uid} = new Swiper('.gallery-thumbs-{data.uid}', {
+            <f:comment></f:comment>hhSliderGallery{data.uid} = new Swiper('.gallery-thumbs-{data.uid}', {
                 spaceBetween: 10,
                 slidesPerView: 4,
                 freeMode: true,

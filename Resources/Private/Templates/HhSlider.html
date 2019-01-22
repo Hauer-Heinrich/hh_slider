@@ -51,13 +51,13 @@
         <!-- If we need scrollbar -->
         <div class="swiper-scrollbar"></div>
         </f:comment>
-
-        <f:if condition="{data.tx_hhslider_thumbnails}">
-            <f:then>
-                <f:render partial="Thumbnails" arguments="{_all}" />
-            </f:then>
-        </f:if>
     </div>
+
+    <f:if condition="{data.tx_hhslider_thumbnails}">
+        <f:then>
+            <f:render partial="Thumbnails" arguments="{_all}" />
+        </f:then>
+    </f:if>
 
     <hh:addAssetsData type="js">
         <script>
@@ -82,7 +82,7 @@
                     },
                     <f:if condition="{data.tx_hhslider_thumbnails}">
                         thumbs: {
-                            <f:comment></f:comment>swiper: "hhSliderGallery{data.uid}"
+                            <f:comment></f:comment>swiper: hhSliderGallery{data.uid}
                         },
                     </f:if>
                     direction: '{data.tx_hhslider_animation_direction}'
