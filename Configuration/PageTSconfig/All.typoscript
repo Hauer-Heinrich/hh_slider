@@ -1,2 +1,0 @@
-### Include all PageTS files
-<INCLUDE_TYPOSCRIPT: source="DIR:EXT:hh_slider/Configuration/PageTsConfig/PageTsFiles" extensions="typoscript">

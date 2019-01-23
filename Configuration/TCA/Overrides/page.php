@@ -8,7 +8,7 @@ call_user_func(function() {
     // make PageTsConfig selectable
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerPageTSConfigFile(
         $extensionKey,
-        "Configuration/PageTsConfig/All.typoscript",
+        "Configuration/TsConfig/AllPage.typoscript",
         "EXT:{$extensionKey} :: Hauer-Heinrich - Slider Page TS"
     );
 });
