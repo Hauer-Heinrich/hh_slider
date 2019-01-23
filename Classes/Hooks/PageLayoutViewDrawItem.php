@@ -91,7 +91,7 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
         } else {
             if (!empty($previewConfiguration[$extensionKey]['templateRootPath'])) {
                 $this->view->setTemplateRootPaths([
-                    'EXT:hh_slider/Resources/Private/Backend/Templates/Content/',
+                    'EXT:hh_slider/Resources/Private/Backend/Templates/',
                     $previewConfiguration[$extensionKey]['templateRootPath'],
                 ]);
             }
