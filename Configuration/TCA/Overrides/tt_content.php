@@ -170,6 +170,14 @@ $tempColumns = array (
         ),
         'exclude' => '1',
     ),
+    'tx_hhslider_content_text' => [
+        'label' => 'Text',
+        'displayCond' => 'FIELD:tx_hhslider_content_type:=:1',
+        'config' => [
+            'type' => 'text',
+            'enableRichtext' => true,
+        ],
+    ],
     'tx_hhslider_disable_on_interaction' => array (
         'config' => array (
             'type' => 'check',
@@ -306,6 +314,7 @@ $tempTypes = array (
                 tx_hhslider_content_type,
                 assets,
                 tx_hhslider_child_content,
+                tx_hhslider_content_text,
             --div--;Options,
                 layout,
                 --palette--;;slider_autoplay_config,

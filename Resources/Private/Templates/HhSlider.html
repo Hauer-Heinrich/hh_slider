@@ -59,37 +59,13 @@
         </f:then>
     </f:if>
 
-    <hh:addAssetsData type="js">
-        <script>
-            window.addEventListener("load", function() {
-                <f:comment></f:comment>var hhSlider{data.uid} = new Swiper('.swiper-container-{data.uid}', {
-                    speed: <f:format.raw>{data.tx_hhslider_animation_speed}</f:format.raw>,
-                    effect: '<f:format.raw>{data.tx_hhslider_animation}</f:format.raw>',
-                    loop: {f:if(condition: '{data.tx_hhslider_loop}', then: 'true', else: 'false')},
-                    centeredSlides: {f:if(condition: '{data.tx_hhslider_centered_slides}', then: 'true', else: 'false')},
-
-                    <f:if condition="{data.tx_hhslider_autoplay}">
-                        autoplay: {
-                            delay:<f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>,
-                            disableOnInteraction: {f:if(condition: '{data.tx_hhslider_disable_on_interaction}', then: 'true', else: 'false')},
-                        },
-                    </f:if>
-
-                    slidesPerView: <f:format.raw>{data.tx_hhslider_slides_per_view}</f:format.raw>,
-                    navigation: {
-                        nextEl: 'swiper-button-next',
-                        prevEl: 'swiper-button-prev',
-                    },
-                    <f:if condition="{data.tx_hhslider_thumbnails}">
-                        thumbs: {
-                            <f:comment></f:comment>swiper: hhSliderGallery{data.uid}
-                        },
-                    </f:if>
-                    direction: '{data.tx_hhslider_animation_direction}'
-                });
-            });
-        </script>
-    </hh:addAssetsData>
+    <f:if condition="{data.tx_hhslider_content_text}">
+        <f:then>
+            <div class="ce-bodytext">
+                <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_hhslider_content_text}</f:format.html>
+            </div>
+        </f:then>
+    </f:if>
 </f:section>
 
 </html>

@@ -2,18 +2,18 @@ tt_content.hhslider_hh_slider = FLUIDTEMPLATE
 tt_content.hhslider_hh_slider {
     layoutRootPaths {
         0 = EXT:fluid_styled_content/Resources/Private/Layouts/
-        10 = EXT:hh_slider/Resources/Private/Layouts/
-        20 = {$plugin.tx_hhslider.view.layoutRootPath}
+        5 = EXT:hh_slider/Resources/Private/Layouts/
+        10 = {$plugin.tx_hhslider.view.layoutRootPath}
     }
     partialRootPaths {
         0 = EXT:fluid_styled_content/Resources/Private/Partials/
-        10 = EXT:hh_slider/Resources/Private/Partials/
-        20 = {$plugin.tx_hhslider.view.partialRootPath}
+        5 = EXT:hh_slider/Resources/Private/Partials/
+        10 = {$plugin.tx_hhslider.view.partialRootPath}
     }
     templateRootPaths {
         0 = EXT:fluid_styled_content/Resources/Private/Templates/
-        10 = EXT:hh_slider/Resources/Private/Templates/
-        20 = {$plugin.tx_hhslider.view.templateRootPath}
+        5 = EXT:hh_slider/Resources/Private/Templates/
+        10 = {$plugin.tx_hhslider.view.templateRootPath}
     }
     templateName = HhSlider
 

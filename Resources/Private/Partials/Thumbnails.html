@@ -8,16 +8,7 @@
             <f:if condition="{data_assets}">
                 <f:for each="{data_assets}" as="file">
                     <div class="swiper-slide">
-                        <f:if condition="{file.description}">
-                            <figure>
-                        </f:if>
-                            <f:render partial="Media/Rendering/Image" arguments="{_all}" />
-                        <f:if condition="{file.description}">
-                                <figcaption>
-                                    <f:format.html>{file.description}</f:format.html>
-                                </figcaption>
-                            </figure>
-                        </f:if>
+                        <f:render partial="Media/Rendering/Image" arguments="{_all}" />
                     </div>
                 </f:for>
             </f:if>
@@ -35,19 +26,6 @@
     </div>
 </div>
 
-<hh:addAssetsData type="js">
-    <script>
-        var hhSliderGallery{data.uid};
-        window.addEventListener("load", function() {
-            <f:comment></f:comment>hhSliderGallery{data.uid} = new Swiper('.gallery-thumbs-{data.uid}', {
-                spaceBetween: 10,
-                slidesPerView: 4,
-                freeMode: true,
-                watchSlidesVisibility: true,
-                watchSlidesProgress: true
-            });
-        });
-    </script>
-</hh:addAssetsData>
+<f:render partial="Assets/JavaScript/Thumbnails" arguments="{_all}" />
 
 </html>
