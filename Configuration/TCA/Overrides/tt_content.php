@@ -7,11 +7,11 @@ $tempColumns = array (
             'items' => array (
                 0 => array (
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation.I.0',
-                    1 => 'slide',
+                    1 => 'carousel',
                 ),
                 1 => array (
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation.I.1',
-                    1 => 'fade',
+                    1 => 'gallery',
                 ),
             ),
             'renderType' => 'selectSingle',

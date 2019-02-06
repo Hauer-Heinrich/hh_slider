@@ -11,11 +11,10 @@ plugin.tx_hhslider {
     }
 
     settings {
-        # cat=hh_slider/010; type=boolean; label=Include swiper CSS file?
+        # cat=hh_slider/010; type=boolean; label=Include slider CSS file?
         cssFile = 1
 
-        # cat=hh_slider/010; type=boolean; label=Include swiper JavaScript file?
+        # cat=hh_slider/010; type=boolean; label=Include slider JavaScript file?
         jsFile = 1
     }
 }
-

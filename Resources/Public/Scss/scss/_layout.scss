@@ -8,3 +8,53 @@
         top: 10%;
     }
 }
+
+.slider-button-prev,
+.slider-button-next {
+    background-image: url("../Icons/arrows.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    cursor: pointer;
+    display: block;
+    height: 60px;
+    position: absolute;
+    top: calc(50% - (60px / 2));
+    width: 42px;
+}
+
+.slider-button-prev {
+    background-position: 0 0;
+    left: 0;
+}
+
+.slider-button-next {
+    background-position: 100% 0;
+    right: 0;
+}
+
+.slider-thumbs {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    .slider-slide {
+        margin: 10px;
+        width: 100px;
+    }
+}
