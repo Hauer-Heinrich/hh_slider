@@ -5,53 +5,41 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-    <div class="swiper-container swiper-container-{data.uid}">
-        <div class="swiper-wrapper">
-            <f:if condition="{data.tx_hhslider_content_type} == 1">
-                <f:if condition="{data_assets}">
-                    <f:for each="{data_assets}" as="file">
-                        <div class="swiper-slide">
-                            <f:if condition="{file.description}">
-                                <figure>
-                            </f:if>
-                                <f:render partial="Media/Rendering/Image" arguments="{_all}" />
-                            <f:if condition="{file.description}">
-                                    <figcaption>
-                                        <f:format.html>{file.description}</f:format.html>
-                                    </figcaption>
-                                </figure>
-                            </f:if>
-                        </div>
-                    </f:for>
-                </f:if>
+    <div class="slider-container slider-container-{data.uid}">
+        <f:if condition="{data.tx_hhslider_content_type} == 1">
+            <f:if condition="{data_assets}">
+                <f:for each="{data_assets}" as="file">
+                    <div class="slider-slide">
+                        <f:if condition="{file.description}">
+                            <figure>
+                        </f:if>
+                            <f:render partial="Media/Rendering/Image" arguments="{_all}" />
+                        <f:if condition="{file.description}">
+                                <figcaption>
+                                    <f:format.html>{file.description}</f:format.html>
+                                </figcaption>
+                            </figure>
+                        </f:if>
+                    </div>
+                </f:for>
             </f:if>
-
-            <f:if condition="{data.tx_hhslider_content_type} == 2">
-                <f:if condition="{data_tx_hhslider_child_content}">
-                    <f:for each="{data_tx_hhslider_child_content}" as="content_item">
-                        <div class="swiper-slide">
-                            <f:cObject typoscriptObjectPath="tt_content" data="{content_item.data}" table="tt_content" />
-                        </div>
-                    </f:for>
-                </f:if>
-            </f:if>
-        </div>
-
-        <f:if condition="{data.tx_hhslider_pagination}">
-            <div class="swiper-pagination"></div>
         </f:if>
 
-        <f:if condition="{data.tx_hhslider_arrows}">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+        <f:if condition="{data.tx_hhslider_content_type} == 2">
+            <f:if condition="{data_tx_hhslider_child_content}">
+                <f:for each="{data_tx_hhslider_child_content}" as="content_item">
+                    <div class="slider-slide">
+                        <f:cObject typoscriptObjectPath="tt_content" data="{content_item.data}" table="tt_content" />
+                    </div>
+                </f:for>
+            </f:if>
         </f:if>
-
-        <f:comment>
-        <!-- ToDO -->
-        <!-- If we need scrollbar -->
-        <div class="swiper-scrollbar"></div>
-        </f:comment>
     </div>
+
+    <f:if condition="{data.tx_hhslider_arrows}">
+        <span class="slider-button slider-button-prev"></span>
+        <span class="slider-button slider-button-next"></span>
+    </f:if>
 
     <f:if condition="{data.tx_hhslider_thumbnails}">
         <f:then>
