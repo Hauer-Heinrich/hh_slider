@@ -46,7 +46,7 @@
         <source>Slides per view</source>
       </trans-unit>
       <trans-unit id="tt_content.tx_hhslider_thumbnails" xml:space="preserve">
-        <source>Thumbnails as navigation</source>
+        <source>Thumbnails as navigation (only without pagination)</source>
       </trans-unit>
       <trans-unit id="tt_content.tx_hhslider_animation.I.0" xml:space="preserve">
         <source>slide</source>

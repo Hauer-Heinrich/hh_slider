@@ -41,7 +41,7 @@
         <span class="slider-button slider-button-next"></span>
     </f:if>
 
-    <f:if condition="{data.tx_hhslider_thumbnails}">
+    <f:if condition="{data.tx_hhslider_thumbnails} && {data.tx_hhslider_pagination} == 0">
         <f:then>
             <f:render partial="Thumbnails" arguments="{_all}" />
         </f:then>

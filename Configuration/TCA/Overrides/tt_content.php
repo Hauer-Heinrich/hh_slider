@@ -212,6 +212,7 @@ $tempColumns = array (
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_loop',
     ),
     'tx_hhslider_pagination' => array (
+        'onChange' => 'reload',
         'config' => array (
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
@@ -240,6 +241,7 @@ $tempColumns = array (
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_slides_per_view',
     ),
     'tx_hhslider_thumbnails' => array (
+        'displayCond' => 'FIELD:tx_hhslider_pagination:=:0',
         'config' => array (
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
