@@ -32,7 +32,7 @@ namespace HauerHeinrich\HhSlider\ViewHelpers;
  *  <hh:addAssetsData type="js" where="header">
  */
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+// use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class AddAssetsDataViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
