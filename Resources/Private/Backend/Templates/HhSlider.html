@@ -23,9 +23,7 @@
     <f:if condition="{processedRow.assets}">
         <div>
             <f:for each="{processedRow.assets}" as="item">
-                <f:for each="{item.uid_local}" as="file">
-                    <f:image src="{file.uid}" treatIdAsReference="1" width="50" />
-                </f:for>
+                <f:image src="{item.uid}" treatIdAsReference="1" width="50" />
             </f:for>
         </div>
     </f:if>
