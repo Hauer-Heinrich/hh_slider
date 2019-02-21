@@ -24,4 +24,8 @@ call_user_func(function() {
     // Add backend preview hook
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']['hh_slider'] =
         HauerHeinrich\HhSlider\Hooks\PageLayoutViewDrawItem::class;
+
+    // Add hook to determine if content record is used/unused
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['record_is_used']['hh_slider'] =
+        HauerHeinrich\HhSlider\Hooks\PageLayoutViewHook::class . '->contentIsUsed';
 });
