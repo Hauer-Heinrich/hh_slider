@@ -14,5 +14,7 @@ class PageLayoutViewHook {
         if($params["used"] === false && $record["colPos"] === 999) {
             return $record['colPos'] === 999 && !empty($record['tx_hhslider_child_content_parent']);
         }
+
+        return false;
     }
 }
