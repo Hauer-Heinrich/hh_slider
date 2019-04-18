@@ -27,9 +27,9 @@
                 arrowKeys: true,
                 speed: <f:format.raw>{data.tx_hhslider_animation_speed}</f:format.raw>,
                 autoplay: {f:if(condition: "{data.tx_hhslider_autoplay}", then: "true", else: "false")},
-                autoplayPosition: "top", // "bottom"
+                autoplayPosition: "top", /* "bottom" */
                 autoplayTimeout: <f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>,
-                autoplayDirection: "forward", // "backward"
+                autoplayDirection: "forward", /* "backward" */
                 autoplayText: ["start", "stop"],
                 autoplayHoverPause: false,
                 autoplayButton: false,
@@ -42,7 +42,7 @@
                 loop: {f:if(condition: "{data.tx_hhslider_loop}", then: "true", else: "false")},
                 rewind: false,
                 autoHeight: false,
-                // responsive: ,
+                /* responsive: , */
                 lazyload: false,
                 lazyloadSelector: ".tns-lazy-img",
                 touch: true,
