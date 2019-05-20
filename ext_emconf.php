@@ -11,7 +11,7 @@
  ***************************************************************/
 
 $EM_CONF['hh_slider'] = array (
-    'title' => 'hh_slider',
+    'title' => 'Hauer-Heinrich - tiny-slider',
     'description' => 'Hauer-Heinrich - Image and Content Slider',
     'category' => 'fe',
     'author' => 'Christian Hackl',
@@ -29,4 +29,3 @@ $EM_CONF['hh_slider'] = array (
         ),
     ),
 );
-
