@@ -1,6 +1,58 @@
 <hh:addAssetsData type="js">
     <script>
         window.addEventListener("load", function() {
+            function cssSelector(selector) {
+                return document.querySelector(selector) != null && document.querySelector(selector).length != 'undefined' ? document.querySelector(selector) : false;
+            }
+
+            /**
+             * If element has CSS class
+             * @public
+             * @param {Element} el  the element to simulate a click on
+             */
+            function hasClass(el, className) {
+                if(el.classList) {
+                    return el.classList.contains(className);
+                } else {
+                    return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
+                }
+            }
+
+            /**
+             * Add a CSS class to an element
+             * @public
+             * @param {Element} el  the element to add the className
+             * @param {String} className  the class name to add
+             */
+            function addClass(el, className) {
+                const classes = className.split(" ");
+                for (var i = 0; i < classes.length; i++) {
+                    if(el.classList) {
+                        el.classList.add(classes[i]);
+                    } else if (!hasClass(el, classes[i])) {
+                        el.classes[i] += " " + classes[i];
+                    }
+                }
+            }
+
+            /**
+             * Removes CSS class from an element
+             * @public
+             * @param {Element} el  the element from which the the className should be removed
+             * @param {String} className  the class name to remove
+             */
+            function removeClass(el, className) {
+                const classes = className.split(" ");
+                for (var i = 0; i < classes.length; i++) {
+                    if(el.classList) {
+                        el.classList.remove(classes[i]);
+                    } else if (hasClass(el, classes[i])) {
+                        var reg = new RegExp('(\\s|^)' + classes[i] + '(\\s|$)');
+                        el.classes[i]=el.className.replace(reg, ' ');
+                    }
+                }
+            }
+
             <f:comment>// https://github.com/ganlanyuan/tiny-slider</f:comment>
             <f:comment></f:comment>var slider{data.uid} = tns({
                 <f:comment></f:comment>container: ".slider-container-{data.uid}",
@@ -20,10 +72,10 @@
                 controlsContainer: false,
                 prevButton: {f:if(condition: "{data.tx_hhslider_arrows}", then: "'.slider-button-next'", else: "false")},
                 nextButton: {f:if(condition: "{data.tx_hhslider_arrows}", then: "'.slider-button-prev'", else: "false")},
-                nav: {f:if(condition: "{data.tx_hhslider_thumbnails} || {data.tx_hhslider_pagination}", then: "true", else: "false")},
+                nav: {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
                 navPosition: "bottom",
-                navContainer: {f:if(condition: "{data.tx_hhslider_thumbnails} && {data.tx_hhslider_pagination} == 0", then: "'.slider-thumbs-{data.uid}'", else: "false")},
-                navAsThumbnails: {f:if(condition: "{data.tx_hhslider_thumbnails} && {data.tx_hhslider_pagination} == 0", then: "true", else: "false")},
+                navContainer: {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "'.slider-thumbs-{data.uid}'", else: "false")},
+                navAsThumbnails: {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
                 arrowKeys: true,
                 speed: <f:format.raw>{data.tx_hhslider_animation_speed}</f:format.raw>,
                 autoplay: {f:if(condition: "{data.tx_hhslider_autoplay}", then: "true", else: "false")},
@@ -58,10 +110,6 @@
                 useLocalStorage: true
             });
 
-            function cssSelector(selector) {
-                return document.querySelector(selector) != null && document.querySelector(selector).length != 'undefined' ? document.querySelector(selector) : false;
-            }
-
             var sliderContainer = <f:comment></f:comment>cssSelector("#c{data.uid}");
 
             if(sliderContainer) {
@@ -76,6 +124,23 @@
                 if(arrowsNext) {
                     arrowContainer.appendChild(arrowsNext);
                     arrowsNext.addEventListener('click', function() { <f:comment></f:comment>slider{data.uid}.goTo('next'); }, false);
+                }
+
+                var pagination = sliderContainer.getElementsByClassName("pagination")[0];
+                if(pagination) {
+                    var items = pagination.getElementsByTagName("button"),
+                        itemsLength = items.length;
+                    for (let i = 0; i < itemsLength; i++) {
+                        items[i].addEventListener("click", function() {
+                            var clickedElement = i;
+                            <f:comment></f:comment>slider{data.uid}.goTo(clickedElement);
+                        });
+                    }
+
+                    <f:comment></f:comment>slider{data.uid}.events.on("indexChanged", function(info, eventName) {
+                        removeClass(pagination.getElementsByClassName("tns-nav-active")[0], "tns-nav-active");
+                        addClass(items[info.displayIndex - 1], "tns-nav-active");
+                    });
                 }
             }
         });

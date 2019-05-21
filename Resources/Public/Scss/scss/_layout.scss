@@ -7,6 +7,14 @@
         position: absolute;
         top: 10%;
     }
+
+    .pagination {
+        list-style: none;
+
+        li {
+            display: inline-block;
+        }
+    }
 }
 
 .slider-button-prev,

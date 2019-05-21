@@ -137,6 +137,10 @@
     left: 45px;
     position: absolute;
     top: 10%; }
+  .hh-slider .pagination {
+    list-style: none; }
+    .hh-slider .pagination li {
+      display: inline-block; }
 
 .slider-button-prev,
 .slider-button-next {
