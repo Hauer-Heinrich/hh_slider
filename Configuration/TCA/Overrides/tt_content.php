@@ -318,7 +318,6 @@ $tempTypes = array (
                 tx_hhslider_child_content,
                 tx_hhslider_content_text,
             --div--;Options,
-                layout,
                 --palette--;;slider_autoplay_config,
                 --palette--;;slider_animation_config,
                 tx_hhslider_loop,
