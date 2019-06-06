@@ -1,7 +1,7 @@
 <?php
 namespace HauerHeinrich\HhSlider\Hooks;
 
-use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+// use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Backend\View\PageLayoutView;
 
 class PageLayoutViewHook {
