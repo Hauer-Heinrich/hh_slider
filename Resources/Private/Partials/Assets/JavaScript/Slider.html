@@ -1,148 +1,63 @@
-<hh:addAssetsData type="js">
-    <script>
-        window.addEventListener("load", function() {
-            function cssSelector(selector) {
-                return document.querySelector(selector) != null && document.querySelector(selector).length != 'undefined' ? document.querySelector(selector) : false;
-            }
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hh="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-            /**
-             * If element has CSS class
-             * @public
-             * @param {Element} el  the element to simulate a click on
-             */
-            function hasClass(el, className) {
-                if(el.classList) {
-                    return el.classList.contains(className);
-                } else {
-                    return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
-                }
-            }
+<script class="hhSliderJson" type="application/json">
+<f:comment></f:comment>{
+    "uid": "{data.uid}",
+    "container": ".slider-container-{data.uid}",
+    "mode": "<f:format.raw>{data.tx_hhslider_animation}</f:format.raw>",
+    "axis": "{data.tx_hhslider_animation_direction}",
+    "items": <f:format.raw>{data.tx_hhslider_slides_per_view}</f:format.raw>,
+    "gutter": 0,
+    "edgePadding": 0,
+    "fixedWidth": false,
+    "autoWidth": false,
+    "viewportMax": false,
+    "slideBy": 1,
+    "center": {f:if(condition: "{data.tx_hhslider_centered_slides}", then: "true", else: "false")},
+    "controls": false,
+    "controlsPosition": "bottom",
+    "controlsText": ["prev", "next"],
+    "controlsContainer": false,
+    "prevButton": {f:if(condition: "{data.tx_hhslider_arrows}", then: "\".slider-button-next\"", else: "false")},
+    "nextButton": {f:if(condition: "{data.tx_hhslider_arrows}", then: "\".slider-button-prev\"", else: "false")},
+    "nav": {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
+    "navPosition": "bottom",
+    "navContainer": {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "\".slider-thumbs-{data.uid}\"", else: "false")},
+    "navAsThumbnails": {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
+    "arrowKeys": true,
+    "speed": <f:format.raw>{data.tx_hhslider_animation_speed}</f:format.raw>,
+    "autoplay": {f:if(condition: "{data.tx_hhslider_autoplay}", then: "true", else: "false")},
+    "autoplayPosition": "top",
+    "autoplayTimeout": <f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>,
+    "autoplayDirection": "forward",
+    "autoplayText": ["start", "stop"],
+    "autoplayHoverPause": false,
+    "autoplayButton": false,
+    "autoplayButtonOutput": false,
+    "autoplayResetOnVisibility": true,
+    "animateIn": "tns-fadeIn",
+    "animateOut": "tns-fadeOut",
+    "animateNormal": "tns-normal",
+    "animateDelay": false,
+    "loop": {f:if(condition: "{data.tx_hhslider_loop}", then: "true", else: "false")},
+    "rewind": false,
+    "autoHeight": false,
+    "lazyload": false,
+    "lazyloadSelector": ".tns-lazy-img",
+    "touch": true,
+    "mouseDrag": true,
+    "swipeAngle": 15,
+    "preventActionWhenRunning": false,
+    "preventScrollOnTouch": false,
+    "nested": false,
+    "freezable": true,
+    "disable": false,
+    "startIndex": 0,
+    "onInit": false,
+    "useLocalStorage": true
+}
+</script>
 
-            /**
-             * Add a CSS class to an element
-             * @public
-             * @param {Element} el  the element to add the className
-             * @param {String} className  the class name to add
-             */
-            function addClass(el, className) {
-                const classes = className.split(" ");
-                for (var i = 0; i < classes.length; i++) {
-                    if(el.classList) {
-                        el.classList.add(classes[i]);
-                    } else if (!hasClass(el, classes[i])) {
-                        el.classes[i] += " " + classes[i];
-                    }
-                }
-            }
-
-            /**
-             * Removes CSS class from an element
-             * @public
-             * @param {Element} el  the element from which the the className should be removed
-             * @param {String} className  the class name to remove
-             */
-            function removeClass(el, className) {
-                const classes = className.split(" ");
-                for (var i = 0; i < classes.length; i++) {
-                    if(el.classList) {
-                        el.classList.remove(classes[i]);
-                    } else if (hasClass(el, classes[i])) {
-                        var reg = new RegExp('(\\s|^)' + classes[i] + '(\\s|$)');
-                        el.classes[i]=el.className.replace(reg, ' ');
-                    }
-                }
-            }
-
-            <f:comment>// https://github.com/ganlanyuan/tiny-slider</f:comment>
-            <f:comment></f:comment>var slider{data.uid} = tns({
-                <f:comment></f:comment>container: ".slider-container-{data.uid}",
-                mode: "<f:format.raw>{data.tx_hhslider_animation}</f:format.raw>",
-                axis: "{data.tx_hhslider_animation_direction}",
-                items: <f:format.raw>{data.tx_hhslider_slides_per_view}</f:format.raw>,
-                gutter: 0,
-                edgePadding: 0,
-                fixedWidth: false,
-                autoWidth: false,
-                viewportMax: false,
-                slideBy: 1,
-                center: {f:if(condition: "{data.tx_hhslider_centered_slides}", then: "true", else: "false")},
-                controls: false,
-                controlsPosition: "bottom",
-                controlsText: ["prev", "next"],
-                controlsContainer: false,
-                prevButton: {f:if(condition: "{data.tx_hhslider_arrows}", then: "'.slider-button-next'", else: "false")},
-                nextButton: {f:if(condition: "{data.tx_hhslider_arrows}", then: "'.slider-button-prev'", else: "false")},
-                nav: {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
-                navPosition: "bottom",
-                navContainer: {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "'.slider-thumbs-{data.uid}'", else: "false")},
-                navAsThumbnails: {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
-                arrowKeys: true,
-                speed: <f:format.raw>{data.tx_hhslider_animation_speed}</f:format.raw>,
-                autoplay: {f:if(condition: "{data.tx_hhslider_autoplay}", then: "true", else: "false")},
-                autoplayPosition: "top", /* "bottom" */
-                autoplayTimeout: <f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>,
-                autoplayDirection: "forward", /* "backward" */
-                autoplayText: ["start", "stop"],
-                autoplayHoverPause: false,
-                autoplayButton: false,
-                autoplayButtonOutput: false,
-                autoplayResetOnVisibility: true,
-                animateIn: "tns-fadeIn",
-                animateOut: "tns-fadeOut",
-                animateNormal: "tns-normal",
-                animateDelay: false,
-                loop: {f:if(condition: "{data.tx_hhslider_loop}", then: "true", else: "false")},
-                rewind: false,
-                autoHeight: false,
-                /* responsive: , */
-                lazyload: false,
-                lazyloadSelector: ".tns-lazy-img",
-                touch: true,
-                mouseDrag: true,
-                swipeAngle: 15,
-                preventActionWhenRunning: false,
-                preventScrollOnTouch: false,
-                nested: false,
-                freezable: true,
-                disable: false,
-                startIndex: 0,
-                onInit: false,
-                useLocalStorage: true
-            });
-
-            var sliderContainer = <f:comment></f:comment>cssSelector("#c{data.uid}");
-
-            if(sliderContainer) {
-                var arrowsPrev = <f:comment></f:comment>cssSelector("#c{data.uid} .slider-button-prev");
-                var arrowsNext = <f:comment></f:comment>cssSelector("#c{data.uid} .slider-button-next");
-                var arrowContainer = <f:comment></f:comment>cssSelector("#c{data.uid} .tns-outer");
-
-                if(arrowsPrev) {
-                    arrowContainer.appendChild(arrowsPrev);
-                    arrowsPrev.addEventListener('click', function() { <f:comment></f:comment>slider{data.uid}.goTo('prev'); }, false);
-                }
-                if(arrowsNext) {
-                    arrowContainer.appendChild(arrowsNext);
-                    arrowsNext.addEventListener('click', function() { <f:comment></f:comment>slider{data.uid}.goTo('next'); }, false);
-                }
-
-                var pagination = sliderContainer.getElementsByClassName("pagination")[0];
-                if(pagination) {
-                    var items = pagination.getElementsByTagName("button"),
-                        itemsLength = items.length;
-                    for (let i = 0; i < itemsLength; i++) {
-                        items[i].addEventListener("click", function() {
-                            var clickedElement = i;
-                            <f:comment></f:comment>slider{data.uid}.goTo(clickedElement);
-                        });
-                    }
-
-                    <f:comment></f:comment>slider{data.uid}.events.on("indexChanged", function(info, eventName) {
-                        removeClass(pagination.getElementsByClassName("tns-nav-active")[0], "tns-nav-active");
-                        addClass(items[info.displayIndex - 1], "tns-nav-active");
-                    });
-                }
-            }
-        });
-    </script>
-</hh:addAssetsData>
+</html>
