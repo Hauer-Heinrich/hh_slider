@@ -1,3 +1,8 @@
+// Chrome's NodeList forEach Implementation
+if(window.NodeList && !NodeList.prototype.forEach){
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
 // https://github.com/ganlanyuan/tiny-slider
 window.addEventListener("load", function(e){
     var json = document.querySelectorAll(".hhSliderJson");
