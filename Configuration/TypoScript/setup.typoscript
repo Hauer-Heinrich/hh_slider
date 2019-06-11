@@ -1,6 +1,6 @@
 page {
     includeJSFooter {
-        file888 = EXT:hh_slider/Resources/Public/JavaScript/main.js
+        file888 = EXT:hh_slider/Resources/Public/JavaScript/main.min.js
     }
 }
 
