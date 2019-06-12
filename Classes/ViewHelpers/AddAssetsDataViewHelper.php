@@ -118,6 +118,7 @@ class AddAssetsDataViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
                 } else {
                     $pageRender->addFooterData(trim($this->renderChildren()));
                 }
+                break;
             default:
                 $GLOBALS['TSFE']->additionalFooterData[] = "<div class='error'>ERROR: no or wrong tag in AddHeaderDataViewHelper</div>";
                 break;
