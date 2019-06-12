@@ -37,7 +37,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class AddAssetsDataViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
     public function initializeArguments() {
-        $this->registerArgument('type', 'string', 'Can be css or js', true);
+        $this->registerArgument('type', 'string', 'Can be css or js or json', true);
         $this->registerArgument('where', 'string', 'Can be header (header is default for css) or footer (footer is default for js)', false);
         $this->registerArgument('file', 'string', 'Can be css or js', false);
         $this->registerArgument('compress', 'boolean', 'true / false - default=false - only for external files', false);
@@ -112,6 +112,12 @@ class AddAssetsDataViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
                     $pageRender->addJsFooterFile(trim($this->arguments['file']), '', $compress, false, '', true, '|', false, '', true);
                 }
                 break;
+            case 'json':
+                if($this->arguments['where'] == "header") {
+                    $pageRender->addHeaderData(trim($this->renderChildren()));
+                } else {
+                    $pageRender->addFooterData(trim($this->renderChildren()));
+                }
             default:
                 $GLOBALS['TSFE']->additionalFooterData[] = "<div class='error'>ERROR: no or wrong tag in AddHeaderDataViewHelper</div>";
                 break;

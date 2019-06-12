@@ -1,0 +1,65 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hh="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<hh:addAssetsData type="json">
+    <script class="hhSliderJson" type="application/json">
+        <f:comment></f:comment>{
+            "uid": "{data.uid}",
+            "container": ".slider-container-{data.uid}",
+            "mode": "<f:format.raw>{data.tx_hhslider_animation}</f:format.raw>",
+            "axis": "{data.tx_hhslider_animation_direction}",
+            "items": <f:format.raw>{data.tx_hhslider_slides_per_view}</f:format.raw>,
+            "gutter": 0,
+            "edgePadding": 0,
+            "fixedWidth": false,
+            "autoWidth": false,
+            "viewportMax": false,
+            "slideBy": 1,
+            "center": {f:if(condition: "{data.tx_hhslider_centered_slides}", then: "true", else: "false")},
+            "controls": false,
+            "controlsPosition": "bottom",
+            "controlsText": ["prev", "next"],
+            "controlsContainer": false,
+            "prevButton": {f:if(condition: "{data.tx_hhslider_arrows}", then: "\".slider-button-next\"", else: "false")},
+            "nextButton": {f:if(condition: "{data.tx_hhslider_arrows}", then: "\".slider-button-prev\"", else: "false")},
+            "nav": {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
+            "navPosition": "bottom",
+            "navContainer": {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "\".slider-thumbs-{data.uid}\"", else: "false")},
+            "navAsThumbnails": {f:if(condition: "{data.tx_hhslider_thumbnails}", then: "true", else: "false")},
+            "arrowKeys": true,
+            "speed": <f:format.raw>{data.tx_hhslider_animation_speed}</f:format.raw>,
+            "autoplay": {f:if(condition: "{data.tx_hhslider_autoplay}", then: "true", else: "false")},
+            "autoplayPosition": "top",
+            "autoplayTimeout": <f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>,
+            "autoplayDirection": "forward",
+            "autoplayText": ["start", "stop"],
+            "autoplayHoverPause": false,
+            "autoplayButton": false,
+            "autoplayButtonOutput": false,
+            "autoplayResetOnVisibility": true,
+            "animateIn": "tns-fadeIn",
+            "animateOut": "tns-fadeOut",
+            "animateNormal": "tns-normal",
+            "animateDelay": false,
+            "loop": {f:if(condition: "{data.tx_hhslider_loop}", then: "true", else: "false")},
+            "rewind": false,
+            "autoHeight": false,
+            "lazyload": false,
+            "lazyloadSelector": ".tns-lazy-img",
+            "touch": true,
+            "mouseDrag": true,
+            "swipeAngle": 15,
+            "preventActionWhenRunning": false,
+            "preventScrollOnTouch": false,
+            "nested": false,
+            "freezable": true,
+            "disable": false,
+            "startIndex": 0,
+            "onInit": false,
+            "useLocalStorage": true
+        }
+    </script>
+</hh:addAssetsData>
+
+</html>
