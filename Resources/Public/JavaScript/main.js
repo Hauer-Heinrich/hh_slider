@@ -3,8 +3,9 @@ if(window.NodeList && !NodeList.prototype.forEach){
     NodeList.prototype.forEach = Array.prototype.forEach;
 }
 
-// https://github.com/ganlanyuan/tiny-slider
-window.addEventListener("load", function(e){
+// Initialize the Tiny Slider
+// (https://github.com/ganlanyuan/tiny-slider)
+document.addEventListener("DOMContentLoaded", function(e){
     var json = document.querySelectorAll(".hhSliderJson");
 
     json.forEach(function(cnf){
