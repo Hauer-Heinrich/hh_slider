@@ -8,14 +8,18 @@ Integrates the [tiny-slider](https://github.com/ganlanyuan/tiny-slider "tiny-sli
 ### Features
 - No dependencies like jQuery
 - "Content type" - Select "images" if you want only slide images | select "content" if you want to slide content-elements like textmedia
+- To slide other elements, for example from other extensions, simply add your own custom json to the document - like: "hh_slider\Resources\Private\Partials\Assets\SliderJson.html" - Important: className "hhSliderJson"
 
 ### Todos
+- rework AddAssetsDataViewHelper - the method(s) of this ViewHelper could change!
 
 ### Deprecated
 
 ### IMPORTENT NOTICE
 
+#### Main-view
 ![example picture from backend](github/images/preview-1.jpg?raw=true "Main")
+#### Options-view
 ![example picture from backend](github/images/preview-2.jpg?raw=true "Options")
 
 ##### Copyright notice
