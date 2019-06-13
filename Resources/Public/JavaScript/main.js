@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         if(typeof sliderContainer != "undefined") {
             var slider = tns(config),
-                arrowsPrev = sliderContainer.querySelector(".slider-button-prev"),
-                arrowsNext = sliderContainer.querySelector(".slider-button-next"),
+                arrowsPrev = sliderContainer.querySelector(config.prevButton),
+                arrowsNext = sliderContainer.querySelector(config.nextButton),
                 arrowContainer = sliderContainer.querySelector(".tns-outer");
 
             if(arrowsPrev) {
