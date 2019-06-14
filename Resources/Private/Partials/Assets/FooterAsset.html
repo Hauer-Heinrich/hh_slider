@@ -1,11 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:hh="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
 <f:render partial="Assets/SliderJson" arguments="{_all}" />
 
 <f:if condition="{settings.jsFile}">
-    <hh:addAssetsData type="jsFile" file="{f:uri.resource(path:'JavaScript/tiny-slider.min.js', extensionName:'hh_slider')}" />
+    <hhSlider:addAssetsData type="jsFile" file="{f:uri.resource(path:'JavaScript/tiny-slider.min.js', extensionName:'hh_slider')}" />
 </f:if>
 
 </html>
