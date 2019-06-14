@@ -1,34 +1,34 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <f:if condition="{file.extension} == gif">
-        <f:then>
-            <img class="image-embed-item" src="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', height: '{file.properties.height}', maxHeight: '{data.imageheight}', width: '{file.properties.width}', maxWidth: '{data.imagewidth}')}"
+<f:if condition="{file.extension} == gif">
+    <f:then>
+        <img class="image-embed-item" src="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', height: '{file.properties.height}', maxHeight: '{data.imageheight}', width: '{file.properties.width}', maxWidth: '{data.imagewidth}')}"
+            width="{file.properties.width}"
+            height="{file.properties.height}"
+            {f:if(condition: '{file.title}', then: 'title="{file.title}"')}
+            alt="{file.alternative}"
+        />
+    </f:then>
+    <f:else>
+        <picture class="image-embed-item">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1920')}" media="(min-width: 1601px)">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1600')}" media="(min-width: 1334px)">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1333')}" media="(min-width: 1001px)">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1000')}" media="(min-width: 801px)">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '800')}" media="(min-width: 601px)">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}}', maxWidth: '600')}" media="(min-width: 401px)">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '400')}" media="(min-width: 321px)">
+            <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '320')}" media="(min-width: 200px)">
+            <img src="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', height: '{file.properties.height}', maxHeight: '{data.imageheight}', width: '{file.properties.width}', maxWidth: '{data.imagewidth}')}"
                 width="{file.properties.width}"
                 height="{file.properties.height}"
                 {f:if(condition: '{file.title}', then: 'title="{file.title}"')}
                 alt="{file.alternative}"
             />
-        </f:then>
-        <f:else>
-            <picture class="image-embed-item">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1920')}" media="(min-width: 1601px)">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1600')}" media="(min-width: 1334px)">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1333')}" media="(min-width: 1001px)">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '1000')}" media="(min-width: 801px)">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '800')}" media="(min-width: 601px)">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}}', maxWidth: '600')}" media="(min-width: 401px)">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '400')}" media="(min-width: 321px)">
-                <source srcset="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'smartphone', maxHeight: '{file.properties.height}', width: '{file.properties.width}', maxWidth: '320')}" media="(min-width: 200px)">
-                <img src="{f:uri.image(src:'{file.uid}', treatIdAsReference:'1', cropVariant: 'default', height: '{file.properties.height}', maxHeight: '{data.imageheight}', width: '{file.properties.width}', maxWidth: '{data.imagewidth}')}"
-                    width="{file.properties.width}"
-                    height="{file.properties.height}"
-                    {f:if(condition: '{file.title}', then: 'title="{file.title}"')}
-                    alt="{file.alternative}"
-                />
-            </picture>
-        </f:else>
-    </f:if>
+        </picture>
+    </f:else>
+</f:if>
 
 </html>
