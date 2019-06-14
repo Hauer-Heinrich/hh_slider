@@ -163,6 +163,10 @@ $tempColumns = array (
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type.I.1',
                     1 => '2',
                 ),
+                2 => array (
+                    0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type.I.2',
+                    1 => '3',
+                ),
             ),
             'default' => 1,
             'renderType' => 'selectSingle',
@@ -171,6 +175,7 @@ $tempColumns = array (
         'exclude' => '1',
     ),
     'tx_hhslider_content_text' => [
+        'exclude' => 1,
         'label' => 'Text',
         'displayCond' => 'FIELD:tx_hhslider_content_type:=:1',
         'config' => [
@@ -178,22 +183,66 @@ $tempColumns = array (
             'enableRichtext' => true,
         ],
     ],
-    'tx_hhslider_disable_on_interaction' => array (
-        'config' => array (
+    'tx_hhslider_folder' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_folder',
+        'displayCond' => 'FIELD:tx_hhslider_content_type:=:3',
+        'config' => [
+            'type' => 'group',
+            'internal_type' => 'folder',
+            'size' => 1,
+            'maxitems' => 1,
+            'minitems' => 1,
+            'show_thumbs' => 0,
+            'eval' => 'trim'
+        ],
+    ],
+    // 'base' => [
+    //     'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.baseStorage',
+    //     'displayCond' => 'FIELD:tx_hhslider_content_type:=:3',
+    //     'onChange' => 'reload',
+    //     'config' => [
+    //         'type' => 'select',
+    //         'renderType' => 'selectSingle',
+    //         'foreign_table' => 'sys_file_storage',
+    //         'allowNonIdValues' => true,
+    //         'items' => [
+    //             ['', 0]
+    //         ],
+    //         'size' => 1,
+    //         'maxitems' => 1,
+    //         'eval' => 'required',
+    //         'range' => [
+    //             'lower' => 1,
+    //         ]
+    //     ]
+    // ],
+    // 'path' => [
+    //     'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.folder',
+    //     'displayCond' => 'FIELD:base:>:0',
+    //     'config' => [
+    //         'type' => 'select',
+    //         'renderType' => 'selectSingle',
+    //         'items' => [],
+    //         'itemsProcFunc' => 'TYPO3\\CMS\\Core\\Resource\\Service\\UserFileMountService->renderTceformsSelectDropdown',
+    //     ]
+    // ],
+    'tx_hhslider_disable_on_interaction' => [
+        'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
-            'items' => array (
-                0 => array (
+            'items' => [
+                0 => [
                     0 => '',
                     1 => '',
                     'labelChecked' => 'Enabled',
                     'labelUnchecked' => 'Disabled',
-                ),
-            ),
-        ),
+                ],
+            ],
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_disable_on_interaction',
-    ),
+    ],
     'tx_hhslider_loop' => array (
         'config' => array (
             'type' => 'check',
@@ -316,6 +365,9 @@ $tempTypes = array (
                 tx_hhslider_content_type,
                 assets,
                 tx_hhslider_child_content,
+                tx_hhslider_folder,
+                // base,
+                // path,
                 tx_hhslider_content_text,
             --div--;Options,
                 --palette--;;slider_autoplay_config,

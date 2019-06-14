@@ -45,10 +45,27 @@ tt_content.hhslider_hh_slider {
             markers.uid.field = uid
             as = data_tx_hhslider_child_content
         }
+
+        30 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+        30 {
+            folders.field = tx_hhslider_folder
+            as = folderFiles
+        }
     }
 
     settings {
         cssFile = {$plugin.tx_hhslider.settings.cssFile}
         jsFile = {$plugin.tx_hhslider.settings.jsFile}
+
+        media {
+            additionalConfig {
+                autoplay = 0
+                controls = 1
+                muted = 1
+                loop = 1
+                no-cookie = 1
+                preload = 1
+            }
+        }
     }
 }
