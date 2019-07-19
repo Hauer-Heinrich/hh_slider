@@ -10,7 +10,7 @@
  * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF['hh_slider'] = array (
+$EM_CONF['hh_slider'] = [
     'title' => 'Hauer-Heinrich - Slider (tiny-slider)',
     'description' => 'Hauer-Heinrich - Image and Content Slider',
     'category' => 'fe',
@@ -19,13 +19,19 @@ $EM_CONF['hh_slider'] = array (
     'author_company' => 'www.hauer-heinrich.de',
     'state' => 'stable',
     'version' => '0.1.1',
-    'constraints' => array (
-        'depends' => array (
+    'constraints' => [
+        'depends' => [
             'typo3' => '9.5.0-9.5.99',
-        ),
-        'conflicts' => array (
-        ),
-        'suggests' => array (
-        ),
-    ),
-);
+            'fluid_styled_content' => '9.5.0-9.9.99'
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
+    ],
+    'autoload' => [
+        'psr-4' => [
+            'HauerHeinrich\\HhSlider\\' => 'Classes'
+        ],
+    ],
+];
