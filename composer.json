@@ -16,7 +16,7 @@
         "docs": "https://github.com/Hauer-Heinrich/hh_slider/blob/master/README.md"
     },
     "version": "0.1.1",
-    "license": ["GPL-2.0-or-later"],
+    "license": ["MIT"],
     "keywords": ["TYPO3 CMS", "extension"],
     "replace": {
         "hh_slider": "self.version",
