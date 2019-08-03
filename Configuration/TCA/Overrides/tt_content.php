@@ -228,6 +228,7 @@ $tempColumns = array (
     //     ]
     // ],
     'tx_hhslider_disable_on_interaction' => [
+        'displayCond' => 'FIELD:tx_hhslider_autoplay:REQ:true',
         'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',

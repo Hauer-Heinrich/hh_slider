@@ -52,6 +52,10 @@
         </f:if>
     </div>
 
+    <f:if condition="{data.tx_hhslider_autoplay} && {data.tx_hhslider_disable_on_interaction}">
+        <button type="button" class="btn-slider btn-autoplay disabled">autoplay</button>
+    </f:if>
+
     <f:if condition="{data.tx_hhslider_arrows}">
         <span class="slider-button slider-button-prev"></span>
         <span class="slider-button slider-button-next"></span>

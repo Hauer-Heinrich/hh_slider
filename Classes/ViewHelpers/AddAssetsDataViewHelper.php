@@ -105,6 +105,9 @@ class AddAssetsDataViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
             case 'cssFile':
                 $pageRender->addCssFile(trim($this->arguments['file']), 'stylesheet', 'all');
                 break;
+            case 'cssLibrary':
+                $pageRender->addCssLibrary(trim($this->arguments['file']), 'stylesheet', 'all');
+                break;
             case 'jsFile':
                 if($this->arguments['where'] == "header") {
                     $pageRender->addJsFile(trim($this->arguments['file']), '', $compress, false, '', true, '|', false, '', true);

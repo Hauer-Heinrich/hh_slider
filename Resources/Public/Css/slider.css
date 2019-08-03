@@ -141,6 +141,22 @@
     list-style: none; }
     .hh-slider .pagination li {
       display: inline-block; }
+  .hh-slider .btn-autoplay {
+    background-color: #e4685d;
+    border: 0;
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 15px;
+    height: 30px;
+    margin-top: -30px;
+    padding: 6px 15px;
+    position: relative;
+    text-decoration: none; }
+    .hh-slider .btn-autoplay:hover {
+      background-color: #eb675e; }
+    .hh-slider .btn-autoplay.disabled {
+      display: none; }
 
 .slider-button-prev,
 .slider-button-next {
