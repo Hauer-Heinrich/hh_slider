@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         if(typeof sliderContainer != "undefined") {
             var slider = tns(config),
-                arrowsPrev = sliderContainer.querySelector(config.prevButton),
-                arrowsNext = sliderContainer.querySelector(config.nextButton),
+                arrowsPrev = config.prevButton ? sliderContainer.querySelector(config.prevButton) : '',
+                arrowsNext = config.nextButton ? sliderContainer.querySelector(config.nextButton) : '',
                 arrowContainer = sliderContainer.querySelector(".tns-outer")
-                disableOnInteraction = config.disableOnInteraction,
+                disableOnInteraction = config.disableOnInteraction ? config.disableOnInteraction : false,
                 btnAutoplay = sliderContainer.querySelector(".btn-autoplay");
 
             if(arrowsPrev) {
