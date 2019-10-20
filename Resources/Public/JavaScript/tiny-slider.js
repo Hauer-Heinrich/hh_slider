@@ -2831,13 +2831,11 @@ var tns = (function (){
       function play () {
         if (autoplay && !animating) {
           startAutoplay();
-          addEvents(container, {'mouseleave': onPanEnd}); // https://github.com/ganlanyuan/tiny-slider/issues/445
           autoplayUserPaused = false;
         }
       }
       function pause () {
         if (animating) {
-          removeEvents(container, {'mouseleave': onPanEnd}); // https://github.com/ganlanyuan/tiny-slider/issues/445
           stopAutoplay();
           autoplayUserPaused = true;
         }
@@ -3160,7 +3158,7 @@ var tns = (function (){
       }
 
       return {
-        version: '2.9.1',
+        version: '2.9.2',
         getInfo: info,
         events: events,
         goTo: goTo,
@@ -3177,4 +3175,4 @@ var tns = (function (){
     };
 
     return tns;
-})();
+    })();
