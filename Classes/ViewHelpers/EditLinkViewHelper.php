@@ -3,7 +3,6 @@
 namespace HauerHeinrich\HhSlider\ViewHelpers;
 
 // use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
@@ -47,7 +46,8 @@ class EditLinkViewHelper extends AbstractTagBasedViewHelper {
                 ],
                 'returnUrl' => GeneralUtility::getIndpEnv('REQUEST_URI')
             ];
-            $uri = BackendUtility::getModuleUrl('record_edit', $urlParameters);
+            $backendUriBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Backend\Routing\UriBuilder::class);
+            $uri = $backendUriBuilder->buildUriFromRoute('record_edit', $urlParameters);
 
             $this->tag->addAttribute('href', $uri);
         }
