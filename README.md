@@ -3,7 +3,7 @@ hh_slider is a TYPO3 extension.
 Integrates the [tiny-slider](https://github.com/ganlanyuan/tiny-slider "tiny-slider") in TYPO3.
 
 ### Installation
-... like any other TYPO3 extension [extensions.typo3.org](https://extensions.typo3.org/extension/hh_video/ "TYPO3 Extension Repository")
+... like any other TYPO3 extension [extensions.typo3.org](https://extensions.typo3.org/ "TYPO3 Extension Repository")
 
 ### Features
 - No dependencies like jQuery
