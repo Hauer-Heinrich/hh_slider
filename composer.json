@@ -19,7 +19,7 @@
     "license": ["MIT"],
     "keywords": ["TYPO3 CMS", "extension"],
     "replace": {
-        "hh_slider": "self.version",
+        "hauer-heinrich/hh_slider": "self.version",
         "typo3-ter/hh-slider": "self.version"
     },
     "require": {
