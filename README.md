@@ -9,6 +9,9 @@ Integrates the [tiny-slider](https://github.com/ganlanyuan/tiny-slider "tiny-sli
 - No dependencies like jQuery
 - "Content type" - Select "images" if you want only slide images | select "content" if you want to slide content-elements like textmedia
 - To slide other elements, for example from other extensions, simply add your own custom json to the document - like: "hh_slider\Resources\Private\Partials\Assets\SliderJson.html" - Important: className "hhSliderJson"
+- possibility to add TypoScript and PageTS automatically
+    - OR over the backend "Tempalte"-module and page settings -> Resources OR manually by yourself
+        - you can change this at backend -> Settings -> Extension Configuration -> hh_slider
 
 ### Todos
 - rework AddAssetsDataViewHelper - the method(s) of this ViewHelper could change!

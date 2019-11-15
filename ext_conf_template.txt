@@ -1,0 +1,8 @@
+#####################################
+### Hauer-Heinrich - Slider (tiny-slider) ###
+#####################################
+
+config {
+    # cat=basic; type=boolean; label= automatically include TypoScript
+    typoScript = 0
+}
