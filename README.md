@@ -4,6 +4,7 @@ Integrates the [tiny-slider](https://github.com/ganlanyuan/tiny-slider "tiny-sli
 
 ### Installation
 ... like any other TYPO3 extension [extensions.typo3.org](https://extensions.typo3.org/ "TYPO3 Extension Repository")
+Don't forget to include PageTS / look at features section
 
 ### Features
 - No dependencies like jQuery
