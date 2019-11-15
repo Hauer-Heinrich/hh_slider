@@ -33,9 +33,11 @@ namespace HauerHeinrich\HhSlider\ViewHelpers;
  */
 
 // use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class AddAssetsDataViewHelper extends \TYPO3Fluid\Core\ViewHelper\AbstractViewHelper {
+class AddAssetsDataViewHelper extends AbstractViewHelper {
     public function initializeArguments() {
         $this->registerArgument('type', 'string', 'Can be css or js or json', true);
         $this->registerArgument('where', 'string', 'Can be header (header is default for css) or footer (footer is default for js)', false);
@@ -72,12 +74,12 @@ class AddAssetsDataViewHelper extends \TYPO3Fluid\Core\ViewHelper\AbstractViewHe
                     $resultNEW = str_replace(
                         array_keys($searchReplaceArray),
                         array_values($searchReplaceArray),
-                        trim($this->renderChildren())
+                        trim($renderChildrenClosure())
                     );
 
                     $GLOBALS['TSFE']->$where['sliderCSS'] = "<style>" . $resultOLD . $resultNEW ."</style>";
                 } else {
-                    $GLOBALS['TSFE']->$where['sliderCSS'] = htmlspecialchars(trim($this->renderChildren()));
+                    $GLOBALS['TSFE']->$where['sliderCSS'] = htmlspecialchars(trim($renderChildrenClosure()));
                 }
 
                 // ToDo: $pageRender->addCssInlineBlock();
@@ -97,12 +99,12 @@ class AddAssetsDataViewHelper extends \TYPO3Fluid\Core\ViewHelper\AbstractViewHe
                     $resultNEW = str_replace(
                         array_keys($searchReplaceArray),
                         array_values($searchReplaceArray),
-                        trim($this->renderChildren())
+                        trim($renderChildrenClosure())
                     );
 
                     $GLOBALS['TSFE']->$where['sliderJS'] = "<script>" . $resultOLD . $resultNEW ."</script>";
                 } else {
-                    $GLOBALS['TSFE']->$where['sliderJS'] = trim($this->renderChildren());
+                    $GLOBALS['TSFE']->$where['sliderJS'] = trim($renderChildrenClosure());
                 }
 
                 // ToDo: $pageRender->addJsFooterInlineCode();  ->addJsInlineCode();
@@ -122,9 +124,9 @@ class AddAssetsDataViewHelper extends \TYPO3Fluid\Core\ViewHelper\AbstractViewHe
                 break;
             case 'json':
                 if($arguments['where'] == "header") {
-                    $pageRender->addHeaderData(trim($this->renderChildren()));
+                    $pageRender->addHeaderData(trim($renderChildrenClosure()));
                 } else {
-                    $pageRender->addFooterData(trim($this->renderChildren()));
+                    $pageRender->addFooterData(trim($renderChildrenClosure()));
                 }
                 break;
             default:
