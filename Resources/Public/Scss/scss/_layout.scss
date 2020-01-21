@@ -39,6 +39,15 @@
     }
 }
 
+.slider-container.tns-horizontal {
+    .slider-slide {
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
 .slider-button-prev,
 .slider-button-next {
     background-image: url("../Icons/arrows.svg");
