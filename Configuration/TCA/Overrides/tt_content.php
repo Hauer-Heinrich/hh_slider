@@ -308,6 +308,25 @@ $tempColumns = array (
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_thumbnails',
     ),
+
+    'tx_hhslider_transition_start' => [
+        'exclude' => '1',
+        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_transition_start',
+        'config' => [
+            'type' => 'text',
+            'cols' => 40,
+            'rows' => 15
+        ]
+    ],
+    'tx_hhslider_transition_end' => [
+        'exclude' => '1',
+        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_transition_end',
+        'config' => [
+            'type' => 'text',
+            'cols' => 40,
+            'rows' => 15
+        ]
+    ],
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
@@ -335,6 +354,9 @@ $tempPalettes = array (
     'slider_navigation' => [
         'showitem' => 'tx_hhslider_arrows, tx_hhslider_pagination, tx_hhslider_thumbnails', 'canNotCollapse' => 1
     ],
+    'slider_events' => [
+        'showitem' => 'tx_hhslider_transition_start, tx_hhslider_transition_end', 'canNotCollapse' => 1
+    ]
 );
 
 $GLOBALS['TCA']['tt_content']['palettes'] += $tempPalettes;
@@ -378,6 +400,8 @@ $tempTypes = array (
                 tx_hhslider_disable_on_interaction,
                 tx_hhslider_centered_slides,
                 --palette--;;slider_navigation,
+            --div--;Events,
+                --palette--;;slider_events,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
                 --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
                 --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,

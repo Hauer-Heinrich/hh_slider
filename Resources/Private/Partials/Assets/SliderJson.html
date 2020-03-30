@@ -3,7 +3,7 @@
     data-namespace-typo3-fluid="true">
 
 <hhSlider:addAssetsData type="json">
-    <script class="hhSliderJson" type="application/json">
+    <script id="slider-json-{data.uid}" class="hhSliderJson" type="application/json">
         {
             <f:comment></f:comment>"uid": "{data.uid}",
             "disableOnInteraction": "{f:if(condition: "{data.tx_hhslider_disable_on_interaction}", then: "true", else: "false")}",
@@ -61,6 +61,19 @@
             "useLocalStorage": true
         }
     </script>
+
+    <f:if condition="{data.tx_hhslider_transition_start}">
+        <script id="slider-transitionStart-{data.uid}" class="hhSliderEvent">
+            window['transitionStart'+{data.uid}] = <f:format.raw>{data.tx_hhslider_transition_start}</f:format.raw>;
+        </script>
+    </f:if>
+
+    <f:if condition="{data.tx_hhslider_transition_end}">
+        <script id="slider-transitionEnd-{data.uid}" class="hhSliderEvent">
+            window['transitionEnd'+{data.uid}] = <f:format.raw>{data.tx_hhslider_transition_end}</f:format.raw>;
+        </script>
+    </f:if>
+
 </hhSlider:addAssetsData>
 
 </html>

@@ -93,6 +93,12 @@
       <trans-unit id="tt_content.tx_hhslider_thumbnails.I.0" xml:space="preserve">
         <source>Enabled</source>
       </trans-unit>
+      <trans-unit id="tt_content.tx_hhslider_transition_start" xml:space="preserve">
+        <source>Event: Transition start</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_hhslider_transition_end" xml:space="preserve">
+        <source>Event: Transition end</source>
+      </trans-unit>
       <trans-unit id="tt_content.CType.div._hhslider_" xml:space="preserve">
         <source>hh_slider</source>
       </trans-unit>

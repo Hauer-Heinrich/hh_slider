@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             sliderContainer = document.querySelector("#c"+uid);
 
         if(typeof sliderContainer != "undefined") {
-            var slider = tns(config),
+            window['slider'+uid] = tns(config),
                 arrowsPrev = config.prevButton ? sliderContainer.querySelector(config.prevButton) : '',
                 arrowsNext = config.nextButton ? sliderContainer.querySelector(config.nextButton) : '',
                 arrowContainer = sliderContainer.querySelector(".tns-outer")
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             if(arrowsPrev) {
                 arrowContainer.appendChild(arrowsPrev);
                 arrowsPrev.addEventListener('click', function() {
-                    slider.goTo('prev');
+                    window['slider'+uid].goTo('prev');
                     if(disableOnInteraction !== "false") {
                         pause();
                     }
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             if(arrowsNext) {
                 arrowContainer.appendChild(arrowsNext);
                 arrowsNext.addEventListener('click', function() {
-                    slider.goTo('next');
+                    window['slider'+uid].goTo('next');
                     if(disableOnInteraction !== "false") {
                         pause();
                     }
@@ -47,14 +47,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 for (let i = 0; i < itemsLength; i++) {
                     items[i].addEventListener("click", function() {
                         var clickedElement = i;
-                        slider.goTo(clickedElement);
+                        window['slider'+uid].goTo(clickedElement);
                         if(disableOnInteraction !== "false") {
                             pause();
                         }
                     });
                 }
 
-                slider.events.on("indexChanged", function(info, eventName) {
+                window['slider'+uid].events.on("indexChanged", function(info, eventName) {
                     // removeClass(pagination.getElementsByClassName("tns-nav-active")[0], "tns-nav-active");
                     // addClass(items[info.displayIndex - 1], "tns-nav-active");
 
@@ -66,25 +66,32 @@ document.addEventListener("DOMContentLoaded", function(e) {
             // btn autoplay only appears if disableOnInteraction is true
             if(btnAutoplay) {
                 btnAutoplay.addEventListener("click", function() {
-                    slider.play();
+                    window['slider'+uid].play();
                     btnAutoplay.classList.add("disabled");
                 });
             }
 
-            slider.events.on("dragEnd", function(info, eventName) {
+            window['slider'+uid].events.on("dragEnd", function(info, eventName) {
                 if(disableOnInteraction !== "false") {
                     pause();
                 }
             });
 
-            slider.events.on("touchEnd", function(info, eventName) {
+            window['slider'+uid].events.on("touchEnd", function(info, eventName) {
                 if(disableOnInteraction !== "false") {
                     pause();
                 }
             });
+
+            if(window['transitionStart'+uid]) {
+                window['slider'+uid].events.on('transitionStart', window['transitionStart'+uid]);
+            }
+            if(window['transitionEnd'+uid]) {
+                window['slider'+uid].events.on('transitionEnd', window['transitionEnd'+uid]);
+            }
 
             function pause() {
-                slider.pause();
+                window['slider'+uid].pause();
                 if(btnAutoplay) {
                     btnAutoplay.classList.remove("disabled");
                 }

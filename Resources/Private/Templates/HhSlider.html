@@ -6,7 +6,7 @@
 
 <f:section name="Content">
 
-    <div class="slider-container slider-container-{data.uid}">
+    <div class="slider-container slider-container-{data.uid}" data-slider="slider{data.uid}">
         <f:if condition="{data.tx_hhslider_content_type} == 1">
             <f:if condition="{data_assets}">
                 <f:for each="{data_assets}" as="file">
