@@ -15,7 +15,7 @@
         "source": "https://github.com/Hauer-Heinrich/hh_slider",
         "docs": "https://github.com/Hauer-Heinrich/hh_slider/blob/master/README.md"
     },
-    "version": "0.1.62",
+    "version": "0.1.63",
     "license": ["MIT"],
     "keywords": [
         "TYPO3 CMS",
