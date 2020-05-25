@@ -1,4 +1,5 @@
 plugin.tx_hhslider {
+    isLoaded = 1
     view {
         # cat=hh_slider/file; type=string; label=Path to template root (FE)
         templateRootPath =

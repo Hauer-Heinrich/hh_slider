@@ -38,16 +38,36 @@
 
         <f:if condition="{data.tx_hhslider_content_type} == 3">
             <f:if condition="{folderFiles}">
-                <f:for each="{folderFiles}" as="file" iteration="i">
-                    <f:if condition="{file.extension} == 'mp4' || {file.extension} == 'webm' || {file.extension} == 'ogv' || {file.extension} == 'ogg'">
-                        <f:then>
-                            <f:media class="video-embed-item" file="{file}" alt="{file.alternative}" title="{file.title}" additionalConfig="{settings.media.additionalConfig}" />
-                        </f:then>
-                        <f:else>
-                            <f:media class="" file="{file}" alt="{file.alternative}" title="{file.title}" />
-                        </f:else>
-                    </f:if>
-                </f:for>
+                <f:comment>https://github.com/Hauer-Heinrich/hh_slider/issues/10</f:comment>
+                <f:if condition="{settings.hh_video_extender.isLoaded}">
+                    <f:then>
+                        <f:for each="{folderFiles}" as="file" iteration="i">
+                            <f:switch expression="{file.extension}">
+                                <f:case value="mp4">
+                                    <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                                </f:case>
+                                <f:case value="webm"></f:case>
+                                <f:case value="ogv"></f:case>
+                                <f:case value="ogg"></f:case>
+                                <f:defaultCase>
+                                    <f:media class="" file="{file}" alt="{file.alternative}" title="{file.title}" />
+                                </f:defaultCase>
+                            </f:switch>
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <f:for each="{folderFiles}" as="file" iteration="i">
+                            <f:if condition="{file.extension} == 'mp4' || {file.extension} == 'webm' || {file.extension} == 'ogv' || {file.extension} == 'ogg'">
+                                <f:then>
+                                    <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                                </f:then>
+                                <f:else>
+                                    <f:media class="" file="{file}" alt="{file.alternative}" title="{file.title}" />
+                                </f:else>
+                            </f:if>
+                        </f:for>
+                    </f:else>
+                </f:if>
             </f:if>
         </f:if>
     </div>
