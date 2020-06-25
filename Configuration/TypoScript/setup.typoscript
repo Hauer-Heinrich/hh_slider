@@ -49,6 +49,8 @@ tt_content.hhslider_hh_slider {
         30 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
         30 {
             folders.field = tx_hhslider_folder
+            sorting.field = tx_hhslider_sorting
+            sorting.direction.field = tx_hhslider_sorting_direction
             as = folderFiles
         }
     }

@@ -9,6 +9,8 @@ CREATE TABLE tt_content (
     tx_hhslider_child_content int(11) unsigned DEFAULT '0' NOT NULL,
     tx_hhslider_child_content_parent int(11) unsigned DEFAULT '0' NOT NULL,
     tx_hhslider_folder varchar(255) DEFAULT '' NOT NULL,
+    tx_hhslider_sorting varchar(50) DEFAULT '' NOT NULL,
+    tx_hhslider_sorting_direction varchar(50) DEFAULT '' NOT NULL,
     tx_hhslider_content_text text,
     tx_hhslider_content_type tinytext,
     tx_hhslider_disable_on_interaction int(11) DEFAULT '0' NOT NULL,

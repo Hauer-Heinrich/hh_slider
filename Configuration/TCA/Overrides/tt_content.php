@@ -197,36 +197,6 @@ $tempColumns = array (
             'eval' => 'trim'
         ],
     ],
-    // 'base' => [
-    //     'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.baseStorage',
-    //     'displayCond' => 'FIELD:tx_hhslider_content_type:=:3',
-    //     'onChange' => 'reload',
-    //     'config' => [
-    //         'type' => 'select',
-    //         'renderType' => 'selectSingle',
-    //         'foreign_table' => 'sys_file_storage',
-    //         'allowNonIdValues' => true,
-    //         'items' => [
-    //             ['', 0]
-    //         ],
-    //         'size' => 1,
-    //         'maxitems' => 1,
-    //         'eval' => 'required',
-    //         'range' => [
-    //             'lower' => 1,
-    //         ]
-    //     ]
-    // ],
-    // 'path' => [
-    //     'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.folder',
-    //     'displayCond' => 'FIELD:base:>:0',
-    //     'config' => [
-    //         'type' => 'select',
-    //         'renderType' => 'selectSingle',
-    //         'items' => [],
-    //         'itemsProcFunc' => 'TYPO3\\CMS\\Core\\Resource\\Service\\UserFileMountService->renderTceformsSelectDropdown',
-    //     ]
-    // ],
     'tx_hhslider_disable_on_interaction' => [
         'displayCond' => 'FIELD:tx_hhslider_autoplay:REQ:true',
         'config' => [
@@ -334,6 +304,38 @@ $tempColumns = array (
             'eval' => 'trim, HauerHeinrich\\HhSlider\\Evaluation\\JsonEvaluation',
         ],
     ],
+    'tx_hhslider_sorting' => [
+        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_sorting',
+        'displayCond' => 'FIELD:tx_hhslider_content_type:=:3',
+        'config' => [
+            'items' => [
+                ['name (default)', 'name'],
+                ['uid', 'uid'],
+                ['extension (e.g. jpg, png)', 'extension'],
+                ['file size', 'size'],
+                ['creation date', 'creation_date'],
+                ['modification date', 'modification_date'],
+            ],
+            'default' => 'name',
+            'renderType' => 'selectSingle',
+            'type' => 'select',
+        ],
+        'exclude' => '1',
+    ],
+    'tx_hhslider_sorting_direction' => [
+        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_sorting_direction',
+        'displayCond' => 'FIELD:tx_hhslider_content_type:=:3',
+        'config' => [
+            'items' => [
+                ['ascending (default)', 'ascending'],
+                ['descending', 'descending'],
+            ],
+            'default' => 'ascending',
+            'renderType' => 'selectSingle',
+            'type' => 'select',
+        ],
+        'exclude' => '1',
+    ],
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
@@ -363,7 +365,10 @@ $tempPalettes = array (
     ],
     'slider_slide' => [
         'showitem' => 'tx_hhslider_slides_per_view, tx_hhslider_slideby', 'canNotCollapse' => 1
-    ]
+    ],
+    'slider_sorting' => [
+        'showitem' => 'tx_hhslider_sorting, tx_hhslider_sorting_direction', 'canNotCollapse' => 1
+    ],
 );
 
 $GLOBALS['TCA']['tt_content']['palettes'] += $tempPalettes;
@@ -396,6 +401,7 @@ $tempTypes = array (
                 assets,
                 tx_hhslider_child_content,
                 tx_hhslider_folder,
+                --palette--;;slider_sorting,
                 tx_hhslider_content_text,
             --div--;Options,
                 --palette--;;slider_autoplay_config,

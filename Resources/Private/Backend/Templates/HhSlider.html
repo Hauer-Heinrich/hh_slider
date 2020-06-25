@@ -20,11 +20,17 @@
     </f:if>
 
 
-    <f:if condition="{processedRow.assets}">
+    <f:if condition="{processedRow.tx_hhslider_content_type.0} == 1 && {processedRow.assets}">
         <div>
             <f:for each="{processedRow.assets}" as="item">
                 <f:image src="{item.uid}" treatIdAsReference="1" width="50" />
             </f:for>
+        </div>
+    </f:if>
+
+    <f:if condition="{processedRow.tx_hhslider_content_type.0} == 3 && {processedRow.tx_hhslider_folder}">
+        <div>
+            Folder: {processedRow.tx_hhslider_folder.0.folder}
         </div>
     </f:if>
 

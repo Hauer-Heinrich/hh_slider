@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
             uid = config.uid,
             sliderContainer = document.querySelector("#c"+uid);
 
-        console.log(config);
-
         if(typeof sliderContainer != "undefined") {
             sliderArray[uid] = tns(config),
                 arrowsPrev = config.prevButton ? sliderContainer.querySelector(config.prevButton) : '',
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 arrowContainer = sliderContainer.querySelector(".tns-outer")
                 disableOnInteraction = config.disableOnInteraction ? config.disableOnInteraction : false,
                 btnAutoplay = sliderContainer.querySelector(".btn-autoplay");
-
 
             if(arrowsPrev) {
                 arrowContainer.appendChild(arrowsPrev);
