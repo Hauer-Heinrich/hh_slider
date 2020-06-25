@@ -28,4 +28,7 @@ call_user_func(function() {
     // Add hook to determine if content record is used/unused
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['record_is_used']['hh_slider'] =
         HauerHeinrich\HhSlider\Hooks\PageLayoutViewHook::class . '->contentIsUsed';
+
+    // Register the class to be available in 'eval' of TCA
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals']['HauerHeinrich\\HhSlider\\Evaluation\\JsonEvaluation'] = '';
 });

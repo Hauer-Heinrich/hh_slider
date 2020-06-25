@@ -308,6 +308,18 @@ $tempColumns = array (
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_thumbnails',
     ),
+    'tx_hhslider_responsive_part' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_responsive_part',
+        'description' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_responsive_part.description',
+        'config' => [
+            'type' => 'text',
+            'renderType' => 't3editor',
+            'format' => 'html',
+            'rows' => 7,
+            'eval' => 'trim, HauerHeinrich\\HhSlider\\Evaluation\\JsonEvaluation',
+        ],
+    ],
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
@@ -367,8 +379,6 @@ $tempTypes = array (
                 assets,
                 tx_hhslider_child_content,
                 tx_hhslider_folder,
-                // base,
-                // path,
                 tx_hhslider_content_text,
             --div--;Options,
                 --palette--;;slider_autoplay_config,
@@ -378,6 +388,7 @@ $tempTypes = array (
                 tx_hhslider_disable_on_interaction,
                 tx_hhslider_centered_slides,
                 --palette--;;slider_navigation,
+                tx_hhslider_responsive_part,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
                 --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
                 --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,

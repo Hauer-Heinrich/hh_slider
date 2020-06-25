@@ -51,6 +51,12 @@
       <trans-unit id="tt_content.tx_hhslider_thumbnails" xml:space="preserve">
         <source>Thumbnails as navigation (only without pagination)</source>
       </trans-unit>
+      <trans-unit id="tt_content.tx_hhslider_responsive_part" xml:space="preserve">
+        <source>JSON for responsive option of the slider - HAVE TO BE IN JSON syntax (so with quotes)!</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_hhslider_responsive_part.description" xml:space="preserve">
+        <source>https://github.com/ganlanyuan/tiny-slider#user-content-responsive-options - For example: {"1024": { "items": 2, "gutter": 20 }}</source>
+      </trans-unit>
       <trans-unit id="tt_content.tx_hhslider_animation.I.0" xml:space="preserve">
         <source>slide</source>
       </trans-unit>

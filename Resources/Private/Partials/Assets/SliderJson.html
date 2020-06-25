@@ -58,7 +58,8 @@
             "disable": false,
             "startIndex": 0,
             "onInit": false,
-            "useLocalStorage": true
+            "useLocalStorage": true,
+            "responsive": <f:if condition="{data.tx_hhslider_responsive_part}"><f:then><f:format.raw>{data.tx_hhslider_responsive_part}</f:format.raw></f:then><f:else>""</f:else></f:if>
         }
     </script>
 </hhSlider:addAssetsData>
