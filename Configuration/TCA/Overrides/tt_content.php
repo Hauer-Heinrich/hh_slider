@@ -290,6 +290,20 @@ $tempColumns = array (
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_slides_per_view',
     ),
+    'tx_hhslider_slideby' => array (
+        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_slideby',
+        'config' => array (
+            'type' => 'input',
+            'default' => '1',
+            'eval' => 'int',
+            'max' => '5',
+            'placeholder' => '1',
+            'range' => array (
+                'lower' => '1',
+            ),
+        ),
+        'exclude' => '1',
+    ),
     'tx_hhslider_thumbnails' => array (
         // 'displayCond' => 'FIELD:tx_hhslider_pagination:=:0',
         'config' => array (
@@ -347,6 +361,9 @@ $tempPalettes = array (
     'slider_navigation' => [
         'showitem' => 'tx_hhslider_arrows, tx_hhslider_pagination, tx_hhslider_thumbnails', 'canNotCollapse' => 1
     ],
+    'slider_slide' => [
+        'showitem' => 'tx_hhslider_slides_per_view, tx_hhslider_slideby', 'canNotCollapse' => 1
+    ]
 );
 
 $GLOBALS['TCA']['tt_content']['palettes'] += $tempPalettes;
@@ -384,7 +401,7 @@ $tempTypes = array (
                 --palette--;;slider_autoplay_config,
                 --palette--;;slider_animation_config,
                 tx_hhslider_loop,
-                tx_hhslider_slides_per_view,
+                --palette--;;slider_slide,
                 tx_hhslider_disable_on_interaction,
                 tx_hhslider_centered_slides,
                 --palette--;;slider_navigation,

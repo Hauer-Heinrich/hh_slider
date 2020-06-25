@@ -48,6 +48,9 @@
       <trans-unit id="tt_content.tx_hhslider_slides_per_view" xml:space="preserve">
         <source>Slides per view</source>
       </trans-unit>
+      <trans-unit id="tt_content.tx_hhslider_slideby" xml:space="preserve">
+        <source>Number of slides going on one "click"</source>
+      </trans-unit>
       <trans-unit id="tt_content.tx_hhslider_thumbnails" xml:space="preserve">
         <source>Thumbnails as navigation (only without pagination)</source>
       </trans-unit>
