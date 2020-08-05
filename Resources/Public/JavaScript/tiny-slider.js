@@ -1,26 +1,4 @@
 var tns = (function (){
-    // Object.keys
-    if (!Object.keys) {
-      Object.keys = function(object) {
-        var keys = [];
-        for (var name in object) {
-          if (Object.prototype.hasOwnProperty.call(object, name)) {
-            keys.push(name);
-          }
-        }
-        return keys;
-      };
-    }
-
-    // ChildNode.remove
-    if(!("remove" in Element.prototype)){
-      Element.prototype.remove = function(){
-        if(this.parentNode) {
-          this.parentNode.removeChild(this);
-        }
-      };
-    }
-
     var win = window;
 
     var raf = win.requestAnimationFrame
@@ -175,6 +153,10 @@ var tns = (function (){
     }
 
     function mediaquerySupport () {
+      if (window.matchMedia || window.msMatchMedia) {
+        return true;
+      }
+
       var doc = document,
           body = getBody(),
           docOverflow = setFakeBody(body),
@@ -203,7 +185,7 @@ var tns = (function (){
     }
 
     // create and append style sheet
-    function createStyleSheet (media) {
+    function createStyleSheet (media, nonce) {
       // Create the <style> tag
       var style = document.createElement("style");
       // style.setAttribute("type", "text/css");
@@ -212,6 +194,9 @@ var tns = (function (){
       // style.setAttribute("media", "screen")
       // style.setAttribute("media", "only screen and (max-width : 1024px)")
       if (media) { style.setAttribute("media", media); }
+
+      // Add nonce attribute for Content Security Policy
+      if (nonce) { style.setAttribute("nonce", nonce); }
 
       // WebKit hack :(
       // style.appendChild(document.createTextNode(""));
@@ -487,6 +472,28 @@ var tns = (function (){
       }
     }
 
+    // Object.keys
+    if (!Object.keys) {
+      Object.keys = function(object) {
+        var keys = [];
+        for (var name in object) {
+          if (Object.prototype.hasOwnProperty.call(object, name)) {
+            keys.push(name);
+          }
+        }
+        return keys;
+      };
+    }
+
+    // ChildNode.remove
+    if(!("remove" in Element.prototype)){
+      Element.prototype.remove = function(){
+        if(this.parentNode) {
+          this.parentNode.removeChild(this);
+        }
+      };
+    }
+
     var tns = function(options) {
       options = extend({
         container: '.slider',
@@ -539,7 +546,8 @@ var tns = (function (){
         preventScrollOnTouch: false,
         freezable: true,
         onInit: false,
-        useLocalStorage: true
+        useLocalStorage: true,
+        nonce: false
       }, options || {});
 
       var doc = document,
@@ -716,7 +724,7 @@ var tns = (function (){
           autoplayText = getOption('autoplayText'),
           autoplayHoverPause = getOption('autoplayHoverPause'),
           autoplayResetOnVisibility = getOption('autoplayResetOnVisibility'),
-          sheet = createStyleSheet(),
+          sheet = createStyleSheet(null, getOption('nonce')),
           lazyload = options.lazyload,
           lazyloadSelector = options.lazyloadSelector,
           slidePositions, // collection of slide positions
@@ -736,7 +744,7 @@ var tns = (function (){
               return function() { return center && !loop ? slideCount - 1 : Math.ceil(- rightBoundary / (fixedWidth + gutter)); };
             } else if (autoWidth) {
               return function() {
-                for (var i = slideCountNew; i--;) {
+                for (var i = 0; i < slideCountNew; i++) {
                   if (slidePositions[i] >= - rightBoundary) { return i; }
                 }
               };
@@ -803,6 +811,7 @@ var tns = (function (){
           hasTouch = hasOption('touch'),
           hasMouseDrag = hasOption('mouseDrag'),
           slideActiveClass = 'tns-slide-active',
+          slideClonedClass = 'tns-slide-cloned',
           imgCompleteClass = 'tns-complete',
           imgEvents = {
             'load': onImgLoaded,
@@ -969,6 +978,7 @@ var tns = (function (){
       }
 
       function getClientWidth (el) {
+        if (el == null) { return; }
         var div = doc.createElement('div'), rect, width;
         el.appendChild(div);
         rect = div.getBoundingClientRect();
@@ -1167,11 +1177,13 @@ var tns = (function (){
           for (var j = cloneCount; j--;) {
             var num = j%slideCount,
                 cloneFirst = slideItems[num].cloneNode(true);
+            addClass(cloneFirst, slideClonedClass);
             removeAttrs(cloneFirst, 'id');
             fragmentAfter.insertBefore(cloneFirst, fragmentAfter.firstChild);
 
             if (carousel) {
               var cloneLast = slideItems[slideCount - 1 - num].cloneNode(true);
+              addClass(cloneLast, slideClonedClass);
               removeAttrs(cloneLast, 'id');
               fragmentBefore.appendChild(cloneLast);
             }
@@ -1189,25 +1201,30 @@ var tns = (function (){
         if (hasOption('autoHeight') || autoWidth || !horizontal) {
           var imgs = container.querySelectorAll('img');
 
-          // add complete class if all images are loaded/failed
+          // add img load event listener
           forEach(imgs, function(img) {
             var src = img.src;
 
-            if (src && src.indexOf('data:image') < 0) {
-              addEvents(img, imgEvents);
-              img.src = '';
-              img.src = src;
-              addClass(img, 'loading');
-            } else if (!lazyload) {
-              imgLoaded(img);
+            if (!lazyload) {
+              // not data img
+              if (src && src.indexOf('data:image') < 0) {
+                img.src = '';
+                addEvents(img, imgEvents);
+                addClass(img, 'loading');
+
+                img.src = src;
+              // data img
+              } else {
+                imgLoaded(img);
+              }
             }
           });
 
-          // All imgs are completed
+          // set imgsComplete
           raf(function(){ imgsLoadedCheck(arrayFromNodeList(imgs), function() { imgsComplete = true; }); });
 
-          // Check imgs in window only for auto height
-          if (!autoWidth && horizontal) { imgs = getImageArray(index, Math.min(index + items - 1, slideCountNew - 1)); }
+          // reset imgs for auto height: check visible imgs only
+          if (hasOption('autoHeight')) { imgs = getImageArray(index, Math.min(index + items - 1, slideCountNew - 1)); }
 
           lazyload ? initSliderTransformStyleCheck() : raf(function(){ imgsLoadedCheck(arrayFromNodeList(imgs), initSliderTransformStyleCheck); });
 
@@ -1222,14 +1239,19 @@ var tns = (function (){
       }
 
       function initSliderTransformStyleCheck () {
-        if (autoWidth) {
+        if (autoWidth && slideCount > 1) {
           // check styles application
           var num = loop ? index : slideCount - 1;
+
           (function stylesApplicationCheck() {
-            slideItems[num - 1].getBoundingClientRect().right.toFixed(2) === slideItems[num].getBoundingClientRect().left.toFixed(2) ?
-            initSliderTransformCore() :
-            setTimeout(function(){ stylesApplicationCheck(); }, 16);
+            var left = slideItems[num].getBoundingClientRect().left;
+            var right = slideItems[num - 1].getBoundingClientRect().right;
+
+            (Math.abs(left - right) <= 1) ?
+              initSliderTransformCore() :
+              setTimeout(function(){ stylesApplicationCheck(); }, 16);
           })();
+
         } else {
           initSliderTransformCore();
         }
@@ -1428,7 +1450,7 @@ var tns = (function (){
           if (autoplayButton) {
             setAttrs(autoplayButton, {'data-action': txt});
           } else if (options.autoplayButtonOutput) {
-            outerWrapper.insertAdjacentHTML(getInsertPosition(options.autoplayPosition), '<button data-action="' + txt + '">' + autoplayHtmlStrings[0] + txt + autoplayHtmlStrings[1] + autoplayText[0] + '</button>');
+            outerWrapper.insertAdjacentHTML(getInsertPosition(options.autoplayPosition), '<button type="button" data-action="' + txt + '">' + autoplayHtmlStrings[0] + txt + autoplayHtmlStrings[1] + autoplayText[0] + '</button>');
             autoplayButton = outerWrapper.querySelector('[data-action]');
           }
 
@@ -1467,7 +1489,7 @@ var tns = (function (){
                 hiddenStr = navAsThumbnails ? '' : 'style="display:none"';
             for (var i = 0; i < slideCount; i++) {
               // hide nav items by default
-              navHtml += '<button data-nav="' + i +'" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i + 1) +'"></button>';
+              navHtml += '<button type="button" data-nav="' + i +'" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i + 1) +'"></button>';
             }
             navHtml = '<div class="tns-nav" aria-label="Carousel Pagination">' + navHtml + '</div>';
             outerWrapper.insertAdjacentHTML(getInsertPosition(options.navPosition), navHtml);
@@ -1503,7 +1525,7 @@ var tns = (function (){
         // == controlsInit ==
         if (hasControls) {
           if (!controlsContainer && (!prevButton || !nextButton)) {
-            outerWrapper.insertAdjacentHTML(getInsertPosition(options.controlsPosition), '<div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button data-controls="prev" tabindex="-1" aria-controls="' + slideId +'">' + controlsText[0] + '</button><button data-controls="next" tabindex="-1" aria-controls="' + slideId +'">' + controlsText[1] + '</button></div>');
+            outerWrapper.insertAdjacentHTML(getInsertPosition(options.controlsPosition), '<div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"><button type="button" data-controls="prev" tabindex="-1" aria-controls="' + slideId +'">' + controlsText[0] + '</button><button type="button" data-controls="next" tabindex="-1" aria-controls="' + slideId +'">' + controlsText[1] + '</button></div>');
 
             controlsContainer = outerWrapper.querySelector('.tns-controls');
           }
@@ -1620,7 +1642,7 @@ var tns = (function (){
         tnsList.forEach(function(item, i) {
           var el = item === 'container' ? outerWrapper : options[item];
 
-          if (typeof el === 'object') {
+          if (typeof el === 'object' && el) {
             var prevEl = el.previousElementSibling ? el.previousElementSibling : false,
                 parentEl = el.parentNode;
             el.outerHTML = htmlList[i];
@@ -1800,9 +1822,12 @@ var tns = (function (){
           }
         }
         if (nav !== navTem) {
-          nav ?
-            showElement(navContainer) :
+          if (nav) {
+            showElement(navContainer);
+            updateNavVisibility();
+          } else {
             hideElement(navContainer);
+          }
         }
         if (touch !== touchTem) {
           touch ?
@@ -1878,12 +1903,9 @@ var tns = (function (){
         if (itemsChanged && !carousel) { updateGallerySlidePositions(); }
 
         if (!disable && !freeze) {
-          // non-meduaqueries: IE8
+          // non-mediaqueries: IE8
           if (bpChanged && !CSSMQ) {
             // middle wrapper styles
-            if (autoHeight !== autoheightTem || speed !== speedTem) {
-              update_carousel_transition_duration();
-            }
 
             // inner wrapper styles
             if (edgePadding !== edgePaddingTem || gutter !== gutterTem) {
@@ -2205,7 +2227,10 @@ var tns = (function (){
 
       function doLazyLoad () {
         if (lazyload && !disable) {
-          getImageArray.apply(null, getVisibleSlideRange()).forEach(function (img) {
+          var arg = getVisibleSlideRange();
+          arg.push(lazyloadSelector);
+
+          getImageArray.apply(null, arg).forEach(function (img) {
             if (!hasClass(img, imgCompleteClass)) {
               // stop propagation transitionend event to container
               var eve = {};
@@ -2246,15 +2271,17 @@ var tns = (function (){
       }
 
       function imgCompleted (img) {
-        addClass(img, 'tns-complete');
+        addClass(img, imgCompleteClass);
         removeClass(img, 'loading');
         removeEvents(img, imgEvents);
       }
 
-      function getImageArray (start, end) {
+      function getImageArray (start, end, imgSelector) {
         var imgs = [];
+        if (!imgSelector) { imgSelector = 'img'; }
+
         while (start <= end) {
-          forEach(slideItems[start].querySelectorAll('img'), function (img) { imgs.push(img); });
+          forEach(slideItems[start].querySelectorAll(imgSelector), function (img) { imgs.push(img); });
           start++;
         }
 
@@ -2269,11 +2296,12 @@ var tns = (function (){
       }
 
       function imgsLoadedCheck (imgs, cb) {
-        // directly execute callback function if all images are complete
+        // execute callback function if all images are complete
         if (imgsComplete) { return cb(); }
 
-        // check selected image classes otherwise
+        // check image classes
         imgs.forEach(function (img, index) {
+          if (!lazyload && img.complete) { imgCompleted(img); } // Check image.complete
           if (hasClass(img, imgCompleteClass)) { imgs.splice(index, 1); }
         });
 
@@ -2989,7 +3017,9 @@ var tns = (function (){
             if (moveDirectionExpected) { preventScroll = true; }
           }
 
-          if (preventScroll) { e.preventDefault(); }
+          if ((typeof e.cancelable !== 'boolean' || e.cancelable) && preventScroll) {
+            e.preventDefault();
+          }
         }
       }
 
@@ -3158,7 +3188,7 @@ var tns = (function (){
       }
 
       return {
-        version: '2.9.2',
+        version: '2.9.3',
         getInfo: info,
         events: events,
         goTo: goTo,
