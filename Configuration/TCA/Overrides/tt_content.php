@@ -351,9 +351,6 @@ $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
 ];
 
 $tempPalettes = array (
-    'slider_header_config' => [
-        'showitem' => 'header_layout, header_position', 'canNotCollapse' => 1
-    ],
     'slider_autoplay_config' => [
         'showitem' => 'tx_hhslider_autoplay, tx_hhslider_autoplay_speed', 'canNotCollapse' => 1
     ],
@@ -394,9 +391,7 @@ $tempTypes = array (
         'showitem' => '
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
-                header,
-                subheader,
-                --palette--;;slider_header_config,
+                --palette--;;headers,
                 tx_hhslider_content_type,
                 assets,
                 tx_hhslider_child_content,
