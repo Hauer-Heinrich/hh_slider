@@ -4,12 +4,13 @@ namespace HauerHeinrich\HhSlider\Form\FormDataProvider;
 use TYPO3\CMS\Backend\Form\FormDataProviderInterface;
 
 class TcaColPosItem implements FormDataProviderInterface {
+
     /**
      * @var array
      */
-    protected $supportedInlineParentFields = array (
+    protected $supportedInlineParentFields = [
         0 => 'tx_hhslider_child_content_parent',
-    );
+    ];
 
     /**
      * @param array $result

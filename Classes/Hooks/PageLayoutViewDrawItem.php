@@ -13,9 +13,9 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
     /**
      * @var array
      */
-    protected $supportedContentTypes = array (
+    protected $supportedContentTypes = [
         'hhslider_hh_slider' => 'HhSlider',
-    );
+    ];
 
     /**
      * @var StandaloneView
