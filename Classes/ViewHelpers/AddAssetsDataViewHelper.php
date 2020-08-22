@@ -42,7 +42,7 @@ class AddAssetsDataViewHelper extends AbstractViewHelper {
         $this->registerArgument('type', 'string', 'Can be css or js or json', true);
         $this->registerArgument('where', 'string', 'Can be header (header is default for css) or footer (footer is default for js)', false);
         $this->registerArgument('file', 'string', 'Can be css or js', false);
-        $this->registerArgument('compress', 'boolean', 'true / false - default=false - only for external files', false);
+        $this->registerArgument('compress', 'boolean', 'true / false - default=false - only for external files', false, false);
     }
 
     /**
@@ -56,7 +56,7 @@ class AddAssetsDataViewHelper extends AbstractViewHelper {
      */
     public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {
         $pageRender = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-        $compress = $arguments['compress'] ? $arguments['compress'] : false;
+        $compress = $arguments['compress'];
 
         switch ($arguments['type']) {
             case 'css':
