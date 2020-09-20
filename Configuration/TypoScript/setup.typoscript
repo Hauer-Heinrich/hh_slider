@@ -1,9 +1,3 @@
-page {
-    includeJSFooter {
-        file888 = EXT:hh_slider/Resources/Public/JavaScript/main.min.js
-    }
-}
-
 tt_content.hhslider_hh_slider = FLUIDTEMPLATE
 tt_content.hhslider_hh_slider {
     layoutRootPaths {
