@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 sliderArray[uid] = tns(config),
                     arrowsPrev = config.prevButton ? sliderContainer.querySelector(config.prevButton) : '',
                     arrowsNext = config.nextButton ? sliderContainer.querySelector(config.nextButton) : '',
-                    arrowContainer = sliderContainer.querySelector(".tns-outer")
+                    arrowContainer = sliderContainer.querySelector(".tns-outer"),
                     disableOnInteraction = config.disableOnInteraction ? config.disableOnInteraction : false,
                     btnAutoplay = sliderContainer.querySelector(".btn-autoplay");
 
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 }
 
                 // btn autoplay only appears if disableOnInteraction is true
-                if(btnAutoplay) {
+                if(disableOnInteraction !== "false" && btnAutoplay) {
                     btnAutoplay.addEventListener("click", function() {
                         sliderArray[uid].play();
                         btnAutoplay.classList.add("disabled");
