@@ -65,14 +65,5 @@ tt_content.hhslider_hh_slider {
                 preload = 1
             }
         }
-
-        hh_video_extender {
-            isLoaded = 0
-        }
     }
 }
-
-### Check if EXT:hh_video_extender isLoaded
-[{$plugin.tx_hhvideoextender.isLoaded} == 1]
-    tt_content.hhslider_hh_slider.settings.hh_video_extender.isLoaded = 1
-[global]

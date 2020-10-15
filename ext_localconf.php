@@ -31,4 +31,11 @@ call_user_func(function() {
 
     // Register the class to be available in 'eval' of TCA
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals']['HauerHeinrich\\HhSlider\\Evaluation\\JsonEvaluation'] = '';
+
+    // Check if ext:hh_video_extender is loaded
+    if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('hh_video_extender')) {
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(
+            'tt_content.hhslider_hh_slider.settings.hh_video_extender.isLoaded = 1'
+        );
+    }
 });
