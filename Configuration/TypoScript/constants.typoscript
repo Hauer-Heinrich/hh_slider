@@ -17,5 +17,7 @@ plugin.tx_hhslider {
 
         # cat=hh_slider/010; type=boolean; label=Include slider JavaScript file?
         jsFile = 1
+
+        hh_video_extender.isLoaded = {$plugin.tx_hhvideoextender.isLoaded}
     }
 }

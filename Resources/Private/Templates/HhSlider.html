@@ -39,7 +39,7 @@
         <f:if condition="{data.tx_hhslider_content_type} == 3">
             <f:if condition="{folderFiles}">
                 <f:comment>https://github.com/Hauer-Heinrich/hh_slider/issues/10</f:comment>
-                <f:if condition="{settings.hh_video_extender.isLoaded}">
+                <f:if condition="{settings.hh_video_extender.isLoaded} == 1">
                     <f:then>
                         <f:for each="{folderFiles}" as="file" iteration="i">
                             <f:switch expression="{file.extension}">

@@ -1,179 +1,179 @@
 <?php
 
 $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['hhslider_hh_slider'] = 'tx_hhslider_hh_slider';
-$tempColumns = array (
-    'tx_hhslider_animation' => array (
-        'config' => array (
-            'items' => array (
-                0 => array (
+$tempColumns = [
+    'tx_hhslider_animation' => [
+        'config' => [
+            'items' => [
+                0 => [
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation.I.0',
                     1 => 'carousel',
-                ),
-                1 => array (
+                ],
+                1 => [
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation.I.1',
                     1 => 'gallery',
-                ),
-            ),
+                ],
+            ],
             'renderType' => 'selectSingle',
             'type' => 'select',
-        ),
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation',
-    ),
-    'tx_hhslider_animation_direction' => array (
-        'config' => array (
-            'items' => array (
-                0 => array (
+    ],
+    'tx_hhslider_animation_direction' => [
+        'config' => [
+            'items' => [
+                0 => [
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation_direction.I.0',
                     1 => 'horizontal',
-                ),
-                1 => array (
+                ],
+                1 => [
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation_direction.I.1',
                     1 => 'vertical',
-                ),
-            ),
+                ],
+            ],
             'renderType' => 'selectSingle',
             'type' => 'select',
-        ),
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation_direction',
-    ),
-    'tx_hhslider_animation_speed' => array (
+    ],
+    'tx_hhslider_animation_speed' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation_speed',
-        'config' => array (
+        'config' => [
             'type' => 'input',
             'default' => '3000',
             'eval' => 'int',
             'max' => '5',
             'placeholder' => '3000',
-            'range' => array (
+            'range' => [
                 'lower' => '0',
-            ),
-        ),
+            ],
+        ],
         'exclude' => '1',
-    ),
-    'tx_hhslider_arrows' => array (
-        'config' => array (
+    ],
+    'tx_hhslider_arrows' => [
+        'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
-            'items' => array (
-                0 => array (
+            'items' => [
+                0 => [
                     0 => 'false',
                     1 => 'true',
                     'labelChecked' => 'Enabled',
                     'labelUnchecked' => 'Disabled',
-                ),
-            ),
-        ),
+                ],
+            ],
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_arrows',
-    ),
-    'tx_hhslider_autoplay' => array (
+    ],
+    'tx_hhslider_autoplay' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_autoplay',
         'onChange' => 'reload',
-        'config' => array (
+        'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
-            'items' => array (
-                0 => array (
+            'items' => [
+                0 => [
                     0 => '',
                     1 => '',
                     'labelChecked' => 'Enabled',
                     'labelUnchecked' => 'Disabled',
-                ),
-            ),
+                ],
+            ],
             'default' => 1
-        ),
+        ],
         'exclude' => '1',
-    ),
-    'tx_hhslider_autoplay_speed' => array (
+    ],
+    'tx_hhslider_autoplay_speed' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_autoplay_speed',
         'displayCond' => 'FIELD:tx_hhslider_autoplay:REQ:true',
-        'config' => array (
+        'config' => [
             'type' => 'input',
             'default' => '3000',
             'eval' => 'int',
             'max' => '5',
             'placeholder' => '3000',
-            'range' => array (
+            'range' => [
                 'lower' => '0',
-            ),
-        ),
+            ],
+        ],
         'exclude' => '1',
-    ),
-    'tx_hhslider_centered_slides' => array (
-        'config' => array (
+    ],
+    'tx_hhslider_centered_slides' => [
+        'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
-            'items' => array (
-                0 => array (
+            'items' => [
+                0 => [
                     0 => '',
                     1 => '',
                     'labelChecked' => 'Enabled',
                     'labelUnchecked' => 'Disabled',
-                ),
-            ),
+                ],
+            ],
             'default' => 1
-        ),
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_centered_slides',
-    ),
-    'tx_hhslider_child_content' => array (
+    ],
+    'tx_hhslider_child_content' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_child_content',
         'displayCond' => 'FIELD:tx_hhslider_content_type:=:2',
-        'config' => array (
-            'appearance' => array (
+        'config' => [
+            'appearance' => [
                 'collapseAll' => '1',
-                'enabledControls' => array (
+                'enabledControls' => [
                     'dragdrop' => '1',
-                ),
+                ],
                 'expandSingle' => '1',
                 'levelLinksPosition' => 'both',
                 'showAllLocalizationLink' => '1',
                 'showPossibleLocalizationRecords' => '1',
                 'showSynchronizationLink' => '1',
                 'useSortable' => '1',
-            ),
+            ],
             'foreign_sortby' => 'sorting',
             'foreign_table' => 'tt_content',
-            'overrideChildTca' => array (
-                'columns' => array (
-                    'colPos' => array (
-                        'config' => array (
+            'overrideChildTca' => [
+                'columns' => [
+                    'colPos' => [
+                        'config' => [
                             'default' => '999',
-                        ),
-                    ),
-                ),
-            ),
+                        ],
+                    ],
+                ],
+            ],
             'type' => 'inline',
             'foreign_field' => 'tx_hhslider_child_content_parent',
-        ),
+        ],
         'exclude' => '1',
-    ),
-    'tx_hhslider_content_type' => array (
+    ],
+    'tx_hhslider_content_type' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type',
         'onChange' => 'reload',
-        'config' => array (
-            'items' => array (
-                0 => array (
+        'config' => [
+            'items' => [
+                0 => [
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type.I.0',
                     1 => '1',
-                ),
-                1 => array (
+                ],
+                1 => [
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type.I.1',
                     1 => '2',
-                ),
-                2 => array (
+                ],
+                2 => [
                     0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type.I.2',
                     1 => '3',
-                ),
-            ),
+                ],
+            ],
             'default' => 1,
             'renderType' => 'selectSingle',
             'type' => 'select',
-        ),
+        ],
         'exclude' => '1',
-    ),
+    ],
     'tx_hhslider_content_text' => [
         'exclude' => 1,
         'label' => 'Text',
@@ -214,84 +214,84 @@ $tempColumns = array (
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_disable_on_interaction',
     ],
-    'tx_hhslider_loop' => array (
-        'config' => array (
+    'tx_hhslider_loop' => [
+        'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
-            'items' => array (
-                0 => array (
+            'items' => [
+                0 => [
                     0 => '',
                     1 => '',
                     'labelChecked' => 'Enabled',
                     'labelUnchecked' => 'Disabled',
-                ),
-            ),
+                ],
+            ],
             'default' => 1
-        ),
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_loop',
-    ),
-    'tx_hhslider_pagination' => array (
+    ],
+    'tx_hhslider_pagination' => [
         // 'onChange' => 'reload',
-        'config' => array (
+        'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
-            'items' => array (
-                0 => array (
+            'items' => [
+                0 => [
                     0 => '',
                     1 => '',
                     'labelChecked' => 'Enabled',
                     'labelUnchecked' => 'Disabled',
-                ),
-            ),
+                ],
+            ],
             'default' => 0
-        ),
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_pagination',
-    ),
-    'tx_hhslider_slides_per_view' => array (
-        'config' => array (
+    ],
+    'tx_hhslider_slides_per_view' => [
+        'config' => [
             'default' => '1',
             'eval' => 'int,required',
             'max' => '3',
             'placeholder' => '1',
             'type' => 'input',
-        ),
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_slides_per_view',
-    ),
-    'tx_hhslider_slideby' => array (
+    ],
+    'tx_hhslider_slideby' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_slideby',
-        'config' => array (
+        'config' => [
             'type' => 'input',
             'default' => '1',
             'eval' => 'int',
             'max' => '5',
             'placeholder' => '1',
-            'range' => array (
+            'range' => [
                 'lower' => '1',
-            ),
-        ),
+            ],
+        ],
         'exclude' => '1',
-    ),
-    'tx_hhslider_thumbnails' => array (
+    ],
+    'tx_hhslider_thumbnails' => [
         // 'displayCond' => 'FIELD:tx_hhslider_pagination:=:0',
-        'config' => array (
+        'config' => [
             'type' => 'check',
             'renderType' => 'checkboxLabeledToggle',
-            'items' => array (
-                0 => array (
+            'items' => [
+                0 => [
                     0 => '',
                     1 => '',
                     'labelChecked' => 'Enabled',
                     'labelUnchecked' => 'Disabled',
-                ),
-            ),
+                ],
+            ],
             'default' => 0
-        ),
+        ],
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_thumbnails',
-    ),
+    ],
     'tx_hhslider_responsive_part' => [
         'exclude' => 1,
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_responsive_part',
@@ -336,7 +336,7 @@ $tempColumns = array (
         ],
         'exclude' => '1',
     ],
-);
+];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
 $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
@@ -350,7 +350,7 @@ $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'tx_hhslider_hh_slider',
 ];
 
-$tempPalettes = array (
+$tempPalettes = [
     'slider_autoplay_config' => [
         'showitem' => 'tx_hhslider_autoplay, tx_hhslider_autoplay_speed', 'canNotCollapse' => 1
     ],
@@ -366,27 +366,29 @@ $tempPalettes = array (
     'slider_sorting' => [
         'showitem' => 'tx_hhslider_sorting, tx_hhslider_sorting_direction', 'canNotCollapse' => 1
     ],
-);
+];
 
 $GLOBALS['TCA']['tt_content']['palettes'] += $tempPalettes;
 
-$tempTypes = array (
-    'hhslider_hh_slider' => array (
-        'columnsOverrides' => array (
-            'bodytext' => array (
-                'config' => array (
+$tempTypes = [
+    'hhslider_hh_slider' => [
+        'columnsOverrides' => [
+            'bodytext' => [
+                'config' => [
                     'richtextConfiguration' => 'default',
                     'enableRichtext' => 1,
-                ),
-            ),
-            'assets' => array (
+                ],
+            ],
+            'assets' => [
                 'displayCond' => 'FIELD:tx_hhslider_content_type:=:1',
                 'label' => 'Images',
-                'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('assets', [],
+                'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                    'assets',
+                    [],
                     'jpg, jpeg, png, svg'
                 ),
-            ),
-        ),
+            ],
+        ],
 
         'showitem' => '
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
@@ -420,8 +422,8 @@ $tempTypes = array (
                 rowDescription,
             --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended
         ',
-    ),
-);
+    ],
+];
 
 $GLOBALS['TCA']['tt_content']['types'] += $tempTypes;
 
