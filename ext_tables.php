@@ -17,12 +17,12 @@ call_user_func(function() {
 
         // Add Constants
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants(
-            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$extensionKey.'/Configuration/Typoscript/constants.typoscript">'
+            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$extensionKey.'/Configuration/TypoScript/constants.typoscript">'
         );
 
         // Add Setup
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(
-            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$extensionKey.'/Configuration/Typoscript/setup.typoscript">'
+            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$extensionKey.'/Configuration/TypoScript/setup.typoscript">'
         );
     }
 });
