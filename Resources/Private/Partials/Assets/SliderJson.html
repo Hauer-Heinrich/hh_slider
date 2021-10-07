@@ -2,6 +2,25 @@
     xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
+<f:if condition="{data.tx_hhslider_content_type} == 1">
+    <f:if condition="{data_assets -> f:count()} > 1">
+        <f:render section="json" arguments="{_all}" />
+    </f:if>
+</f:if>
+
+<f:if condition="{data.tx_hhslider_content_type} == 2">
+    <f:if condition="{data_tx_hhslider_child_content -> f:count()} > 1">
+        <f:render section="json" arguments="{_all}" />
+    </f:if>
+</f:if>
+
+<f:if condition="{data.tx_hhslider_content_type} == 3">
+    <f:if condition="{folderFiles -> f:count()} > 1">
+        <f:render section="json" arguments="{_all}" />
+    </f:if>
+</f:if>
+
+<f:section name="json">
 <hhSlider:addAssetsData type="json">
     <script class="hhSliderJson" type="application/json">
         {
@@ -63,5 +82,6 @@
         }
     </script>
 </hhSlider:addAssetsData>
+</f:section>
 
 </html>
