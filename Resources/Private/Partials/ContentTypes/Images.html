@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:if condition="{data_assets}">
+    <f:for each="{data_assets}" as="file">
+        <div class="slider-slide">
+            <f:if condition="{file.description}">
+                <figure>
+            </f:if>
+                <f:render partial="Media/Rendering/Image" arguments="{_all}" />
+            <f:if condition="{file.description}">
+                    <figcaption>
+                        <f:format.html>{file.description}</f:format.html>
+                    </figcaption>
+                </figure>
+            </f:if>
+        </div>
+    </f:for>
+</f:if>
+
+</html>

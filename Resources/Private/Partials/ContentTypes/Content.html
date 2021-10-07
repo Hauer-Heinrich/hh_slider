@@ -1,0 +1,13 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:if condition="{data_tx_hhslider_child_content}">
+    <f:for each="{data_tx_hhslider_child_content}" as="content_item">
+        <div class="slider-slide">
+            <f:cObject typoscriptObjectPath="tt_content" data="{content_item.data}" table="tt_content" />
+        </div>
+    </f:for>
+</f:if>
+
+</html>

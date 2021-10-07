@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:if condition="{data.tx_hhslider_autoplay} && {data.tx_hhslider_disable_on_interaction}">
+    <button type="button" class="btn-slider btn-autoplay disabled">autoplay</button>
+</f:if>
+
+<f:if condition="{data.tx_hhslider_arrows}">
+    <span class="slider-button slider-button-prev"></span>
+    <span class="slider-button slider-button-next"></span>
+</f:if>
+
+<f:if condition="{data.tx_hhslider_thumbnails}">
+    <f:then>
+        <f:render partial="Thumbnails" arguments="{_all}" />
+    </f:then>
+</f:if>
+
+<f:if condition="{data.tx_hhslider_pagination}">
+    <f:if condition="{data.tx_hhslider_content_type} == 1">
+        <f:variable name="items">{data_assets}</f:variable>
+    </f:if>
+
+    <f:if condition="{data.tx_hhslider_content_type} == 2">
+        <f:variable name="items">{data_tx_hhslider_child_content}</f:variable>
+    </f:if>
+
+    <div class="tns-nav pagination" aria-label="Carousel Pagination">
+        <f:for each="{items}" as="item" iteration="i">
+            <button data-nav="{i.index}" aria-controls="tns1" style="" aria-label="Carousel Page {i.cycle}" class="{f:if(condition: '{i.isFirst}', then: 'tns-nav-active')}" tabindex="-1"></button>
+        </f:for>
+    </div>
+</f:if>
+
+</html>
