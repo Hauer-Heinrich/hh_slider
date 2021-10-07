@@ -19,28 +19,35 @@
         </f:switch><br>
     </f:if>
 
-
-    <f:if condition="{processedRow.tx_hhslider_content_type.0} == 1 && {processedRow.assets}">
-        <div>
-            <f:for each="{processedRow.assets}" as="item">
-                <f:image src="{item.uid}" treatIdAsReference="1" width="50" />
-            </f:for>
-        </div>
-    </f:if>
-
-    <f:if condition="{processedRow.tx_hhslider_content_type.0} == 3 && {processedRow.tx_hhslider_folder}">
-        <div>
-            Folder: {processedRow.tx_hhslider_folder.0.folder}
-        </div>
-    </f:if>
-
-    <f:if condition="{processedRow.tx_hhslider_child_content}">
-        <f:for each="{processedRow.tx_hhslider_child_content}" as="item">
-            <ul>
-                <li>
-                    <f:translate key="LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header" /> {item.header} (id={item.uid})<br/>
-                </li>
-            </ul>
-        </f:for>
-    </f:if>
+    <f:switch expression="{row.tx_hhslider_content_type}">
+        <f:case value="2">
+            <f:if condition="{processedRow.tx_hhslider_child_content}">
+                <f:for each="{processedRow.tx_hhslider_child_content}" as="item">
+                    <ul>
+                        <li>
+                            <f:translate key="LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header" /> {item.header} (id={item.uid})<br/>
+                        </li>
+                    </ul>
+                </f:for>
+            </f:if>
+        </f:case>
+        <f:case value="3">
+            <f:if condition="{processedRow.tx_hhslider_content_type.0} == 3 && {processedRow.tx_hhslider_folder}">
+                <div>
+                    Folder: {processedRow.tx_hhslider_folder.0.folder}
+                </div>
+            </f:if>
+        </f:case>
+        <f:defaultCase>
+            <f:if condition="{processedRow.tx_hhslider_content_type.0} == 1 && {processedRow.assets}">
+                <div>
+                    <f:for each="{processedRow.assets}" as="item">
+                        <f:image src="{item.uid}" treatIdAsReference="1" width="50" />
+                    </f:for>
+                </div>
+            </f:if>
+        </f:defaultCase>
+    </f:switch>
 </hh:editLink>
+
+</html>
