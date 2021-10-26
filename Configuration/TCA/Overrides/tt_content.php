@@ -143,6 +143,11 @@ $tempColumns = [
                             'default' => '999',
                         ],
                     ],
+                    'CType' => [
+                        'config' => [
+                            'default' => 'textmedia',
+                        ],
+                    ],
                 ],
             ],
             'type' => 'inline',
@@ -385,7 +390,7 @@ $tempTypes = [
                 'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                     'assets',
                     [],
-                    'jpg, jpeg, png, svg'
+                    'jpg, jpeg, png, svg, webp, webm, mp4, ogg, ogv'
                 ),
             ],
         ],
