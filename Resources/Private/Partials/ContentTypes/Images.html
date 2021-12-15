@@ -5,16 +5,26 @@
 <f:if condition="{data_assets}">
     <f:for each="{data_assets}" as="file">
         <div class="slider-slide">
-            <f:if condition="{file.description}">
-                <figure>
-            </f:if>
-                <f:render partial="Media/Rendering/Image" arguments="{_all}" />
-            <f:if condition="{file.description}">
-                    <figcaption>
-                        <f:format.html>{file.description}</f:format.html>
-                    </figcaption>
-                </figure>
-            </f:if>
+            <f:switch expression="{file.type}">
+                <f:case value="3">
+                    <f:render partial="Media/Type/Audio" arguments="{file: file, dimensions: dimensions, data: data, settings: settings}" />
+                </f:case>
+                <f:case value="4">
+                    <f:render partial="ContentTypes/Folder" arguments="{settings: settings, data: data, folderFiles: '{0: file}'}" />
+                </f:case>
+                <f:defaultCase>
+                    <f:if condition="{file.description}">
+                        <figure>
+                    </f:if>
+                        <f:render partial="Media/Rendering/Image" arguments="{_all}" />
+                    <f:if condition="{file.description}">
+                            <figcaption>
+                                <f:format.html>{file.description}</f:format.html>
+                            </figcaption>
+                        </figure>
+                    </f:if>
+                </f:defaultCase>
+            </f:switch>
         </div>
     </f:for>
 </f:if>

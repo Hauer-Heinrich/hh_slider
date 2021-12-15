@@ -18,11 +18,11 @@ $EM_CONF['hh_slider'] = [
     'author_email' => 'chackl@hauer-heinrich.de',
     'author_company' => 'www.hauer-heinrich.de',
     'state' => 'stable',
-    'version' => '0.2.4',
+    'version' => '0.2.5',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-10.4.99',
-            'fluid_styled_content' => '9.5.0-10.4.99'
+            'typo3' => '9.5.0-11.5.99',
+            'fluid_styled_content' => '9.5.0-11.5.99'
         ],
         'conflicts' => [
         ],

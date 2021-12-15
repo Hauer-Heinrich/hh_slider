@@ -22,7 +22,7 @@
         </f:then>
         <f:else>
             <f:for each="{folderFiles}" as="file" iteration="i">
-                <f:if condition="{file.extension} == 'mp4' || {file.extension} == 'webm' || {file.extension} == 'ogv' || {file.extension} == 'ogg'">
+                <f:if condition="{file.type} == 4">
                     <f:then>
                         <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
                     </f:then>
