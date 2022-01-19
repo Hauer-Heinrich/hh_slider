@@ -17,28 +17,35 @@ class TcaColPosItem implements FormDataProviderInterface {
      * @return array
      */
     public function addData(array $result) {
-        if ('tt_content' !== $result['tableName']
-            || empty($result['databaseRow']['colPos'])
-            || 999 !== (int)$result['databaseRow']['colPos']
-            || ((empty($result['inlineParentUid'])
-                    || !in_array($result['inlineParentConfig']['foreign_field'], $this->supportedInlineParentFields, true))
+        if (
+            (array_key_exists('tableName', $result) && 'tt_content' !== $result['tableName'])
+            || (isset($result['databaseRow']['colPos']) && 999 !== (int)$result['databaseRow']['colPos'])
+            || (
+                (
+                    (
+                        array_key_exists('inlineParentUid', $result) && empty($result['inlineParentUid'])
+                    )
+                    || !in_array($result['inlineParentConfig']['foreign_field'], $this->supportedInlineParentFields, true)
+                )
                 && empty(array_filter(array_intersect_key($result['databaseRow'], array_flip($this->supportedInlineParentFields))))
             )
         ) {
             return $result;
         }
 
-        if (!is_array($result['processedTca']['columns']['colPos']['config']['items'])) {
+        if (isset($result['processedTca']['columns']['colPos']['config']['items']) && !is_array($result['processedTca']['columns']['colPos']['config']['items'])) {
             $result['processedTca']['columns']['colPos']['config']['items'] = [];
         }
 
-        array_unshift(
-            $result['processedTca']['columns']['colPos']['config']['items'],
-            [
-                'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.colPos.nestedContentColPos',
-                $result['databaseRow']['colPos'],
-            ]
-        );
+        if(isset($result['processedTca']['columns']['colPos']['config']['items']) && isset($result['databaseRow']['colPos'])) {
+            array_unshift(
+                $result['processedTca']['columns']['colPos']['config']['items'],
+                [
+                    'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.colPos.nestedContentColPos',
+                    $result['databaseRow']['colPos'],
+                ]
+            );
+        }
         unset($result['processedTca']['columns']['colPos']['config']['itemsProcFunc']);
 
         return $result;
