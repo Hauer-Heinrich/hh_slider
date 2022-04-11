@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         if(disableOnInteraction !== "false") {
                             pause();
                         }
+                        // issue: https://github.com/ganlanyuan/tiny-slider/issues/373
+                        sliderArray[uid].pause();
+                        sliderArray[uid].play();
                     }, false);
                 }
                 if(arrowsNext) {
@@ -39,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         if(disableOnInteraction !== "false") {
                             pause();
                         }
+                        // issue: https://github.com/ganlanyuan/tiny-slider/issues/373
+                        sliderArray[uid].pause();
+                        sliderArray[uid].play();
                     }, false);
                 }
 
@@ -53,6 +59,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
                             if(disableOnInteraction !== "false") {
                                 pause();
                             }
+                            // issue: https://github.com/ganlanyuan/tiny-slider/issues/373
+                            sliderArray[uid].pause();
+                            sliderArray[uid].play();
                         });
                     }
 
