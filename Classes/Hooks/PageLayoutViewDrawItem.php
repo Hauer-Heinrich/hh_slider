@@ -60,7 +60,8 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface {
                 ]
             );
 
-            $itemContent = $this->view->render();
+			# @FIXME: Error on SiteView in TYPO3
+            # $itemContent = $this->view->render();
         } catch (Exception $exception) {
             $message = $GLOBALS['BE_USER']->errorMsg;
             if (empty($message)) {
