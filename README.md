@@ -14,6 +14,20 @@ Don't forget to include PageTS / look at features section
     - OR over the backend "Tempalte"-module and page settings -> Resources OR manually by yourself
         - you can change this at backend -> Settings -> Extension Configuration -> hh_slider
 
+### Backend preview layout
+To change the backend preview layout to your needs, add following TyposScript and change the number to a higher value and the path to your desired destination (the folders '/PageLayout/Record/hhslider_hh_slider/' are mandatory):
+```
+module.tx_backend.view {
+    templateRootPaths {
+        457 = EXT:hh_slider/Resources/Private/Backend/Templates/
+    }
+
+    partialRootPaths {
+        457 = EXT:hh_slider/Resources/Private/Backend/Partials/
+    }
+}
+```
+
 ### Todos
 - rework AddAssetsDataViewHelper - the method(s) of this ViewHelper could change!
 

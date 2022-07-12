@@ -1,0 +1,77 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:variable name="sliderContent">{item.record}</f:variable>
+<f:if condition="{sliderContent}">
+    <hhSlider:addAssetsData type="cssFile" file="{f:uri.resource(path:'Css/Backend/slider.min.css', extensionName:'hh_slider')}" />
+
+    <div id="c{sliderContent.uid}" class="hh_slider" data-cType="{sliderContent.CType}">
+        <be:link.editRecord uid="{sliderContent.uid}" table="tt_content">
+            <h4>{sliderContent.header}</h4>
+            <h5>{sliderContent.subheader}</h5>
+        </be:link.editRecord>
+
+        <details>
+            <summary>ContentElement options</summary>
+            <ul class="ce-options">
+                <li><b>layout:</b> {sliderContent.layout}</li>
+                <li><b>frame_class:</b> {sliderContent.frame_class}</li>
+                <li><b>header_layout:</b> {sliderContent.header_layout}</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>Slider options</summary>
+            <ul class="slider-options">
+                <li><b>animation:</b> {sliderContent.tx_hhslider_animation}</li>
+                <li><b>animation_direction :</b> {sliderContent.tx_hhslider_animation_direction}</li>
+                <li><b>animation_speed:</b> {sliderContent.tx_hhslider_animation_speed}</li>
+                <li><b>arrows:</b> {sliderContent.tx_hhslider_arrows}</li>
+                <li><b>autoplay:</b> {sliderContent.tx_hhslider_autoplay}</li>
+                <li><b>autoplay_speed:</b> {sliderContent.tx_hhslider_autoplay_speed}</li>
+                <li><b>centered_slides :</b> {sliderContent.tx_hhslider_centered_slides}</li>
+                <li><b>loop :</b> {sliderContent.tx_hhslider_loop}</li>
+                <li><b>pagination :</b> {sliderContent.tx_hhslider_pagination}</li>
+                <li><b>slides_per_view:</b> {sliderContent.tx_hhslider_slides_per_view}</li>
+                <li><b>slideby:</b> {sliderContent.tx_hhslider_slideby}</li>
+                <li><b>thumbnails:</b> {sliderContent.tx_hhslider_thumbnails}</li>
+                <li><b>content_type:</b> <f:switch expression="{sliderContent.tx_hhslider_content_type}">
+                    <f:case value="1">images</f:case>
+                    <f:case value="2">content</f:case>
+                    <f:case value="3">folder</f:case>
+                    <f:defaultCase></f:defaultCase>
+                </f:switch> ({sliderContent.tx_hhslider_content_type})</li>
+            </ul>
+        </details>
+
+        <f:switch expression="{sliderContent.tx_hhslider_content_type}">
+            <f:case value="1"><!-- images -->
+                <details>
+                    <summary>Slider images</summary>
+                    <div class="content content-images">
+                        <f:for each="{hhSlider:getReferencedAssets(data: '{sliderContent}', field: 'assets')}" as="asset">
+                            <div class="item"><f:image src="{asset.uid}" treatIdAsReference="1" maxWidth="250c" loading="lazy" /></div>
+                        </f:for>
+                    </div>
+                </details>
+                </div>
+            </f:case>
+            <f:case value="2"><!-- contentelements --></f:case>
+            <f:case value="3"><!-- folder -->
+                <details>
+                    <summary>Slider images</summary>
+                    <div class="content content-folder">
+                        <f:for each="{hhSlider:getFilesFromFolder(data: '{sliderContent}', folder: 'tx_hhslider_folder')}" as="folderContent">
+                            <div class="item"><f:image src="{folderContent.publicUrl}" treatIdAsReference="1" maxWidth="250c" loading="lazy" /></div>
+                        </f:for>
+                    </div>
+                </details>
+                </div>
+            </f:case>
+            <f:defaultCase></f:defaultCase>
+        </f:switch>
+    </div>
+</f:if>
+
+</html>

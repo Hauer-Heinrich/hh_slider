@@ -75,3 +75,14 @@ tt_content.hhslider_hh_slider {
         }
     }
 }
+
+### Custom backend preview layout (e. g. for page-module)
+module.tx_backend.view {
+    templateRootPaths {
+        457 = EXT:hh_slider/Resources/Private/Backend/Templates/
+    }
+
+    partialRootPaths {
+        457 = EXT:hh_slider/Resources/Private/Backend/Partials/
+    }
+}

@@ -5,7 +5,14 @@ namespace HauerHeinrich\HhSlider\Hooks;
 use TYPO3\CMS\Backend\View\PageLayoutView;
 
 class PageLayoutViewHook {
-    public function contentIsUsed(array $params, PageLayoutView $parentObject): bool {
+
+    /**
+     * contentIsUsed
+     *
+     * @param array $params
+     * @return boolean
+     */
+    public function contentIsUsed(array $params): bool {
         if($params['used']) {
             return true;
         }
