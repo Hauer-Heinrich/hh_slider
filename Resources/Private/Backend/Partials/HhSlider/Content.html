@@ -1,0 +1,24 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:switch expression="{data.tx_hhslider_content_type}">
+    <f:case value="1"><!-- images -->
+        <div class="content content-images">
+            <f:for each="{hhSlider:getReferencedAssets(data: '{data}', field: 'assets')}" as="asset">
+                <div class="item"><f:image src="{asset.uid}" treatIdAsReference="1" maxWidth="250c" loading="lazy" /></div>
+            </f:for>
+        </div>
+    </f:case>
+    <f:case value="2"><!-- contentelements --></f:case>
+    <f:case value="3"><!-- folder -->
+        <div class="content content-folder">
+            <f:for each="{hhSlider:getFilesFromFolder(data: '{data}', folder: 'tx_hhslider_folder')}" as="folderContent">
+                <div class="item"><f:image src="{folderContent.publicUrl}" treatIdAsReference="1" maxWidth="250c" loading="lazy" /></div>
+            </f:for>
+        </div>
+    </f:case>
+    <f:defaultCase></f:defaultCase>
+</f:switch>
+
+</html>

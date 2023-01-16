@@ -13,64 +13,13 @@
         </be:link.editRecord>
 
         <details>
-            <summary>ContentElement options</summary>
-            <ul class="ce-options">
-                <li><b>layout:</b> {sliderContent.layout}</li>
-                <li><b>frame_class:</b> {sliderContent.frame_class}</li>
-                <li><b>header_layout:</b> {sliderContent.header_layout}</li>
-            </ul>
-        </details>
+            <summary>Slider info</summary>
+            <f:render partial="HhSlider/ContentElementOptions" arguments="{data: '{sliderContent}'}" />
 
-        <details>
-            <summary>Slider options</summary>
-            <ul class="slider-options">
-                <li><b>animation:</b> {sliderContent.tx_hhslider_animation}</li>
-                <li><b>animation_direction :</b> {sliderContent.tx_hhslider_animation_direction}</li>
-                <li><b>animation_speed:</b> {sliderContent.tx_hhslider_animation_speed}</li>
-                <li><b>arrows:</b> {sliderContent.tx_hhslider_arrows}</li>
-                <li><b>autoplay:</b> {sliderContent.tx_hhslider_autoplay}</li>
-                <li><b>autoplay_speed:</b> {sliderContent.tx_hhslider_autoplay_speed}</li>
-                <li><b>centered_slides :</b> {sliderContent.tx_hhslider_centered_slides}</li>
-                <li><b>loop :</b> {sliderContent.tx_hhslider_loop}</li>
-                <li><b>pagination :</b> {sliderContent.tx_hhslider_pagination}</li>
-                <li><b>slides_per_view:</b> {sliderContent.tx_hhslider_slides_per_view}</li>
-                <li><b>slideby:</b> {sliderContent.tx_hhslider_slideby}</li>
-                <li><b>thumbnails:</b> {sliderContent.tx_hhslider_thumbnails}</li>
-                <li><b>content_type:</b> <f:switch expression="{sliderContent.tx_hhslider_content_type}">
-                    <f:case value="1">images</f:case>
-                    <f:case value="2">content</f:case>
-                    <f:case value="3">folder</f:case>
-                    <f:defaultCase></f:defaultCase>
-                </f:switch> ({sliderContent.tx_hhslider_content_type})</li>
-            </ul>
-        </details>
+            <f:render partial="HhSlider/SliderOptions" arguments="{data: '{sliderContent}'}" />
 
-        <f:switch expression="{sliderContent.tx_hhslider_content_type}">
-            <f:case value="1"><!-- images -->
-                <details>
-                    <summary>Slider images</summary>
-                    <div class="content content-images">
-                        <f:for each="{hhSlider:getReferencedAssets(data: '{sliderContent}', field: 'assets')}" as="asset">
-                            <div class="item"><f:image src="{asset.uid}" treatIdAsReference="1" maxWidth="250c" loading="lazy" /></div>
-                        </f:for>
-                    </div>
-                </details>
-                </div>
-            </f:case>
-            <f:case value="2"><!-- contentelements --></f:case>
-            <f:case value="3"><!-- folder -->
-                <details>
-                    <summary>Slider images</summary>
-                    <div class="content content-folder">
-                        <f:for each="{hhSlider:getFilesFromFolder(data: '{sliderContent}', folder: 'tx_hhslider_folder')}" as="folderContent">
-                            <div class="item"><f:image src="{folderContent.publicUrl}" treatIdAsReference="1" maxWidth="250c" loading="lazy" /></div>
-                        </f:for>
-                    </div>
-                </details>
-                </div>
-            </f:case>
-            <f:defaultCase></f:defaultCase>
-        </f:switch>
+            <f:render partial="HhSlider/Content" arguments="{data: '{sliderContent}'}" />
+        </details>
     </div>
 </f:if>
 

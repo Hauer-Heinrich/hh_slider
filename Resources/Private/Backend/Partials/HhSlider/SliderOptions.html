@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<ul class="slider-options">
+    <li><b>animation:</b> {data.tx_hhslider_animation}</li>
+    <li><b>animation_direction :</b> {data.tx_hhslider_animation_direction}</li>
+    <li><b>animation_speed:</b> {data.tx_hhslider_animation_speed}</li>
+    <li><b>arrows:</b> {data.tx_hhslider_arrows}</li>
+    <li><b>autoplay:</b> {data.tx_hhslider_autoplay}</li>
+    <li><b>autoplay_speed:</b> {data.tx_hhslider_autoplay_speed}</li>
+    <li><b>centered_slides :</b> {data.tx_hhslider_centered_slides}</li>
+    <li><b>loop :</b> {data.tx_hhslider_loop}</li>
+    <li><b>pagination :</b> {data.tx_hhslider_pagination}</li>
+    <li><b>slides_per_view:</b> {data.tx_hhslider_slides_per_view}</li>
+    <li><b>slideby:</b> {data.tx_hhslider_slideby}</li>
+    <li><b>thumbnails:</b> {data.tx_hhslider_thumbnails}</li>
+    <li><b>content_type:</b> <f:switch expression="{data.tx_hhslider_content_type}">
+        <f:case value="1">images</f:case>
+        <f:case value="2">content</f:case>
+        <f:case value="3">folder</f:case>
+        <f:defaultCase></f:defaultCase>
+    </f:switch> ({data.tx_hhslider_content_type})</li>
+</ul>
+
+</html>
