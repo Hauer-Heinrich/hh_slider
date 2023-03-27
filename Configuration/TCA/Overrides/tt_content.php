@@ -1,4 +1,5 @@
 <?php
+defined('TYPO3') || die('Access denied.');
 
 $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['hhslider_hh_slider'] = 'tx_hhslider_hh_slider';
 $tempColumns = [
