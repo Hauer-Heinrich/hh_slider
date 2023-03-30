@@ -28,9 +28,9 @@
     },
     "require": {
         "typo3/cms-core": "^12.2.0",
-        "typo3/cms-fluid": "",
-        "typo3/cms-frontend": "",
-        "typo3/cms-fluid-styled-content": ""
+        "typo3/cms-fluid": "^12.2.0",
+        "typo3/cms-frontend": "^12.2.0",
+        "typo3/cms-fluid-styled-content": "^12.2.0"
     },
     "autoload": {
         "psr-4": {
