@@ -5,8 +5,8 @@
 <f:render partial="Assets/SliderJson" arguments="{_all}" />
 
 <f:if condition="{settings.jsFile}">
-    <hhSlider:addAssetsData type="jsFile" file="{f:uri.resource(path:'JavaScript/tiny-slider.min.js', extensionName:'hh_slider')}" />
-    <hhSlider:addAssetsData type="jsFile" file="{f:uri.resource(path:'JavaScript/main.min.js', extensionName:'hh_slider')}" />
+    <f:asset.script identifier="hh-slider-tiny-slider" src="EXT:hh_slider/Resources/Public/JavaScript/tiny-slider.min.js" />
+    <f:asset.script identifier="hh-slider-tiny-slider-config" src="EXT:hh_slider/Resources/Public/JavaScript/main.min.js" />
 </f:if>
 
 </html>

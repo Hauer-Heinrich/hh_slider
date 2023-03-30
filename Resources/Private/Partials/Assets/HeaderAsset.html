@@ -3,7 +3,7 @@
     data-namespace-typo3-fluid="true">
 
 <f:if condition="{settings.cssFile}">
-    <hhSlider:addAssetsData type="cssLibrary" file="{f:uri.resource(path:'Css/slider.min.css', extensionName:'hh_slider')}" />
+    <f:asset.css identifier="hh-slider-styles" href="EXT:hh_slider/Resources/Public/Css/slider.min.css" />
 </f:if>
 
 </html>

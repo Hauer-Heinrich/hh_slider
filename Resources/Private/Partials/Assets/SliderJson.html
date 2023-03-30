@@ -21,8 +21,7 @@
 </f:if>
 
 <f:section name="json">
-<hhSlider:addAssetsData type="json">
-    <script class="hhSliderJson" type="application/json">
+    <f:asset.script identifier="hhSliderJson-news-{data.uid}" class="hhSliderJson" type="application/json">
         {
             <f:comment></f:comment>"uid": "{data.uid}",
             "disableOnInteraction": "{f:if(condition: "{data.tx_hhslider_disable_on_interaction}", then: "true", else: "false")}",
@@ -80,8 +79,7 @@
             "useLocalStorage": true,
             "responsive": <f:if condition="{data.tx_hhslider_responsive_part}"><f:then><f:format.raw>{data.tx_hhslider_responsive_part}</f:format.raw></f:then><f:else>""</f:else></f:if>
         }
-    </script>
-</hhSlider:addAssetsData>
+    </f:asset.script>
 </f:section>
 
 </html>

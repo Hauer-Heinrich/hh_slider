@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  HauerHeinrich\HhSlider\:
+    resource: '../Classes/*'
+
+  # HauerHeinrich\HhSlider\EventListener\PageContentPreviewRenderingEvent:
+  #   tags:
+  #     - name: event.listener
+  #       identifier: 'hh-slider/PageContentPreviewRenderingEvent'
+  #       event: TYPO3\CMS\Backend\View\Event\PageContentPreviewRenderingEvent
+
+  # HauerHeinrich\HhSlider\EventListener\IsContentUsedOnPageLayoutEvent:
+  #   tags:
+  #     - name: event.listener
+  #       identifier: 'hh-slider/IsContentUsedOnPageLayoutEvent'
+  #       event: TYPO3\CMS\Backend\View\Event\IsContentUsedOnPageLayoutEvent
