@@ -4,12 +4,12 @@ defined('TYPO3') || die('Access denied.');
 call_user_func(function() {
     $extensionKey = 'hh_slider';
 
-    // get ext_conf_template.txt config
-    $extConfig = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)
-        ->get($extensionKey, 'config');
+    // Typo3 extension manager gearwheel icon (ext_conf_template.txt)
+    $extensionConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][$extensionKey];
+    $extensionConfig = $extensionConfiguration['config'];
 
     // automatically add TypoScript, can be disabled in the extension configuration (BE)
-    if ($extConfig['typoScript'] === '1') {
+    if ($extensionConfig['typoScript'] === '1') {
         // Add PageTS
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
             '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$extensionKey.'/Configuration/TsConfig/AllPage.typoscript">'

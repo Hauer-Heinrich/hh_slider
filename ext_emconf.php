@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "hh_slider".
  *
- * Auto generated 27-11-2018 11:22
+ * Auto generated 13-03-2023 15:40
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -14,15 +14,17 @@ $EM_CONF['hh_slider'] = [
     'title' => 'Hauer-Heinrich - Slider (tiny-slider)',
     'description' => 'Hauer-Heinrich - Image and Content Slider',
     'category' => 'fe',
+    'version' => '0.3.0',
+    'state' => 'stable',
+    'uploadfolder' => false,
+    'clearcacheonload' => false,
     'author' => 'Christian Hackl',
     'author_email' => 'chackl@hauer-heinrich.de',
     'author_company' => 'www.hauer-heinrich.de',
-    'state' => 'stable',
-    'version' => '0.3.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '11.5.0-11.5.99',
-            'fluid_styled_content' => '11.5.0-11.5.99'
+            'typo3' => '12.2.0-12.4.99',
+            'fluid_styled_content' => '12.2.0-12.4.99',
         ],
         'conflicts' => [
         ],

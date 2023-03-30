@@ -7,14 +7,12 @@ services:
   HauerHeinrich\HhSlider\:
     resource: '../Classes/*'
 
-  # HauerHeinrich\HhSlider\EventListener\PageContentPreviewRenderingEvent:
-  #   tags:
-  #     - name: event.listener
-  #       identifier: 'hh-slider/PageContentPreviewRenderingEvent'
-  #       event: TYPO3\CMS\Backend\View\Event\PageContentPreviewRenderingEvent
+  HauerHeinrich\HhSlider\Evaluation\JsonEvaluation:
+    public: true
 
-  # HauerHeinrich\HhSlider\EventListener\IsContentUsedOnPageLayoutEvent:
-  #   tags:
-  #     - name: event.listener
-  #       identifier: 'hh-slider/IsContentUsedOnPageLayoutEvent'
-  #       event: TYPO3\CMS\Backend\View\Event\IsContentUsedOnPageLayoutEvent
+
+  HauerHeinrich\HhSlider\EventListener\IsContentUsedOnPageLayoutEvent:
+    tags:
+      - name: event.listener
+        identifier: 'hh-slider/IsContentUsedOnPageLayoutEvent'
+        event: TYPO3\CMS\Backend\View\Event\IsContentUsedOnPageLayoutEvent

@@ -3,25 +3,43 @@
     data-namespace-typo3-fluid="true">
 
 <div class="slider-container slider-thumbs slider-thumbs-{data.uid}">
-    <f:if condition="{data.tx_hhslider_content_type} == 1">
-        <f:if condition="{data_assets}">
-            <f:for each="{data_assets}" as="file">
-                <div class="slider-slide">
-                    <f:render partial="Media/Rendering/Image" arguments="{_all}" />
-                </div>
-            </f:for>
-        </f:if>
-    </f:if>
-
-    <f:if condition="{data.tx_hhslider_content_type} == 2">
-        <f:if condition="{data_tx_hhslider_child_content}">
-            <f:for each="{data_tx_hhslider_child_content}" as="content_item">
-                <div class="slider-slide">
-                    <f:cObject typoscriptObjectPath="tt_content" data="{content_item.data}" table="tt_content" />
-                </div>
-            </f:for>
-        </f:if>
-    </f:if>
+    <f:switch expression="{data.tx_hhslider_content_type}">
+        <f:case value="1">
+            <f:if condition="{data_assets}">
+                <f:for each="{data_assets}" as="file">
+                    <div class="slider-slide">
+                        <f:render partial="Media/Rendering/Image" arguments="{_all}" />
+                    </div>
+                </f:for>
+            </f:if>
+        </f:case>
+        <f:case value="2">
+            <f:if condition="{data_tx_hhslider_child_content}">
+                <f:for each="{data_tx_hhslider_child_content}" as="content_item">
+                    <div class="slider-slide">
+                        <f:cObject typoscriptObjectPath="tt_content" data="{content_item.data}" table="tt_content" />
+                    </div>
+                </f:for>
+            </f:if>
+        </f:case>
+        <f:case value="3">
+            <f:if condition="{folderFiles}">
+                <f:for each="{folderFiles}" as="file" iteration="i">
+                    <div class="slider-slide">
+                        <f:if condition="{file.type} == 4">
+                            <f:then>
+                                <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                            </f:then>
+                            <f:else>
+                                <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
+                            </f:else>
+                        </f:if>
+                    </div>
+                </f:for>
+            </f:if>
+        </f:case>
+        <f:defaultCase></f:defaultCase>
+    </f:switch>
 </div>
 
 </html>

@@ -7,29 +7,33 @@
     <f:if condition="{settings.hh_video_extender.isLoaded} == 1">
         <f:then>
             <f:for each="{folderFiles}" as="file" iteration="i">
-                <f:switch expression="{file.extension}">
-                    <f:case value="mp4">
-                        <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
-                    </f:case>
-                    <f:case value="webm"></f:case>
-                    <f:case value="ogv"></f:case>
-                    <f:case value="ogg"></f:case>
-                    <f:defaultCase>
-                        <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
-                    </f:defaultCase>
-                </f:switch>
+                <div class="item">
+                    <f:switch expression="{file.extension}">
+                        <f:case value="mp4">
+                            <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                        </f:case>
+                        <f:case value="webm"></f:case>
+                        <f:case value="ogv"></f:case>
+                        <f:case value="ogg"></f:case>
+                        <f:defaultCase>
+                            <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
+                        </f:defaultCase>
+                    </f:switch>
+                </div>
             </f:for>
         </f:then>
         <f:else>
             <f:for each="{folderFiles}" as="file" iteration="i">
-                <f:if condition="{file.type} == 4">
-                    <f:then>
-                        <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
-                    </f:then>
-                    <f:else>
-                        <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
-                    </f:else>
-                </f:if>
+                <div class="item">
+                    <f:if condition="{file.type} == 4">
+                        <f:then>
+                            <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                        </f:then>
+                        <f:else>
+                            <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
+                        </f:else>
+                    </f:if>
+                </div>
             </f:for>
         </f:else>
     </f:if>

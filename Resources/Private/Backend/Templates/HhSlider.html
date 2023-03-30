@@ -1,53 +1,58 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:hh="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<hh:editLink element="{row}">
-    <f:if condition="{processedRow.header}">
-        <strong>{processedRow.header} SLIDER:</strong><br>
-    </f:if>
-    <f:if condition="{processedRow.subheader}">
-        {processedRow.subheader}<br>
-    </f:if>
+<f:variable name="record">{_all}</f:variable>
 
-    <f:if condition="{processedRow.tx_hhslider_content_type}">
-        <strong><f:translate key="LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type" /></strong>
-        <f:switch expression="{row.tx_hhslider_content_type}">
-            <f:case value="1">Images</f:case>
-            <f:case value="2">Content</f:case>
-            <f:defaultCase></f:defaultCase>
-        </f:switch><br>
-    </f:if>
+<hhSlider:editLink element="{record}">
+    <div class="settings settings-slider">
+        <ul style="list-style: none;">
+            <li>
+                <b>Content Type:</b>
+                <f:switch expression="{record.tx_hhslider_content_type}">
+                    <f:case value="1">Images</f:case>
+                    <f:case value="2">Content-Elements</f:case>
+                    <f:case value="3">Folder</f:case>
+                    <f:defaultCase></f:defaultCase>
+                </f:switch>
+            </li>
 
-    <f:switch expression="{row.tx_hhslider_content_type}">
-        <f:case value="2">
-            <f:if condition="{processedRow.tx_hhslider_child_content}">
-                <f:for each="{processedRow.tx_hhslider_child_content}" as="item">
-                    <ul>
-                        <li>
-                            <f:translate key="LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header" /> {item.header} (id={item.uid})<br/>
-                        </li>
-                    </ul>
-                </f:for>
+            <f:switch expression="{record.tx_hhslider_content_type}">
+                <f:case value="1">
+                    <f:if condition="{record.assets}">
+                        <hhSlider:fal table="tt_content" field="assets" id="{record.uid}" as="references" />
+                        <f:if condition="{references}">
+                            <li class="items">
+                                <f:for each="{references}" as="item">
+                                    <f:image src="{item.uid}" treatIdAsReference="1" width="150c" />
+                                </f:for>
+                            </li>
+                        </f:if>
+                    </f:if>
+                </f:case>
+                <f:case value="2">
+                    <f:comment>{record.tx_hhslider_child_content}</f:comment>
+                </f:case>
+                <f:case value="3">
+                    <li>
+                        <b>Folder:</b> {record.tx_hhslider_folder}
+                    </li>
+                </f:case>
+                <f:defaultCase></f:defaultCase>
+            </f:switch>
+        </ul>
+    </div>
+
+    <div class="settings">
+        <ul style="list-style: none;">
+            <f:if condition="{record.layout}">
+                <li>
+                    <b>Layout:</b> {record.layout}
+                </li>
             </f:if>
-        </f:case>
-        <f:case value="3">
-            <f:if condition="{processedRow.tx_hhslider_content_type.0} == 3 && {processedRow.tx_hhslider_folder}">
-                <div>
-                    Folder: {processedRow.tx_hhslider_folder.0.folder}
-                </div>
-            </f:if>
-        </f:case>
-        <f:defaultCase>
-            <f:if condition="{processedRow.tx_hhslider_content_type.0} == 1 && {processedRow.assets}">
-                <div>
-                    <f:for each="{processedRow.assets}" as="item">
-                        <f:image src="{item.uid}" treatIdAsReference="1" width="50" />
-                    </f:for>
-                </div>
-            </f:if>
-        </f:defaultCase>
-    </f:switch>
-</hh:editLink>
+
+        </ul>
+    </div>
+</hhSlider:editLink>
 
 </html>

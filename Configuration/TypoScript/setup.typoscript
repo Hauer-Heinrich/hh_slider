@@ -1,19 +1,19 @@
 tt_content.hhslider_hh_slider = FLUIDTEMPLATE
 tt_content.hhslider_hh_slider {
+    layoutRootPaths < lib.contentElement.layoutRootPaths
     layoutRootPaths {
-        0 = EXT:fluid_styled_content/Resources/Private/Layouts/
-        5 = EXT:hh_slider/Resources/Private/Layouts/
-        10 = {$plugin.tx_hhslider.view.layoutRootPath}
+        100 = EXT:hh_slider/Resources/Private/Layouts/
+        110 = {$plugin.tx_hhslider.view.layoutRootPath}
     }
+    partialRootPaths < lib.contentElement.partialRootPaths
     partialRootPaths {
-        0 = EXT:fluid_styled_content/Resources/Private/Partials/
-        5 = EXT:hh_slider/Resources/Private/Partials/
-        10 = {$plugin.tx_hhslider.view.partialRootPath}
+        100 = EXT:hh_slider/Resources/Private/Partials/
+        110 = {$plugin.tx_hhslider.view.partialRootPath}
     }
+    templateRootPaths < lib.contentElement.templateRootPaths
     templateRootPaths {
-        0 = EXT:fluid_styled_content/Resources/Private/Templates/
-        5 = EXT:hh_slider/Resources/Private/Templates/
-        10 = {$plugin.tx_hhslider.view.templateRootPath}
+        100 = EXT:hh_slider/Resources/Private/Templates/
+        110 = {$plugin.tx_hhslider.view.templateRootPath}
     }
     templateName = HhSlider
 
@@ -25,6 +25,7 @@ tt_content.hhslider_hh_slider {
                 fieldName = assets
                 table = tt_content
             }
+
             as = data_assets
         }
 
@@ -37,6 +38,7 @@ tt_content.hhslider_hh_slider {
             orderBy = sorting
             markers.colPos.value = 999
             markers.uid.field = uid
+
             as = data_tx_hhslider_child_content
         }
 
@@ -45,6 +47,7 @@ tt_content.hhslider_hh_slider {
             folders.field = tx_hhslider_folder
             sorting.field = tx_hhslider_sorting
             sorting.direction.field = tx_hhslider_sorting_direction
+
             as = folderFiles
         }
     }

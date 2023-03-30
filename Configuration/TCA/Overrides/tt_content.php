@@ -1,6 +1,8 @@
 <?php
 defined('TYPO3') || die('Access denied.');
 
+use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['hhslider_hh_slider'] = 'tx_hhslider_hh_slider';
 $tempColumns = [
     'tx_hhslider_animation' => [
@@ -141,7 +143,7 @@ $tempColumns = [
                 'columns' => [
                     'colPos' => [
                         'config' => [
-                            'default' => '999',
+                            'default' => 999,
                         ],
                     ],
                     'CType' => [
@@ -343,8 +345,8 @@ $tempColumns = [
         'exclude' => '1',
     ],
 ];
+ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
 $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.CType.div._hhslider_',
     '--div--',
@@ -373,7 +375,6 @@ $tempPalettes = [
         'showitem' => 'tx_hhslider_sorting, tx_hhslider_sorting_direction', 'canNotCollapse' => 1
     ],
 ];
-
 $GLOBALS['TCA']['tt_content']['palettes'] += $tempPalettes;
 
 $tempTypes = [
@@ -388,11 +389,10 @@ $tempTypes = [
             'assets' => [
                 'displayCond' => 'FIELD:tx_hhslider_content_type:=:1',
                 'label' => 'Images',
-                'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                    'assets',
-                    [],
-                    'jpg, jpeg, png, svg, webp, webm, mp4, ogg, ogv'
-                ),
+                'config' => [
+                    'type' => 'file',
+                    'allowed' => 'jpg, jpeg, png, svg, webp, webm, mp4, ogg, ogv'
+                ]
             ],
         ],
 
@@ -430,10 +430,9 @@ $tempTypes = [
         ',
     ],
 ];
-
 $GLOBALS['TCA']['tt_content']['types'] += $tempTypes;
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+ExtensionManagementUtility::addStaticFile(
     'hh_slider',
     'Configuration/TypoScript/',
     'hh_slider'

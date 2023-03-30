@@ -1,5 +1,4 @@
 <?php
-
 namespace HauerHeinrich\HhSlider\ViewHelpers;
 
 // use TYPO3\CMS\Extbase\Utility\DebuggerUtility;

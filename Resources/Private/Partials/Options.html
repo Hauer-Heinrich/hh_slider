@@ -18,17 +18,16 @@
 </f:if>
 
 <f:if condition="{data.tx_hhslider_pagination}">
-    <f:if condition="{data.tx_hhslider_content_type} == 1">
-        <f:variable name="items">{data_assets}</f:variable>
-    </f:if>
-
-    <f:if condition="{data.tx_hhslider_content_type} == 2">
-        <f:variable name="items">{data_tx_hhslider_child_content}</f:variable>
-    </f:if>
+    <f:switch expression="{data.tx_hhslider_content_type}">
+        <f:case value="1"><f:variable name="items">{data_assets}</f:variable></f:case>
+        <f:case value="2"><f:variable name="items">{data_tx_hhslider_child_content}</f:variable></f:case>
+        <f:case value="3"><f:variable name="items">{folderFiles}</f:variable></f:case>
+        <f:defaultCase></f:defaultCase>
+    </f:switch>
 
     <div class="tns-nav pagination" aria-label="Carousel Pagination">
         <f:for each="{items}" as="item" iteration="i">
-            <button data-nav="{i.index}" aria-controls="tns1" style="" aria-label="Carousel Page {i.cycle}" class="{f:if(condition: '{i.isFirst}', then: 'tns-nav-active')}" tabindex="-1"></button>
+            <button data-nav="{i.index}" aria-controls="tns1" aria-label="Carousel Page {i.cycle}" class="{f:if(condition: '{i.isFirst}', then: 'tns-nav-active')}" tabindex="-1"></button>
         </f:for>
     </div>
 </f:if>

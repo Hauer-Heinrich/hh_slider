@@ -1,13 +1,11 @@
 mod {
     web_layout {
+        hideRestrictedCols = 999
+
         tt_content {
             ### Backend preview
             preview {
-                hhslider {
-                    templateRootPath = EXT:hh_slider/Resources/Private/Backend/Templates/
-                    layoutRootPath = EXT:hh_slider/Resources/Private/Backend/Layout/
-                    partialRootPath = EXT:hh_slider/Resources/Private/Backend/Partials/
-                }
+                hhslider_hh_slider = EXT:hh_slider/Resources/Private/Backend/Templates/HhSlider.html
             }
         }
     }
