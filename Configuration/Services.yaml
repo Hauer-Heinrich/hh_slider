@@ -16,3 +16,17 @@ services:
       - name: event.listener
         identifier: 'hh-slider/IsContentUsedOnPageLayoutEvent'
         event: TYPO3\CMS\Backend\View\Event\IsContentUsedOnPageLayoutEvent
+
+  HauerHeinrich\HhSlider\EventListener\ModifyDatabaseQueryForContentEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'hh-slider/modify-database-query-for-content'
+        method: 'modify'
+        event: TYPO3\CMS\Backend\View\Event\ModifyDatabaseQueryForContentEvent
+
+  HauerHeinrich\HhSlider\EventListener\ModifyDatabaseQueryForRecordListingEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'hh-slider/modify-database-query-for-record'
+        method: 'modify'
+        event: TYPO3\CMS\Backend\View\Event\ModifyDatabaseQueryForRecordListingEvent

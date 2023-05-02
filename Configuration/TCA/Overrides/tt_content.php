@@ -122,30 +122,42 @@ $tempColumns = [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_centered_slides',
     ],
     'tx_hhslider_child_content' => [
+        'exclude' => true,
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_child_content',
         'displayCond' => 'FIELD:tx_hhslider_content_type:=:2',
         'config' => [
-            'appearance' => [
-                'collapseAll' => '1',
-                'enabledControls' => [
-                    'dragdrop' => '1',
-                ],
-                'expandSingle' => '1',
-                'levelLinksPosition' => 'both',
-                'showAllLocalizationLink' => '1',
-                'showPossibleLocalizationRecords' => '1',
-                'showSynchronizationLink' => '1',
-                'useSortable' => '1',
-            ],
-            'foreign_sortby' => 'sorting',
+            'type' => 'inline',
+            'allowed' => 'tt_content',
             'foreign_table' => 'tt_content',
+            'foreign_sortby' => 'sorting',
+            'foreign_field' => 'tx_hhslider_child_content_parent',
+            'minitems' => 0,
+            'maxitems' => 99,
+            'appearance' => [
+                'collapseAll' => true,
+                'enabledControls' => [
+                    'dragdrop' => true,
+                ],
+                'expandSingle' => true,
+                'levelLinksPosition' => 'both',
+                'showAllLocalizationLink' => true,
+                'showPossibleLocalizationRecords' => true,
+                'showSynchronizationLink' => true,
+                'useSortable' => true,
+                'enabledControls' => [
+                    'info' => false,
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
             'overrideChildTca' => [
                 'columns' => [
-                    'colPos' => [
-                        'config' => [
-                            'default' => 999,
-                        ],
-                    ],
+                    // 'colPos' => [
+                    //     'config' => [
+                    //         'default' => 999,
+                    //     ],
+                    // ],
                     'CType' => [
                         'config' => [
                             'default' => 'textmedia',
@@ -153,10 +165,7 @@ $tempColumns = [
                     ],
                 ],
             ],
-            'type' => 'inline',
-            'foreign_field' => 'tx_hhslider_child_content_parent',
         ],
-        'exclude' => '1',
     ],
     'tx_hhslider_content_type' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_content_type',
