@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 sliderContainer = document.querySelector("#c"+uid);
 
             if(typeof sliderContainer != "undefined") {
-                sliderArray[uid] = tns(config),
-                    arrowsPrev = config.prevButton ? sliderContainer.querySelector(config.prevButton) : '',
-                    arrowsNext = config.nextButton ? sliderContainer.querySelector(config.nextButton) : '',
-                    arrowContainer = sliderContainer.querySelector(".tns-outer"),
-                    disableOnInteraction = config.disableOnInteraction ? config.disableOnInteraction : false,
-                    btnAutoplay = sliderContainer.querySelector(".btn-autoplay");
+                sliderArray[uid] = tns(config);
+                const arrowsPrev = config.prevButton ? sliderContainer.querySelector(config.prevButton) : false,
+                      arrowsNext = config.nextButton ? sliderContainer.querySelector(config.nextButton) : false,
+                      arrowContainer = sliderContainer.querySelector(".tns-outer"),
+                      disableOnInteraction = config.disableOnInteraction ? config.disableOnInteraction : false,
+                      btnAutoplay = sliderContainer.querySelector(".btn-autoplay");
 
                 if(arrowsPrev) {
                     arrowContainer.appendChild(arrowsPrev);
