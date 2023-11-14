@@ -10,6 +10,8 @@ services:
   HauerHeinrich\HhSlider\Evaluation\JsonEvaluation:
     public: true
 
+  HauerHeinrich\HhSlider\Tca\ItemProcFunc:
+    public: true
 
   HauerHeinrich\HhSlider\EventListener\IsContentUsedOnPageLayoutEvent:
     tags:

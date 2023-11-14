@@ -17,10 +17,10 @@ class TcaColPosItem implements FormDataProviderInterface {
      * @param array $result
      * @return array
      */
-    public function addData(array $result) {
+    public function addData(array $result) { 
         if (
             (array_key_exists('tableName', $result) && 'tt_content' !== $result['tableName'])
-            || (isset($result['databaseRow']['colPos']) && 999 !== $result['databaseRow']['colPos'])
+            || (isset($result['databaseRow']['colPos']) && 988 !== $result['databaseRow']['colPos'])
             || (
                 (
                     (

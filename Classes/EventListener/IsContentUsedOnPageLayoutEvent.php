@@ -10,7 +10,7 @@ class IsContentUsedOnPageLayoutEvent {
     public function __invoke(OriginalIsContentUsedOnPageLayoutEvent $event): void {
 
         // Hide Child Content Element at module "Page" at the backend
-        if($event->isRecordUsed() === false && $event->getRecord()['CType'] !== 'hhslider_hh_slider' && $event->getRecord()['colPos'] === 999) {
+        if($event->isRecordUsed() === false && $event->getRecord()['CType'] !== 'hhslider_hh_slider' && $event->getRecord()['colPos'] === 988) {
             $event->setUsed(true);
         }
     }

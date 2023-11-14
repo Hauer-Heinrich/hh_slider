@@ -3,6 +3,11 @@ defined('TYPO3') || die('Access denied.');
 
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
+$GLOBALS['TCA']['tt_content']['columns']['colPos']['config']['items'][] = [
+    'hh_slider_content_elements',
+    988,
+];
+
 $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['hhslider_hh_slider'] = 'tx_hhslider_hh_slider';
 $tempColumns = [
     'tx_hhslider_animation' => [
@@ -153,11 +158,12 @@ $tempColumns = [
             ],
             'overrideChildTca' => [
                 'columns' => [
-                    // 'colPos' => [
-                    //     'config' => [
-                    //         'default' => 999,
-                    //     ],
-                    // ],
+                    'colPos' => [
+                        'config' => [
+                            'default' => 988,
+                            'itemsProcFunc' => \HauerHeinrich\HhSlider\Tca\ItemProcFunc::class . '->colPos',
+                        ],
+                    ],
                     'CType' => [
                         'config' => [
                             'default' => 'textmedia',

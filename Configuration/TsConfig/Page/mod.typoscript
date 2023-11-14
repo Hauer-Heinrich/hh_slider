@@ -1,6 +1,6 @@
 mod {
     web_layout {
-        hideRestrictedCols = 999
+        hideRestrictedCols = 988
 
         tt_content {
             ### Backend preview

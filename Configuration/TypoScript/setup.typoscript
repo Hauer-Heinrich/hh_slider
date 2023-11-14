@@ -36,7 +36,7 @@ tt_content.hhslider_hh_slider {
             pidInList.field = pid
             where = tx_hhslider_child_content_parent=###uid### AND deleted=0 AND hidden=0
             orderBy = sorting
-            markers.colPos.value = 999
+            markers.colPos.value = 988
             markers.uid.field = uid
 
             as = data_tx_hhslider_child_content
