@@ -22,9 +22,9 @@ Don't forget to include PageTS / look at features section
 ### IMPORTENT NOTICE
 
 #### Main-view
-![example picture from backend](github/images/preview-1.jpg?raw=true "Main")
+![example picture from backend](.github/images/preview-1.jpg?raw=true "Main")
 #### Options-view
-![example picture from backend](github/images/preview-2.jpg?raw=true "Options")
+![example picture from backend](.github/images/preview-2.jpg?raw=true "Options")
 
 ##### Copyright notice
 
