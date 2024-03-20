@@ -1,25 +1,40 @@
-{
-    "outdir": ".",
-    "entryPoints": [
-        { "in": "./Resources/Public/Css/slider.css", "out": "./Resources/Public/Css/slider.min" },
-        { "in": "./Resources/Public/JavaScript/main.js", "out": "./Resources/Public/JavaScript/main.min" },
-        { "in": "./Resources/Public/JavaScript/jsonEvaluation.js", "out": "./Resources/Public/JavaScript/jsonEvaluation.min" },
-        { "in": "./Resources/Public/JavaScript/tiny-slider.js", "out": "./Resources/Public/JavaScript/tiny-slider.min" }
-    ],
-    "bundle": true,
-    "write": true,
-    "minify": true,
-    "sourcemap": true,
-    "logLevel": "info",
-    "external": [
-        "./Images/*", "../Images/*",
-        "./Fonts/*", "../Fonts/*",
-        "./Icons/*", "../Icons/*",
-        "./Static/*", "../Static/*",
-        "./public/*", "../public/*",
-        "./static/*", "../static/*"
-    ],
-    "supported": {
-        "nesting": false
+[
+    {
+        "outdir": ".",
+        "entryPoints": [
+            { "in": "./Resources/Public/Css/slider.css", "out": "./Resources/Public/Css/slider.min" }
+        ],
+        "bundle": true,
+        "write": true,
+        "minify": true,
+        "sourcemap": true,
+        "logLevel": "info",
+        "external": [
+            "./Images/*", "../Images/*",
+            "./Fonts/*", "../Fonts/*",
+            "./Icons/*", "../Icons/*",
+            "./Static/*", "../Static/*",
+            "./public/*", "../public/*",
+            "./static/*", "../static/*"
+        ],
+        "supported": {
+            "nesting": false
+        }
+    },
+    {
+        "outdir": ".",
+        "entryPoints": [
+            { "in": "./Resources/Public/JavaScript/main.js", "out": "./Resources/Public/JavaScript/main.min" },
+            { "in": "./Resources/Public/JavaScript/jsonEvaluation.js", "out": "./Resources/Public/JavaScript/jsonEvaluation.min" },
+            { "in": "./Resources/Public/JavaScript/tiny-slider.js", "out": "./Resources/Public/JavaScript/tiny-slider.min" }
+        ],
+        "bundle": false,
+        "write": true,
+        "minify": true,
+        "sourcemap": true,
+        "logLevel": "info",
+        "supported": {
+            "nesting": false
+        }
     }
-}
+]
