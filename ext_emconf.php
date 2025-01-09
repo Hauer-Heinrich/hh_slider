@@ -14,7 +14,7 @@ $EM_CONF['hh_slider'] = [
     'title' => 'Hauer-Heinrich - Slider (tiny-slider)',
     'description' => 'Hauer-Heinrich - Image and Content Slider',
     'category' => 'fe',
-    'version' => '0.5.1',
+    'version' => '0.6.0',
     'state' => 'stable',
     'uploadfolder' => false,
     'clearcacheonload' => false,
@@ -23,8 +23,8 @@ $EM_CONF['hh_slider'] = [
     'author_company' => 'www.hauer-heinrich.de',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.2.0-12.4.99',
-            'fluid_styled_content' => '12.2.0-12.4.99',
+            'typo3' => '12.4.0-13.4.99',
+            'fluid_styled_content' => '12.4.0-13.4.99',
         ],
         'conflicts' => [
         ],

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace HauerHeinrich\HhSlider\EventListener;
 
+use \TYPO3\CMS\Core\Database\Connection;
 // use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use \TYPO3\CMS\Backend\View\Event\ModifyDatabaseQueryForContentEvent;
 
@@ -23,7 +24,7 @@ final class ModifyDatabaseQueryForContentEventListener {
             // Only hide elements which are inline, allowing for standard
             // elements to show
             $event->getQueryBuilder()->andWhere(
-                $event->getQueryBuilder()->expr()->lte('tx_hhslider_child_content_parent', $event->getQueryBuilder()->createNamedParameter(0, \PDO::PARAM_INT))
+                $event->getQueryBuilder()->expr()->lte('tx_hhslider_child_content_parent', $event->getQueryBuilder()->createNamedParameter(0, Connection::PARAM_INT))
             );
         }
     }
