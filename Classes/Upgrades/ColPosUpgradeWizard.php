@@ -56,13 +56,14 @@ final class ColPosUpgradeWizard implements UpgradeWizardInterface, ChattyInterfa
         $this->output->writeln('Performing ' . count($affectedRows) . ' database operations.');
 
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+        $queryBuilder->getRestrictions()->removeAll();
 
         foreach ($affectedRows as $row) {
-            $queryBuilder->update('tt_content', 'content');
+            $queryBuilder->update('tt_content');
             $queryBuilder->where(
-                $queryBuilder->expr()->eq('content.uid', $row['uid'])
+                $queryBuilder->expr()->eq('uid', $row['uid'])
             );
-            $queryBuilder->set('content.colPos', 988);
+            $queryBuilder->set('colPos', 988);
             $queryBuilder->executeStatement();
         }
 
@@ -79,6 +80,7 @@ final class ColPosUpgradeWizard implements UpgradeWizardInterface, ChattyInterfa
      */
     public function updateNecessary(): bool {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+        $queryBuilder->getRestrictions()->removeAll();
         $whereExpressions = [];
 
         $whereExpressions[] = $queryBuilder->expr()->gt('tx_hhslider_child_content_parent', 0);
@@ -114,6 +116,7 @@ final class ColPosUpgradeWizard implements UpgradeWizardInterface, ChattyInterfa
 
     protected function getAffectedRows(): array {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+        $queryBuilder->getRestrictions()->removeAll();
         $whereExpressions = [];
 
         $whereExpressions[] = $queryBuilder->expr()->gt('tx_hhslider_child_content_parent', 0);
