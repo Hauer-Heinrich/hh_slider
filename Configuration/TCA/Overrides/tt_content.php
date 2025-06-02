@@ -315,18 +315,22 @@ $tempColumns = [
         'exclude' => '1',
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_thumbnails',
     ],
-    'tx_hhslider_responsive_part' => [
-        'exclude' => 1,
-        'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_responsive_part',
-        'description' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_responsive_part.description',
-        'config' => [
-            'type' => 'text',
-            'renderType' => 't3editor',
-            'format' => 'html',
-            'rows' => 7,
-            'eval' => 'trim, HauerHeinrich\\HhSlider\\Evaluation\\JsonEvaluation',
+        'tx_hhslider_responsive_part' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_responsive_part',
+            'description' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_responsive_part.description',
+            'config' => [
+                'type' => 'json',
+                'placeholder' => <<<TEXT
+                {
+                    "1024": {
+                        "items": 2,
+                        "gutter": 20
+                    }
+                }
+                TEXT,
+            ],
         ],
-    ],
     'tx_hhslider_sorting' => [
         'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_sorting',
         'displayCond' => 'FIELD:tx_hhslider_content_type:=:3',

@@ -19,5 +19,4 @@ CREATE TABLE tt_content (
     tx_hhslider_slides_per_view tinytext,
     tx_hhslider_slideby int(11) DEFAULT '0' NOT NULL,
     tx_hhslider_thumbnails int(11) DEFAULT '0' NOT NULL,
-    tx_hhslider_responsive_part text,
 );
