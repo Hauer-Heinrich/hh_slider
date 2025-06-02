@@ -25,7 +25,6 @@
         "outdir": ".",
         "entryPoints": [
             { "in": "./Resources/Public/JavaScript/main.js", "out": "./Resources/Public/JavaScript/main.min" },
-            { "in": "./Resources/Public/JavaScript/jsonEvaluation.js", "out": "./Resources/Public/JavaScript/jsonEvaluation.min" },
             { "in": "./Resources/Public/JavaScript/tiny-slider.js", "out": "./Resources/Public/JavaScript/tiny-slider.min" }
         ],
         "bundle": false,

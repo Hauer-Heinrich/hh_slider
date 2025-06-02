@@ -11,8 +11,6 @@ call_user_func(function(string $extensionKey) {
         ],
     ];
 
-    // Register the class to be available in 'eval' of TCA
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals']['HauerHeinrich\\HhSlider\\Evaluation\\JsonEvaluation'] = '';
     // Register UpdateWizards
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['hhSlider_colPosUpgradeWizard']
         = \HauerHeinrich\HhSlider\Upgrades\ColPosUpgradeWizard::class;

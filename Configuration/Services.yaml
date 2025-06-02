@@ -7,9 +7,6 @@ services:
   HauerHeinrich\HhSlider\:
     resource: '../Classes/*'
 
-  HauerHeinrich\HhSlider\Evaluation\JsonEvaluation:
-    public: true
-
   HauerHeinrich\HhSlider\Tca\ItemProcFunc:
     public: true
 
