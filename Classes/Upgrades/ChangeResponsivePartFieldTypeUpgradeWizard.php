@@ -31,14 +31,14 @@ final class ChangeResponsivePartFieldTypeUpgradeWizard implements UpgradeWizardI
      * Return the speaking name of this wizard
      */
     public function getTitle(): string {
-        return 'EXT:hh_slider - Update DB:field tx_hhslider_responsive_part';
+        return 'EXT:hh_slider - Update DB:field "tx_hhslider_responsive_part"';
     }
 
     /**
      * Return the description for this wizard
      */
     public function getDescription(): string {
-        return 'Update DB:field tx_hhslider_responsive_part from text to json.';
+        return 'Update DB:field "tx_hhslider_responsive_part" from text to json.';
     }
 
     /**
@@ -48,6 +48,29 @@ final class ChangeResponsivePartFieldTypeUpgradeWizard implements UpgradeWizardI
      */
     public function executeUpdate(): bool {
         if($this->updateNecessary()) {
+            $results = $this->getContentofFieldIfNotValidJson();
+
+            if(\count($results) > 0) {
+                $message = "
+                    Maybe some DB table \"tt_content\" field \"tx_hhslider_responsive_part\" are not empty, has not valid json.
+                    They has to be empty or contains valid json! Please check this manualy.
+                    Affected elements:
+                ";
+
+                foreach ($results as $value) {
+                    $message .= 'UID: ' . $value['uid'] . ', ';
+                    $message .= 'PID: ' . $value['pid'] . ', ';
+                    $message .= 'hidden: ' . $value['hidden'] . ', ';
+                    $message .= 'deleted: ' . $value['deleted'] . ' <|> ';
+                }
+
+                $message = rtrim($message, ' <|> ');
+
+                $this->output->writeln($message);
+
+                return false;
+            }
+
             $connection = GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getConnectionForTable('tt_content');
 
@@ -110,6 +133,29 @@ final class ChangeResponsivePartFieldTypeUpgradeWizard implements UpgradeWizardI
 
         // Wenn das Feld nicht existiert, kein Update nötig
         return false;
+    }
+
+    public function getContentofFieldIfNotValidJson(string $field = 'tx_hhslider_responsive_part'): array {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+        $queryBuilder->getRestrictions()->removeAll();
+        $expressionBuilder = $queryBuilder->expr();
+
+        return $queryBuilder
+            ->select('uid', 'pid', 'hidden', 'deleted', $field)
+            ->from('tt_content')
+            ->where(
+                $expressionBuilder->and(
+                    $expressionBuilder->isNotNull($field),
+                    $expressionBuilder->neq($field, $queryBuilder->createNamedParameter('')),
+                    $expressionBuilder->comparison(
+                        'JSON_VALID('.$field.')',
+                        '=',
+                        $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)
+                    )
+                )
+            )
+            ->executeQuery()
+            ->fetchAllAssociative();
     }
 
     /**
