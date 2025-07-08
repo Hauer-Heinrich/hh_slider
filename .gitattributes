@@ -8,6 +8,8 @@
 .vscode export-ignore
 github export-ignore
 
+bundle.config.json export-ignore
+bundle.mjs export-ignore
 gulpfile.js export-ignore
 package-lock.json export-ignore
 package.json export-ignore
