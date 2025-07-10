@@ -5,7 +5,12 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-    <div class="slider-container slider-container-{data.uid}">
+    <f:comment>for better accessibility, provide info to how the slider can be used</f:comment>
+    <div class="usage visually-hidden sr-only">
+        <p><f:translate key="fe.slider.userInstruction" extensionName="HhSlider" /></p>
+    </div>
+
+    <div class="slider-container slider-container-{data.uid}" id="tns{data.uid}">
         <f:switch expression="{data.tx_hhslider_content_type}">
             <f:case value="2"><f:render partial="ContentTypes/Content" arguments="{_all}" /></f:case>
             <f:case value="3"><f:render partial="ContentTypes/Folder" arguments="{_all}" /></f:case>

@@ -150,7 +150,7 @@ final class ChangeResponsivePartFieldTypeUpgradeWizard implements UpgradeWizardI
                     $expressionBuilder->comparison(
                         'JSON_VALID('.$field.')',
                         '=',
-                        $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)
+                        0
                     )
                 )
             )

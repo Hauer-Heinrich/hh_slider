@@ -14,6 +14,8 @@ namespace HauerHeinrich\HhSlider\Tca;
 
 // use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use \TYPO3\CMS\Backend\View\BackendLayoutView;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class ItemProcFunc {
     /**
@@ -48,5 +50,48 @@ class ItemProcFunc {
         }
 
         $this->backendLayoutView->colPosListItemProcFunc($parameters);
+    }
+
+    /**
+     * filterCtypes
+     * allow only CTypes which are set via TypoScript settings 'allowedCtypes'
+     *
+     * @param  array $parameters
+     * @return void
+     */
+    public function filterCtypes(array &$parameters): void {
+        if(!empty($parameters) && isset($parameters['items'])) {
+            $configurationManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
+            $typoScript = $configurationManager->getConfiguration(
+                \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
+                'hh_slider'
+            );
+
+            if(
+                !empty($typoScript)
+                && is_array($typoScript)
+                && isset($typoScript['plugin.']['tx_hhslider.']['settings.'])
+            ) {
+                $settings = $typoScript['plugin.']['tx_hhslider.']['settings.'];
+
+                if(isset($settings['allowedCtypes'])) {
+                    if($settings['allowedCtypes'] === 'all') {
+                        return;
+                    }
+
+                    if(is_string($settings['allowedCtypes'])) {
+                        $allowedCtypesArray = explode(',', preg_replace('/\s+/', '', $settings['allowedCtypes']));
+
+                        foreach ($parameters['items'] as $key => $value) {
+                            $cType = $value[1];
+                            if(empty($cType) || in_array($cType, $allowedCtypesArray)) {
+                                continue;
+                            }
+                            unset($parameters['items'][$key]);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

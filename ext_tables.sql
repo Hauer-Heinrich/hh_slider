@@ -3,6 +3,7 @@ CREATE TABLE tt_content (
     tx_hhslider_animation_direction tinytext,
     tx_hhslider_animation_speed int(11) DEFAULT '0' NOT NULL,
     tx_hhslider_arrows int(11) DEFAULT '0' NOT NULL,
+    tx_hhslider_startstop int(11) DEFAULT '0' NOT NULL,
     tx_hhslider_autoplay int(11) DEFAULT '0' NOT NULL,
     tx_hhslider_autoplay_speed tinytext,
     tx_hhslider_centered_slides int(11) DEFAULT '0' NOT NULL,

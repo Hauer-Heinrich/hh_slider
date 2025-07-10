@@ -2,34 +2,29 @@
     xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<f:if condition="{data.tx_hhslider_autoplay} && {data.tx_hhslider_disable_on_interaction}">
-    <button type="button" class="btn-slider btn-autoplay disabled">autoplay</button>
-</f:if>
+<f:if condition="{items -> f:count()} > 1">
+    <f:if condition="{data.tx_hhslider_arrows}">
+        <button class="slider-button slider-button-prev" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.button.prev.aria.label', extensionName: 'HhSlider')}"></button>
+        <button class="slider-button slider-button-next" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.button.next.aria.label', extensionName: 'HhSlider')}"></button>
+    </f:if>
 
-<f:if condition="{data.tx_hhslider_arrows}">
-    <span class="slider-button slider-button-prev"></span>
-    <span class="slider-button slider-button-next"></span>
-</f:if>
+    <f:if condition="{data.tx_hhslider_startstop}">
+        <button type="button" id="slider-button-startstop-{data.uid}" class="slider-button slider-button-startstop" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.startstop.button.aria.label', extensionName: 'HhSlider')}" aria-pressed="false"></button>
+    </f:if>
 
-<f:if condition="{data.tx_hhslider_thumbnails}">
-    <f:then>
-        <f:render partial="Thumbnails" arguments="{_all}" />
-    </f:then>
-</f:if>
+    <f:if condition="{data.tx_hhslider_thumbnails}">
+        <f:then>
+            <f:render partial="Thumbnails" arguments="{_all}" />
+        </f:then>
+    </f:if>
 
-<f:if condition="{data.tx_hhslider_pagination}">
-    <f:switch expression="{data.tx_hhslider_content_type}">
-        <f:case value="1"><f:variable name="items">{data_assets}</f:variable></f:case>
-        <f:case value="2"><f:variable name="items">{data_tx_hhslider_child_content}</f:variable></f:case>
-        <f:case value="3"><f:variable name="items">{folderFiles}</f:variable></f:case>
-        <f:defaultCase></f:defaultCase>
-    </f:switch>
-
-    <div class="tns-nav pagination" aria-label="Carousel Pagination">
-        <f:for each="{items}" as="item" iteration="i">
-            <button data-nav="{i.index}" aria-controls="tns1" aria-label="Carousel Page {i.cycle}" class="{f:if(condition: '{i.isFirst}', then: 'tns-nav-active')}" tabindex="-1"></button>
-        </f:for>
-    </div>
+    <f:if condition="{data.tx_hhslider_pagination}">
+        <div class="tns-nav pagination" aria-label="{f:translate(key: 'fe.slider.pagination.aria.label', extensionName: 'HhSlider')}">
+            <f:for each="{items}" as="item" iteration="i">
+                <button data-nav="{i.index}" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.pagination.button.aria.label', extensionName: 'HhSlider', arguments: '{0: \'{i.cycle}\' }')}" class="{f:if(condition: '{i.isFirst}', then: 'tns-nav-active')}"></button>
+            </f:for>
+        </div>
+    </f:if>
 </f:if>
 
 </html>

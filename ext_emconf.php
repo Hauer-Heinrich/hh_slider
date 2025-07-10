@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "hh_slider".
  *
- * Auto generated 13-03-2023 15:40
+ * Auto generated 07-07-2025 15:40
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -14,7 +14,7 @@ $EM_CONF['hh_slider'] = [
     'title' => 'Hauer-Heinrich - Slider (tiny-slider)',
     'description' => 'Hauer-Heinrich - Image and Content Slider',
     'category' => 'fe',
-    'version' => '0.7.1',
+    'version' => '0.8.0',
     'state' => 'stable',
     'uploadfolder' => false,
     'clearcacheonload' => false,

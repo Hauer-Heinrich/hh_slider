@@ -1,54 +1,16 @@
-tt_content.hhslider_hh_slider = FLUIDTEMPLATE
-tt_content.hhslider_hh_slider {
-    layoutRootPaths < lib.contentElement.layoutRootPaths
-    layoutRootPaths {
-        100 = EXT:hh_slider/Resources/Private/Layouts/
-        110 = {$plugin.tx_hhslider.view.layoutRootPath}
-    }
-    partialRootPaths < lib.contentElement.partialRootPaths
-    partialRootPaths {
-        100 = EXT:hh_slider/Resources/Private/Partials/
-        110 = {$plugin.tx_hhslider.view.partialRootPath}
-    }
-    templateRootPaths < lib.contentElement.templateRootPaths
-    templateRootPaths {
-        100 = EXT:hh_slider/Resources/Private/Templates/
-        110 = {$plugin.tx_hhslider.view.templateRootPath}
-    }
-    templateName = HhSlider
-
-    dataProcessing {
-        10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-        10 {
-            if.isTrue.field = assets
-            references {
-                fieldName = assets
-                table = tt_content
-            }
-
-            as = data_assets
+plugin.tx_hhslider {
+    view {
+        layoutRootPaths {
+            0 = EXT:hh_slider/Resources/Private/Layouts/
+            10 = {$plugin.tx_hhslider.view.layoutRootPath}
         }
-
-        20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
-        20 {
-            if.isTrue.field = tx_hhslider_child_content
-            table = tt_content
-            pidInList.field = pid
-            where = tx_hhslider_child_content_parent=###uid### AND deleted=0 AND hidden=0
-            orderBy = sorting
-            markers.colPos.value = 988
-            markers.uid.field = uid
-
-            as = data_tx_hhslider_child_content
+        partialRootPaths {
+            0 = EXT:hh_slider/Resources/Private/Partials/
+            10 = {$plugin.tx_hhslider.view.partialRootPath}
         }
-
-        30 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-        30 {
-            folders.field = tx_hhslider_folder
-            sorting.field = tx_hhslider_sorting
-            sorting.direction.field = tx_hhslider_sorting_direction
-
-            as = folderFiles
+        templateRootPaths {
+            0 = EXT:hh_slider/Resources/Private/Templates/
+            10 = {$plugin.tx_hhslider.view.templateRootPath}
         }
     }
 

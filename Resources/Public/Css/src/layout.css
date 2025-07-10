@@ -20,26 +20,22 @@
         }
     }
 
-    & .btn-autoplay {
-        background-color: #e4685d;
-        border: 0;
-        display: block;
-        cursor: pointer;
-        color: #ffffff;
-        font-size: 15px;
-        height: 30px;
-        margin-top: -30px;
-        padding: 6px 15px;
+    &:focus > .visually-hidden.usage {
+        clip-path: none;
+        height: auto;
         position: relative;
-        text-decoration: none;
+        text-align: center;
+        width: auto;
+    }
 
-        &:hover {
-            background-color: #eb675e;
-        }
-
-        &.disabled {
-            display: none;
-        }
+    & .visually-hidden:not(:focus) {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
     }
 }
 
@@ -52,48 +48,74 @@
     }
 }
 
+.slider-button-startstop {
+    background-image: var(--hhslider-slider-button-startstop-bg-image);
+    background-color: var(--hhslider-slider-button-startstop-bg-color);
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    background-size: 200% 100%;
+    border: 0;
+    bottom: 10px;
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 15px;
+    height: 35px;
+    left: 10px;
+    padding: 6px 15px;
+    position: absolute;
+    text-decoration: none;
+    width: 35px;
+    transition: 400ms;
+
+    &:hover,
+    &:focus {
+        background-color: var(--hhslider-slider-button-startstop-bg-color-hover);
+    }
+
+    &[aria-pressed="true"] {
+        background-position: 100% center;
+    }
+}
+
 .slider-button-prev,
 .slider-button-next {
-    background-image: url("../Icons/arrows.svg");
+    background-image: var(--hhslider-slider-button-prevnext-bg-image);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 200% 100%;
+    background-color: var(--hhslider-slider-button-prevnext-bg-color);
+    border: none;
     cursor: pointer;
     display: block;
-    height: 60px;
+    height: 68px;
     position: absolute;
     top: calc(50% - (60px / 2));
-    width: 42px;
+    width: 35px;
+    transition: all 400ms;
+
+    &:hover,
+    &:focus {
+        background-color: var(--hhslider-slider-button-prevnext-bg-color-hover);
+    }
 }
 
 .slider-button-prev {
-    background-position: 0 0;
-    left: 0;
+    background-position: 0 center;
+    left: 10px;
 }
 
 .slider-button-next {
-    background-position: 100% 0;
-    right: 0;
+    background-position: 100% center;
+    right: 10px;
 }
 
 .slider-thumbs {
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
     align-content: stretch;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
 
     & .slider-slide {
@@ -107,28 +129,16 @@
 }
 
 .tns-nav {
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
     align-content: stretch;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
 
     & button {
-        background-color: var(--pagination-button-bg);
-        border: var(--pagination-button-border);
+        background-color: var(--hhslider-slider-pagination-button-bg);
+        border: var(--hhslider-slider-pagination-button-border);
         border-radius: 100%;
         display: block;
         height: 20px;
@@ -138,6 +148,7 @@
     }
 
     & .tns-nav-active {
-        background-color: var(--pagination-button-bg-active);
+        background-color: var(--hhslider-slider-pagination-button-bg-active);
+        border: var(--hhslider-slider-pagination-button-border-active);
     }
 }

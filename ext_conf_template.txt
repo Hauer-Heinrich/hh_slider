@@ -3,6 +3,6 @@
 #####################################
 
 config {
-    # cat=basic; type=boolean; label= automatically include TypoScript
+    # cat=basic; type=boolean; label= automatically include TypoScript !DEPRECATED!
     typoScript = 0
 }

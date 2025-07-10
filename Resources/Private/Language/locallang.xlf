@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2018-11-27T11:22:36+01:00" product-name="hh_slider">
+        <header/>
+        <body>
+
+            <trans-unit id="fe.slider.userInstruction" xml:space="preserve">
+                <source>You can use the keyboard arrow keys</source>
+            </trans-unit>
+
+            <trans-unit id="fe.slider.button.prev.aria.label" xml:space="preserve">
+                <source>Show previous slide.</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.button.next.aria.label" xml:space="preserve">
+                <source>Show next slide.</source>
+            </trans-unit>
+
+            <trans-unit id="fe.slider.startstop.button.aria.label" xml:space="preserve">
+                <source>Toggle autoplay of the slider.</source>
+            </trans-unit>
+
+            <trans-unit id="fe.slider.pagination.aria.label" xml:space="preserve">
+                <source>Carousel pagination</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.pagination.button.aria.label" xml:space="preserve">
+                <source>Carousel page %s</source>
+            </trans-unit>
+
+            <trans-unit id="fe.slider.thumbnails.aria.label" xml:space="preserve">
+                <source>Carousel thumbnails</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.thumbnails.button.aria.label" xml:space="preserve">
+                <source>Carousel page %s</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.thumbnails.button.aria.label.current" xml:space="preserve">
+                <source> (current page)</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

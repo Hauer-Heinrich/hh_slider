@@ -2,35 +2,35 @@
     xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<f:if condition="{folderFiles}">
+<f:if condition="{items}">
     <f:comment>https://github.com/Hauer-Heinrich/hh_slider/issues/10</f:comment>
     <f:if condition="{settings.hh_video_extender.isLoaded} == 1">
         <f:then>
-            <f:for each="{folderFiles}" as="file" iteration="i">
+            <f:for each="{items}" as="item" iteration="i">
                 <div class="item">
-                    <f:switch expression="{file.extension}">
+                    <f:switch expression="{item.extension}">
                         <f:case value="mp4">
-                            <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                            <f:media class="video-embed-item" file="{item}" additionalConfig="{settings.media.additionalConfig}" />
                         </f:case>
                         <f:case value="webm"></f:case>
                         <f:case value="ogv"></f:case>
                         <f:case value="ogg"></f:case>
                         <f:defaultCase>
-                            <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
+                            <f:media file="{item}" alt="{item.alternative}" title="{item.title}" />
                         </f:defaultCase>
                     </f:switch>
                 </div>
             </f:for>
         </f:then>
         <f:else>
-            <f:for each="{folderFiles}" as="file" iteration="i">
+            <f:for each="{items}" as="item" iteration="i">
                 <div class="item">
-                    <f:if condition="{file.type} == 4">
+                    <f:if condition="{item.type} == 4">
                         <f:then>
-                            <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                            <f:media class="video-embed-item" file="{item}" additionalConfig="{settings.media.additionalConfig}" />
                         </f:then>
                         <f:else>
-                            <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
+                            <f:media file="{item}" alt="{item.alternative}" title="{item.title}" />
                         </f:else>
                     </f:if>
                 </div>

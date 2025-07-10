@@ -1,5 +1,12 @@
 :root {
-    --pagination-button-bg: #fff;
-    --pagination-button-bg-active: #ccc;
-    --pagination-button-border: 3px solid var(--pagination-button-bg-active);
+    --hhslider-slider-button-prevnext-bg-image: var(--hhslider-button-prevnext-bg-image, url("../Icons/prev-next.svg"));
+    --hhslider-slider-button-prevnext-bg-color: var(--hhslider-button-prevnext-bg-color, #04A0E3);
+    --hhslider-slider-button-prevnext-bg-color-hover: var(--hhslider-button-prevnext-bg-color-hover, #7cb4cc);
+    --hhslider-slider-button-startstop-bg-image: var(--hhslider-button-startstop-bg-image, url("../Icons/start-stop.svg"));
+    --hhslider-slider-button-startstop-bg-color: var(--hhslider-button-startstop-bg-color, #04A0E3);
+    --hhslider-slider-button-startstop-bg-color-hover: var(--hhslider-button-startstop-bg-color-hover, #7cb4cc);
+    --hhslider-slider-pagination-button-bg: var(--hhslider-pagination-button-bg, #fff);
+    --hhslider-slider-pagination-button-bg-active: var(--hhslider-pagination-button-bg-active, #ccc);
+    --hhslider-slider-pagination-button-border: var(--hhslider-pagination-button-border, 3px solid #ccc);
+    --hhslider-slider-pagination-button-border-active: var(--hhslider-pagination-button-border-active, 3px solid #ccc);
 }

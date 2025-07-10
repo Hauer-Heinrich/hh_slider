@@ -2,22 +2,8 @@
     xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<f:if condition="{data.tx_hhslider_content_type} == 1">
-    <f:if condition="{data_assets -> f:count()} > 1">
-        <f:render section="json" arguments="{_all}" />
-    </f:if>
-</f:if>
-
-<f:if condition="{data.tx_hhslider_content_type} == 2">
-    <f:if condition="{data_tx_hhslider_child_content -> f:count()} > 1">
-        <f:render section="json" arguments="{_all}" />
-    </f:if>
-</f:if>
-
-<f:if condition="{data.tx_hhslider_content_type} == 3">
-    <f:if condition="{folderFiles -> f:count()} > 1">
-        <f:render section="json" arguments="{_all}" />
-    </f:if>
+<f:if condition="{items -> f:count()} > 1">
+    <f:render section="json" arguments="{_all}" />
 </f:if>
 
 <f:section name="json">
@@ -52,9 +38,9 @@
             "autoplayPosition": "top",
             "autoplayTimeout": <f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>,
             "autoplayDirection": "forward",
-            "autoplayText": ["start", "stop"],
-            "autoplayHoverPause": false,
-            "autoplayButton": false,
+            "autoplayText": ["", ""],
+            "autoplayHoverPause": true,
+            "autoplayButton": {f:if(condition: '{data.tx_hhslider_startstop}', then: '"#slider-button-startstop-{data.uid}"', else: 'false')},
             "autoplayButtonOutput": false,
             "autoplayResetOnVisibility": false,
             "animateIn": "tns-fadeIn",
@@ -72,11 +58,13 @@
             "preventActionWhenRunning": false,
             "preventScrollOnTouch": false,
             "nested": false,
-            "freezable": false,
+            "freezable": true,
             "disable": false,
             "startIndex": 0,
             "onInit": false,
             "useLocalStorage": true,
+            "thumbnailsNavStr": "{f:translate(key: 'fe.slider.thumbnails.button.aria.label', extensionName: 'HhSlider', arguments: '{0: \'{i.cycle}\' }')}",
+            "thumbnailsNavStrCurrent": "{f:translate(key: 'fe.slider.thumbnails.button.aria.label.current', extensionName: 'HhSlider')}",
             "responsive": <f:if condition="{data.tx_hhslider_responsive_part}"><f:then><f:format.raw>{data.tx_hhslider_responsive_part}</f:format.raw></f:then><f:else>""</f:else></f:if>
         }
     </f:asset.script>

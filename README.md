@@ -10,16 +10,54 @@ Don't forget to include PageTS / look at features section
 - No dependencies like jQuery
 - "Content type" - Select "images" if you want only slide images | select "content" if you want to slide content-elements like textmedia
 - To slide other elements, for example from other extensions, simply add your own custom json to the document - like: "hh_slider\Resources\Private\Partials\Assets\SliderJson.html" - Important: className "hhSliderJson"
-- possibility to add TypoScript and PageTS automatically
+- possibility to add TypoScript and PageTS automatically (Deprecated due to TYPO3 method itself (addPageTSConfig()), this option will be removed with TYPO3 14.)
     - OR over the backend "Tempalte"-module and page settings -> Resources OR manually by yourself
         - you can change this at backend -> Settings -> Extension Configuration -> hh_slider
 
-### Todos
-- rework AddAssetsDataViewHelper - the method(s) of this ViewHelper could change!
+#### optional
+##### Set CSS colors for the slider buttons
+--hhslider-button-prevnext-bg-image: url("../Icons/prev-next.svg");
+--hhslider-button-prevnext-bg-color: #04A0E3;
+--hhslider-button-prevnext-bg-color-hover: #7cb4cc;
+--hhslider-button-startstop-bg-image: url("../Icons/start-stop.svg");
+--hhslider-button-startstop-bg-color: #04A0E3;
+--hhslider-button-startstop-bg-color-hover: #7cb4cc;
+--hhslider-pagination-button-bg: #fff;
+--hhslider-pagination-button-bg-active: #ccc;
+--hhslider-pagination-button-border: 3px solid #ccc;
+--hhslider-pagination-button-border-active: 3px solid #ccc;
 
-### Deprecated
+##### Restrict Content-Elements (CType) of childrecords
+Example:
+```
+plugin.tx_hhslider {
+    settings {
+        allowedCtypes = textmedia, images, menu_pages,
+    }
+}
+```
 
-### IMPORTENT NOTICE
+##### Translate string via TypoScript
+Available strings / ID's see: EXT:hh_slider/Resources/Private/Language/locallang.xlf
+Example:
+```
+plugin.tx_hhslider {
+    _LOCAL_LANG {
+        default {
+            fe.slider.userInstruction = default EN label
+        }
+        de {
+            fe.slider.userInstruction = DE label
+        }
+        cz {
+            fe.slider.userInstruction = CZ label
+        }
+    }
+}
+```
+
+### HINT
+The tiny-slider source code has been adapted, which means that the supplied tiny-slider source code is no longer compatible with the original!
 
 #### Main-view
 ![example picture from backend](.github/images/preview-1.jpg?raw=true "Main")

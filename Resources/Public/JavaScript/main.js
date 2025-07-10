@@ -7,7 +7,7 @@ if(window.NodeList && !NodeList.prototype.forEach){
 // (https://github.com/ganlanyuan/tiny-slider)
 var sliderArray = {};
 document.addEventListener("DOMContentLoaded", function(e) {
-    var json = document.querySelectorAll(".hhSliderJson");
+    let json = document.querySelectorAll(".hhSliderJson");
 
     if (json) {
         json.forEach(function(cnf) {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                       arrowsNext = config.nextButton ? sliderContainer.querySelector(config.nextButton) : false,
                       arrowContainer = sliderContainer.querySelector(".tns-outer"),
                       disableOnInteraction = config.disableOnInteraction ? config.disableOnInteraction : false,
-                      btnAutoplay = sliderContainer.querySelector(".btn-autoplay");
+                      btnAutoplay = sliderContainer.querySelector(".slider-button-startstop");
 
                 if(arrowsPrev) {
                     arrowContainer.appendChild(arrowsPrev);
@@ -75,10 +75,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 }
 
                 // btn autoplay only appears if disableOnInteraction is true
-                if(disableOnInteraction !== "false" && btnAutoplay) {
-                    btnAutoplay.addEventListener("click", function() {
-                        sliderArray[uid].play();
-                        btnAutoplay.classList.add("disabled");
+                if(btnAutoplay) {
+                    arrowContainer.appendChild(btnAutoplay);
+                    btnAutoplay.addEventListener("click", function(event) {
+                        const btn = this;
+                        togglePause(btn);
+                        // btnAutoplay.classList.add("disabled");
+
+                        // Check to see if the button is pressed
+                        const pressed = btnAutoplay.getAttribute("aria-pressed") === "true";
+
+                        // Change aria-pressed to the opposite state
+                        btnAutoplay.setAttribute("aria-pressed", !pressed);
                     });
                 }
 
@@ -93,6 +101,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         pause();
                     }
                 });
+
+                function togglePause(btn) {
+
+                    if(btn.dataset.action === "start") {
+                        sliderArray[uid].pause();
+                    } else {
+                        sliderArray[uid].play();
+                    }
+                }
 
                 function pause() {
                     sliderArray[uid].pause();
