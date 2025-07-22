@@ -68,8 +68,7 @@
     width: 35px;
     transition: 400ms;
 
-    &:hover,
-    &:focus {
+    &:hover {
         background-color: var(--hhslider-slider-button-startstop-bg-color-hover);
     }
 
@@ -94,8 +93,7 @@
     width: 35px;
     transition: all 400ms;
 
-    &:hover,
-    &:focus {
+    &:hover {
         background-color: var(--hhslider-slider-button-prevnext-bg-color-hover);
     }
 }
