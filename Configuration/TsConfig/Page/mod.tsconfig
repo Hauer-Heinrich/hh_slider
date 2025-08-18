@@ -5,7 +5,7 @@ mod {
         tt_content {
             ### Backend preview
             preview {
-                hhslider_hh_slider = EXT:hh_slider/Resources/Private/Backend/Templates/HhSlider.html
+                hhslider_slider = EXT:hh_slider/Resources/Private/Backend/Templates/HhSlider.html
             }
         }
     }
