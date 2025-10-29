@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:if condition="{items -> f:count()} > 1">
+    <f:if condition="{data.tx_hhslider_pagination}">
+        <div class="tns-nav pagination slider-pagination" aria-label="{f:translate(key: 'fe.slider.pagination.aria.label', extensionName: 'HhSlider')}">
+            <f:for each="{items}" as="item" iteration="i">
+                <button data-nav="{i.index}" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.pagination.button.aria.label', extensionName: 'HhSlider', arguments: '{0: \'{i.cycle}\' }')}" class="{f:if(condition: '{i.isFirst}', then: 'tns-nav-active')}"></button>
+            </f:for>
+        </div>
+    </f:if>
+</f:if>
+
+</html>

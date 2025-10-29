@@ -39,4 +39,20 @@ plugin.tx_hhslider {
             isLoaded = {$plugin.tx_hhslider.settings.hh_video_extender.isLoaded}
         }
     }
+
+    # _LOCAL_LANG {
+    #     de {
+    #         fe.slider.a11y.containerMessage =
+    #         fe.slider.a11y.containerRole =
+    #         fe.slider.a11y.containerRoleDescriptionMessage =
+    #         fe.slider.a11y.firstSlideMessage =
+    #         fe.slider.a11y.itemRoleDescriptionMessage =
+    #         fe.slider.a11y.lastSlideMessage =
+    #         fe.slider.a11y.nextSlideMessage =
+    #         fe.slider.a11y.paginationBulletMessage =
+    #         fe.slider.a11y.prevSlideMessage =
+    #         fe.slider.a11y.slideLabelMessage =
+    #         fe.slider.a11y.slideRole =
+    #     }
+    # }
 }

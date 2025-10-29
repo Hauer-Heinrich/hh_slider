@@ -2,39 +2,41 @@
     xmlns:hhSlider="http://typo3.org/ns/HauerHeinrich/HhSlider/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<f:if condition="{items -> f:count()} > 1">
-    <div class="slider-container slider-thumbs slider-thumbs-{data.uid}" aria-label="{f:translate(key: 'fe.slider.thumbnails.aria.label', extensionName: 'HhSlider')}">
-        <f:switch expression="{data.tx_hhslider_content_type}">
-            <f:case value="1">
-                <f:for each="{items}" as="item">
-                    <button type="button" class="slider-slide" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.thumbnails.button.aria.label', extensionName: 'HhSlider', arguments: '{0: \'{i.cycle}\' }')}">
-                        <f:render partial="Media/Rendering/Image" arguments="{file: item, data: data}" />
-                    </button>
-                </f:for>
-            </f:case>
-            <f:case value="2">
-                <f:for each="{items}" as="item">
-                    <button type="button" class="slider-slide" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.thumbnails.button.aria.label', extensionName: 'HhSlider', arguments: '{0: \'{i.cycle}\' }')}">
-                        <f:cObject typoscriptObjectPath="tt_content" data="{item}" table="tt_content" />
-                    </div>
-                </f:for>
-            </f:case>
-            <f:case value="3">
-                <f:for each="{items}" as="file" iteration="i">
-                    <button type="button" class="slider-slide" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.thumbnails.button.aria.label', extensionName: 'HhSlider', arguments: '{0: \'{i.cycle}\' }')}">
-                        <f:if condition="{file.type} == 4">
-                            <f:then>
-                                <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
-                            </f:then>
-                            <f:else>
-                                <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
-                            </f:else>
-                        </f:if>
-                    </button>
-                </f:for>
-            </f:case>
-            <f:defaultCase></f:defaultCase>
-        </f:switch>
+<f:if condition="{data.tx_hhslider_thumbnails} && {items -> f:count()} > 1">
+    <div class="swiper slider-container slider-thumbs slider-thumbs-{data.uid}" id="tns-thumb-{data.uid}" aria-label="{f:translate(key: 'fe.slider.thumbnails.aria.label', extensionName: 'HhSlider')}">
+        <div class="swiper-wrapper">
+            <f:switch expression="{data.tx_hhslider_content_type}">
+                <f:case value="1">
+                    <f:for each="{items}" as="item">
+                        <button type="button" class="swiper-slide">
+                            <f:render partial="Media/Rendering/Image" arguments="{file: item, data: data}" />
+                        </button>
+                    </f:for>
+                </f:case>
+                <f:case value="2">
+                    <f:for each="{items}" as="item">
+                        <div class="swiper-slide">
+                            <f:cObject typoscriptObjectPath="tt_content" data="{item}" table="tt_content" />
+                        </div>
+                    </f:for>
+                </f:case>
+                <f:case value="3">
+                    <f:for each="{items}" as="file" iteration="i">
+                        <button type="button" class="swiper-slide">
+                            <f:if condition="{file.type} == 4">
+                                <f:then>
+                                    <f:media class="video-embed-item" file="{file}" additionalConfig="{settings.media.additionalConfig}" />
+                                </f:then>
+                                <f:else>
+                                    <f:media file="{file}" alt="{file.alternative}" title="{file.title}" />
+                                </f:else>
+                            </f:if>
+                        </button>
+                    </f:for>
+                </f:case>
+                <f:defaultCase></f:defaultCase>
+            </f:switch>
+        </div>
     </div>
 </f:if>
 

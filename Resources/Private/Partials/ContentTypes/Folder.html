@@ -7,7 +7,7 @@
     <f:if condition="{settings.hh_video_extender.isLoaded} == 1">
         <f:then>
             <f:for each="{items}" as="item" iteration="i">
-                <div class="item">
+                <div class="swiper-slide">
                     <f:switch expression="{item.extension}">
                         <f:case value="mp4">
                             <f:media class="video-embed-item" file="{item}" additionalConfig="{settings.media.additionalConfig}" />
@@ -24,7 +24,7 @@
         </f:then>
         <f:else>
             <f:for each="{items}" as="item" iteration="i">
-                <div class="item">
+                <div class="swiper-slide">
                     <f:if condition="{item.type} == 4">
                         <f:then>
                             <f:media class="video-embed-item" file="{item}" additionalConfig="{settings.media.additionalConfig}" />

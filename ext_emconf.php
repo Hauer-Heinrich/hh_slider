@@ -11,10 +11,10 @@
  ***************************************************************/
 
 $EM_CONF['hh_slider'] = [
-    'title' => 'Hauer-Heinrich - Slider (tiny-slider)',
+    'title' => 'Hauer-Heinrich - Slider (swiper-slider)',
     'description' => 'Hauer-Heinrich - Image and Content Slider',
     'category' => 'fe',
-    'version' => '0.8.2',
+    'version' => '1.0.0',
     'state' => 'stable',
     'uploadfolder' => false,
     'clearcacheonload' => false,

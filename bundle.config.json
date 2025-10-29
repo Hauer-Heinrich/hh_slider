@@ -24,8 +24,7 @@
     {
         "outdir": ".",
         "entryPoints": [
-            { "in": "./Resources/Public/JavaScript/main.js", "out": "./Resources/Public/JavaScript/main.min" },
-            { "in": "./Resources/Public/JavaScript/tiny-slider.js", "out": "./Resources/Public/JavaScript/tiny-slider.min" }
+            { "in": "./Resources/Public/JavaScript/main.js", "out": "./Resources/Public/JavaScript/main.min" }
         ],
         "bundle": false,
         "write": true,

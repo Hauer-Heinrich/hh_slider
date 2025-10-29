@@ -3,33 +3,74 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2018-11-27T11:22:36+01:00" product-name="hh_slider">
         <header/>
         <body>
-            <trans-unit id="tx_hhslider_accordion" xml:space="preserve">
-                <source>tx_hhslider_accordion</source>
-            </trans-unit>
             <trans-unit id="tt_content.tx_hhslider_animation" xml:space="preserve">
                 <source>Animation type</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_animation.I.0" xml:space="preserve">
+                <source>slide</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_animation.I.1" xml:space="preserve">
+                <source>fade</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_animation_direction" xml:space="preserve">
                 <source>Animation direction</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_animation_direction.I.0" xml:space="preserve">
+                <source>horizontal</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_animation_direction.I.1" xml:space="preserve">
+                <source>vertical</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_animation_speed" xml:space="preserve">
                 <source>Animation speed</source>
             </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_arrows" xml:space="preserve">
                 <source>Arrows</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_arrows.enabled" xml:space="preserve">
+                <source>Enabled</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_arrows.disabled" xml:space="preserve">
+                <source>Disabled</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_startstop" xml:space="preserve">
                 <source>Show Start / Stop button</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_slide_to_clicked_slide" xml:space="preserve">
+                <source>Slide to clicked slide</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_slide_to_clicked_slide.description" xml:space="preserve">
+                <source>Can be buggy with the slider-prev slide if you have links within your slides (https://github.com/nolimits4web/swiper/issues/8095).</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_autoplay" xml:space="preserve">
                 <source>Autoplay</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_autoplay.enabled" xml:space="preserve">
+                <source>Enabled</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_autoplay.disabled" xml:space="preserve">
+                <source>Disabled</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_autoplay_speed" xml:space="preserve">
                 <source>Autoplay speed</source>
             </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_centered_slides" xml:space="preserve">
                 <source>Centered Slides</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_centered_slides.enabled" xml:space="preserve">
+                <source>Enabled</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_centered_slides.disabled" xml:space="preserve">
+                <source>Disabled</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_child_content" xml:space="preserve">
                 <source>Content</source>
             </trans-unit>
@@ -39,24 +80,54 @@
             <trans-unit id="tt_content.tx_hhslider_content_type" xml:space="preserve">
                 <source>Content type</source>
             </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_disable_on_interaction" xml:space="preserve">
                 <source>Disable (e. g. autoplay) on interaction</source>
             </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_loop" xml:space="preserve">
-                <source>loop</source>
+            <trans-unit id="tt_content.tx_hhslider_disable_on_interaction.enabled" xml:space="preserve">
+                <source>Enabled</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_disable_on_interaction.disabled" xml:space="preserve">
+                <source>Disabled</source>
+            </trans-unit>
+
+            <trans-unit id="tt_content.tx_hhslider_loop" xml:space="preserve">
+                <source>Loop</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_loop.enabled" xml:space="preserve">
+                <source>Enabled</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_loop.disabled" xml:space="preserve">
+                <source>Disabled</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_pagination" xml:space="preserve">
                 <source>Pagination</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_pagination.enabled" xml:space="preserve">
+                <source>Enabled</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_pagination.disabled" xml:space="preserve">
+                <source>Disabled</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_slides_per_view" xml:space="preserve">
                 <source>Slides per view</source>
             </trans-unit>
             <trans-unit id="tt_content.tx_hhslider_slideby" xml:space="preserve">
                 <source>Number of slides going on one "click"</source>
             </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_thumbnails" xml:space="preserve">
                 <source>Thumbnails as navigation (only without pagination)</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_thumbnails.enabled" xml:space="preserve">
+                <source>Enabled</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tx_hhslider_thumbnails.disabled" xml:space="preserve">
+                <source>Disabled</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.tx_hhslider_responsive_part" xml:space="preserve">
                 <source>JSON for responsive option of the slider - HAVE TO BE IN JSON syntax (so with quotes)!</source>
             </trans-unit>
@@ -70,27 +141,6 @@
                 <source>Files sorting direction</source>
             </trans-unit>
 
-            <trans-unit id="tt_content.tx_hhslider_animation.I.0" xml:space="preserve">
-                <source>slide</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_animation.I.1" xml:space="preserve">
-                <source>fade</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_animation_direction.I.0" xml:space="preserve">
-                <source>horizontal</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_animation_direction.I.1" xml:space="preserve">
-                <source>vertical</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_arrows.I.0" xml:space="preserve">
-                <source>Enabled</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_autoplay.I.0" xml:space="preserve">
-                <source>Enabled</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_centered_slides.I.0" xml:space="preserve">
-                <source>Enabled</source>
-            </trans-unit>
             <trans-unit id="tt_content.tx_hhslider_content_type.I.0" xml:space="preserve">
                 <source>images</source>
             </trans-unit>
@@ -100,101 +150,9 @@
             <trans-unit id="tt_content.tx_hhslider_content_type.I.2" xml:space="preserve">
                 <source>folder</source>
             </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_disable_on_interaction.I.0" xml:space="preserve">
-                <source>Enabled</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_loop.I.0" xml:space="preserve">
-                <source>Enabled</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_pagination.I.0" xml:space="preserve">
-                <source>Enabled</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_hhslider_thumbnails.I.0" xml:space="preserve">
-                <source>Enabled</source>
-            </trans-unit>
-            <trans-unit id="tt_content.CType.div._hhslider_" xml:space="preserve">
-                <source>hh_slider</source>
-            </trans-unit>
-            <trans-unit id="tt_content.CType.hhslider_hh_slider" xml:space="preserve">
-                <source>Slider</source>
-            </trans-unit>
+
             <trans-unit id="tt_content.colPos.nestedContentColPos" xml:space="preserve">
                 <source>Nested content (hh_slider)</source>
-            </trans-unit>
-            <trans-unit id="tt_content.l10n_source" xml:space="preserve">
-                <source>l10n_source</source>
-            </trans-unit>
-            <trans-unit id="tt_content.l18n_diffsource" xml:space="preserve">
-                <source>l18n_diffsource</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tx_impexp_origuid" xml:space="preserve">
-                <source>tx_impexp_origuid</source>
-            </trans-unit>
-            <trans-unit id="tt_content.crdate" xml:space="preserve">
-                <source>crdate</source>
-            </trans-unit>
-            <trans-unit id="tt_content.tstamp" xml:space="preserve">
-                <source>tstamp</source>
-            </trans-unit>
-            <trans-unit id="tt_content.CType.I.27" xml:space="preserve">
-                <source>Form</source>
-            </trans-unit>
-            <trans-unit id="tt_content.CType.I.29" xml:space="preserve">
-                <source>Slider</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.0" xml:space="preserve">
-                <source>1</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.1" xml:space="preserve">
-                <source>2</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.2" xml:space="preserve">
-                <source>3</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.3" xml:space="preserve">
-                <source>4</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.4" xml:space="preserve">
-                <source>5</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.5" xml:space="preserve">
-                <source>6</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.6" xml:space="preserve">
-                <source>7</source>
-            </trans-unit>
-            <trans-unit id="tt_content.imagecols.I.7" xml:space="preserve">
-                <source>8</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.1" xml:space="preserve">
-                <source>1</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.2" xml:space="preserve">
-                <source>2</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.3" xml:space="preserve">
-                <source>3</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.4" xml:space="preserve">
-                <source>4</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.5" xml:space="preserve">
-                <source>5</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.6" xml:space="preserve">
-                <source>6</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.7" xml:space="preserve">
-                <source>7</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.8" xml:space="preserve">
-                <source>8</source>
-            </trans-unit>
-            <trans-unit id="tt_content.cols.I.9" xml:space="preserve">
-                <source>9</source>
-            </trans-unit>
-            <trans-unit id="tt_content.list_type.I.1" xml:space="preserve">
-                <source>Indexed Search (Extbase &amp; Fluid based)</source>
             </trans-unit>
         </body>
     </file>

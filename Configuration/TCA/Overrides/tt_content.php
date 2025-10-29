@@ -36,11 +36,11 @@ call_user_func(function(string $extensionKey) {
                     'items' => [
                         0 => [
                             0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation.I.0',
-                            1 => 'carousel',
+                            1 => 'slide',
                         ],
                         1 => [
                             0 => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_animation.I.1',
-                            1 => 'gallery',
+                            1 => 'fade',
                         ],
                     ],
                     'renderType' => 'selectSingle',
@@ -87,10 +87,9 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => 'false',
-                            1 => 'true',
-                            'labelChecked' => 'Enabled',
-                            'labelUnchecked' => 'Disabled',
+                            'label' => '',
+                            'labelChecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_arrows.enabled',
+                            'labelUnchecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_arrows.disabled',
                         ],
                     ],
                 ],
@@ -104,8 +103,7 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => 'false',
-                            1 => 'true',
+                            'label' => '',
                             'labelChecked' => 'Enabled',
                             'labelUnchecked' => 'Disabled',
                         ],
@@ -121,10 +119,9 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => '',
-                            1 => '',
-                            'labelChecked' => 'Enabled',
-                            'labelUnchecked' => 'Disabled',
+                            'label' => '',
+                            'labelChecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_autoplay.enabled',
+                            'labelUnchecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_autoplay.disabled',
                         ],
                     ],
                     'default' => 1
@@ -153,8 +150,7 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => '',
-                            1 => '',
+                            'label' => '',
                             'labelChecked' => 'Enabled',
                             'labelUnchecked' => 'Disabled',
                         ],
@@ -237,7 +233,6 @@ call_user_func(function(string $extensionKey) {
             'tx_hhslider_content_text' => [
                 'exclude' => 1,
                 'label' => 'Text',
-                'displayCond' => 'FIELD:tx_hhslider_content_type:=:1',
                 'config' => [
                     'type' => 'text',
                     'enableRichtext' => true,
@@ -266,10 +261,9 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => '',
-                            1 => '',
-                            'labelChecked' => 'Enabled',
-                            'labelUnchecked' => 'Disabled',
+                            'label' => '',
+                            'labelChecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_disable_on_interaction.enabled',
+                            'labelUnchecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_disable_on_interaction.disabled',
                         ],
                     ],
                 ],
@@ -282,8 +276,7 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => '',
-                            1 => '',
+                            'label' => '',
                             'labelChecked' => 'Enabled',
                             'labelUnchecked' => 'Disabled',
                         ],
@@ -300,10 +293,9 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => '',
-                            1 => '',
-                            'labelChecked' => 'Enabled',
-                            'labelUnchecked' => 'Disabled',
+                            'label' => '',
+                            'labelChecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_pagination.enabled',
+                            'labelUnchecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_pagination.disabled',
                         ],
                     ],
                     'default' => 0
@@ -343,10 +335,9 @@ call_user_func(function(string $extensionKey) {
                     'renderType' => 'checkboxLabeledToggle',
                     'items' => [
                         0 => [
-                            0 => '',
-                            1 => '',
-                            'labelChecked' => 'Enabled',
-                            'labelUnchecked' => 'Disabled',
+                            'label' => '',
+                            'labelChecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_thumbnails.enabled',
+                            'labelUnchecked' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_thumbnails.disabled',
                         ],
                     ],
                     'default' => 0
@@ -400,6 +391,23 @@ call_user_func(function(string $extensionKey) {
                 ],
                 'exclude' => '1',
             ],
+            'tx_hhslider_slide_to_clicked_slide' => [
+                'exclude' => '1',
+                'label' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_slide_to_clicked_slide',
+                'description' => 'LLL:EXT:hh_slider/Resources/Private/Language/locallang_db.xlf:tt_content.tx_hhslider_slide_to_clicked_slide.description',
+                'config' => [
+                    'type' => 'check',
+                    'renderType' => 'checkboxLabeledToggle',
+                    'default' => 1,
+                    'items' => [
+                        0 => [
+                            'label' => '',
+                            'labelChecked' => 'Enabled',
+                            'labelUnchecked' => 'Disabled',
+                        ],
+                    ],
+                ],
+            ],
         ]
     );
 
@@ -411,7 +419,7 @@ call_user_func(function(string $extensionKey) {
             'showitem' => 'tx_hhslider_animation, tx_hhslider_animation_direction, tx_hhslider_animation_speed', 'canNotCollapse' => 1
         ],
         'slider_navigation' => [
-            'showitem' => 'tx_hhslider_arrows, tx_hhslider_startstop, tx_hhslider_pagination, tx_hhslider_thumbnails', 'canNotCollapse' => 1
+            'showitem' => 'tx_hhslider_arrows, tx_hhslider_startstop, tx_hhslider_slide_to_clicked_slide, --linebreak--, tx_hhslider_pagination, tx_hhslider_thumbnails', 'canNotCollapse' => 1
         ],
         'slider_slide' => [
             'showitem' => 'tx_hhslider_slides_per_view, tx_hhslider_slideby', 'canNotCollapse' => 1

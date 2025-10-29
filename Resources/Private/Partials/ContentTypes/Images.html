@@ -4,7 +4,7 @@
 
 <f:if condition="{items}">
     <f:for each="{items}" as="item">
-        <div class="slider-slide">
+        <div class="swiper-slide">
             <f:switch expression="{item.type}">
                 <f:case value="3">
                     <f:render partial="Media/Type/Audio" arguments="{file: item, dimensions: dimensions, data: data, settings: settings}" />

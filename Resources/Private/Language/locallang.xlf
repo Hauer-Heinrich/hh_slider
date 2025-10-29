@@ -26,16 +26,39 @@
                 <source>Carousel page %s</source>
             </trans-unit>
 
-            <trans-unit id="fe.slider.thumbnails.aria.label" xml:space="preserve">
-                <source>Carousel thumbnails</source>
+            <trans-unit id="fe.slider.a11y.containerMessage" xml:space="preserve">
+                <source></source>
             </trans-unit>
-            <trans-unit id="fe.slider.thumbnails.button.aria.label" xml:space="preserve">
-                <source>Carousel page %s</source>
+            <trans-unit id="fe.slider.a11y.containerRole" xml:space="preserve">
+                <source></source>
             </trans-unit>
-            <trans-unit id="fe.slider.thumbnails.button.aria.label.current" xml:space="preserve">
-                <source> (current page)</source>
+            <trans-unit id="fe.slider.a11y.containerRoleDescriptionMessage" xml:space="preserve">
+                <source></source>
             </trans-unit>
-
+            <trans-unit id="fe.slider.a11y.firstSlideMessage" xml:space="preserve">
+                <source>This is the first slide</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.a11y.itemRoleDescriptionMessage" xml:space="preserve">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="fe.slider.a11y.lastSlideMessage" xml:space="preserve">
+                <source>This is the last slide</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.a11y.nextSlideMessage" xml:space="preserve">
+                <source>Next slide</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.a11y.paginationBulletMessage" xml:space="preserve">
+                <source>Go to slide {{index}}</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.a11y.prevSlideMessage" xml:space="preserve">
+                <source>Previous slide</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.a11y.slideLabelMessage" xml:space="preserve">
+                <source>{{index}} / {{slidesLength}}</source>
+            </trans-unit>
+            <trans-unit id="fe.slider.a11y.slideRole" xml:space="preserve">
+                <source>group</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

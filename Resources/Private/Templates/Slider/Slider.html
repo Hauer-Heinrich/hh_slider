@@ -10,15 +10,35 @@
         <p><f:translate key="fe.slider.userInstruction" extensionName="HhSlider" /></p>
     </div>
 
-    <div class="slider-container slider-container-{data.uid}" id="tns{data.uid}">
-        <f:switch expression="{data.tx_hhslider_content_type}">
-            <f:case value="2"><f:render partial="ContentTypes/Content" arguments="{_all}" /></f:case>
-            <f:case value="3"><f:render partial="ContentTypes/Folder" arguments="{_all}" /></f:case>
-            <f:defaultCase><f:render partial="ContentTypes/Images" arguments="{_all}" /></f:defaultCase>
-        </f:switch>
+    <f:comment>"slider-container-outer" = Required for the swiper slider to enable the forward and back arrows to be displayed outside the swiper container.</f:comment>
+    <div class="slider-container-outer">
+        <div
+            id="tns{data.uid}"
+            class="swiper slider-container slider-container-{data.uid}"
+            data-slider-center="{f:if(condition: '{data.tx_hhslider_centered_slides}', then: 'true', else: 'false')}"
+            data-slider-type="{data.tx_hhslider_content_type}"
+        >
+            <div class="swiper-wrapper">
+                <f:switch expression="{data.tx_hhslider_content_type}">
+                    <f:case value="2"><f:render partial="ContentTypes/Content" arguments="{_all}" /></f:case>
+                    <f:case value="3"><f:render partial="ContentTypes/Folder" arguments="{_all}" /></f:case>
+                    <f:defaultCase><f:render partial="ContentTypes/Images" arguments="{_all}" /></f:defaultCase>
+                </f:switch>
+            </div>
+        </div>
+        <f:if condition="{data.tx_hhslider_arrows}">
+            <button class="slider-button slider-button-prev" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.button.prev.aria.label', extensionName: 'HhSlider')}"></button>
+            <button class="slider-button slider-button-next" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.button.next.aria.label', extensionName: 'HhSlider')}"></button>
+        </f:if>
+
+        <f:if condition="{data.tx_hhslider_startstop}">
+            <button type="button" id="slider-button-startstop-{data.uid}" class="slider-button slider-button-startstop" aria-controls="tns{data.uid}" aria-label="{f:translate(key: 'fe.slider.startstop.button.aria.label', extensionName: 'HhSlider')}" aria-pressed="false"></button>
+        </f:if>
     </div>
 
-    <f:render partial="Options" arguments="{_all}" />
+    <f:render partial="Pagination" arguments="{_all}" />
+
+    <f:render partial="Thumbnails" arguments="{_all}" />
 
     <f:if condition="{data.tx_hhslider_content_text}">
         <f:then>

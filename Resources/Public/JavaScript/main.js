@@ -13,108 +13,36 @@ document.addEventListener("DOMContentLoaded", function(e) {
         json.forEach(function(cnf) {
             var config = JSON.parse(cnf.innerHTML),
                 uid = config.uid,
-                sliderContainer = document.querySelector("#c"+uid);
+                sliderContainer = document.querySelector("#tns"+uid);
+
+            if(config.thumbs && config.thumbs.uid) {
+                config.thumbs.swiper = sliderArray[config.thumbs.uid];
+            }
 
             if(typeof sliderContainer != "undefined") {
-                sliderArray[uid] = tns(config);
-                const arrowsPrev = config.prevButton ? sliderContainer.querySelector(config.prevButton) : false,
-                      arrowsNext = config.nextButton ? sliderContainer.querySelector(config.nextButton) : false,
-                      arrowContainer = sliderContainer.querySelector(".tns-outer"),
-                      disableOnInteraction = config.disableOnInteraction ? config.disableOnInteraction : false,
-                      btnAutoplay = sliderContainer.querySelector(".slider-button-startstop");
+                sliderArray[uid] = new Swiper('#tns'+uid, config);
 
-                if(arrowsPrev) {
-                    arrowContainer.appendChild(arrowsPrev);
-                    arrowsPrev.addEventListener('click', function() {
-                        sliderArray[uid].goTo('prev');
-                        if(disableOnInteraction !== "false") {
-                            pause();
-                        }
-                        // issue: https://github.com/ganlanyuan/tiny-slider/issues/373
-                        sliderArray[uid].pause();
-                        sliderArray[uid].play();
-                    }, false);
-                }
-                if(arrowsNext) {
-                    arrowContainer.appendChild(arrowsNext);
-                    arrowsNext.addEventListener('click', function() {
-                        sliderArray[uid].goTo('next');
-                        if(disableOnInteraction !== "false") {
-                            pause();
-                        }
-                        // issue: https://github.com/ganlanyuan/tiny-slider/issues/373
-                        sliderArray[uid].pause();
-                        sliderArray[uid].play();
-                    }, false);
-                }
-
-                var pagination = sliderContainer.querySelector(".pagination");
-                if(pagination) {
-                    var items = pagination.getElementsByTagName("button"),
-                        itemsLength = items.length;
-                    for (let i = 0; i < itemsLength; i++) {
-                        items[i].addEventListener("click", function() {
-                            var clickedElement = i;
-                            sliderArray[uid].goTo(clickedElement);
-                            if(disableOnInteraction !== "false") {
-                                pause();
-                            }
-                            // issue: https://github.com/ganlanyuan/tiny-slider/issues/373
-                            sliderArray[uid].pause();
-                            sliderArray[uid].play();
-                        });
-                    }
-
-                    sliderArray[uid].events.on("indexChanged", function(info, eventName) {
-                        // removeClass(pagination.getElementsByClassName("tns-nav-active")[0], "tns-nav-active");
-                        // addClass(items[info.displayIndex - 1], "tns-nav-active");
-
-                        pagination.querySelector(".tns-nav-active").classList.remove("tns-nav-active");
-                        items[info.displayIndex - 1].classList.add("tns-nav-active");
-                    });
-                }
-
-                // btn autoplay only appears if disableOnInteraction is true
+                const btnAutoplay = document.querySelector("#c"+uid+" .slider-button-startstop");
                 if(btnAutoplay) {
-                    arrowContainer.appendChild(btnAutoplay);
                     btnAutoplay.addEventListener("click", function(event) {
                         const btn = this;
-                        togglePause(btn);
-                        // btnAutoplay.classList.add("disabled");
+                        btn.classList.toggle("disabled");
 
                         // Check to see if the button is pressed
                         const pressed = btnAutoplay.getAttribute("aria-pressed") === "true";
 
                         // Change aria-pressed to the opposite state
                         btnAutoplay.setAttribute("aria-pressed", !pressed);
+
+                        togglePause(btn);
                     });
                 }
 
-                sliderArray[uid].events.on("dragEnd", function(info, eventName) {
-                    if(disableOnInteraction !== "false") {
-                        pause();
-                    }
-                });
-
-                sliderArray[uid].events.on("touchEnd", function(info, eventName) {
-                    if(disableOnInteraction !== "false") {
-                        pause();
-                    }
-                });
-
                 function togglePause(btn) {
-
-                    if(btn.dataset.action === "start") {
-                        sliderArray[uid].pause();
+                    if(btn.getAttribute("aria-pressed") === "true") {
+                        sliderArray[uid].autoplay.pause();
                     } else {
-                        sliderArray[uid].play();
-                    }
-                }
-
-                function pause() {
-                    sliderArray[uid].pause();
-                    if(btnAutoplay) {
-                        btnAutoplay.classList.remove("disabled");
+                        sliderArray[uid].autoplay.resume();
                     }
                 }
             } else {
