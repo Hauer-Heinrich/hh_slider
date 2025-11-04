@@ -4,7 +4,7 @@ if(window.NodeList && !NodeList.prototype.forEach){
 }
 
 // Initialize the Tiny Slider
-// (https://github.com/ganlanyuan/tiny-slider)
+// (https://swiperjs.com/swiper-api)
 var sliderArray = {};
 document.addEventListener("DOMContentLoaded", function(e) {
     let json = document.querySelectorAll(".hhSliderJson");

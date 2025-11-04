@@ -132,7 +132,7 @@
                 <source>JSON for responsive option of the slider - HAVE TO BE IN JSON syntax (so with quotes)!</source>
             </trans-unit>
             <trans-unit id="tt_content.tx_hhslider_responsive_part.description" xml:space="preserve">
-                <source>https://github.com/ganlanyuan/tiny-slider#user-content-responsive-options - For example: {"1024": { "items": 2, "gutter": 20 }}</source>
+                <source>https://swiperjs.com/swiper-api#param-breakpoints - For example: {"1024": { "slidesPerView": 2, "spaceBetween": 20 }}</source>
             </trans-unit>
             <trans-unit id="tt_content.tx_hhslider_sorting" xml:space="preserve">
                 <source>Files sorting</source>
