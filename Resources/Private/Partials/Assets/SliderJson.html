@@ -33,11 +33,12 @@
                 "paginationBulletMessage": "<f:comment></f:comment>{f:translate(key: 'fe.slider.a11y.paginationBulletMessage')}",
                 "prevSlideMessage": "<f:comment></f:comment>{f:translate(key: 'fe.slider.a11y.prevSlideMessage')}",
                 "slideLabelMessage": "<f:comment></f:comment>{f:translate(key: 'fe.slider.a11y.slideLabelMessage')}",
-                "slideRole": "<f:comment></f:comment>{f:translate(key: 'fe.slider.a11y.slideRole')}"
+                "slideRole": "<f:comment></f:comment>{f:translate(key: 'fe.slider.a11y.slideRole')}",
+                "scrollOnFocus": false
             },
             "autoHeight": false,
             "autoplay": <f:if condition="{data.tx_hhslider_autoplay}"><f:then>{ "delay": <f:format.raw>{data.tx_hhslider_autoplay_speed}</f:format.raw>, "disableOnInteraction": {f:if(condition: "{data.tx_hhslider_disable_on_interaction}", then: "true", else: "false")} }</f:then><f:else>false</f:else></f:if>,
-            "centeredSlides": {f:if(condition: "{data.tx_hhslider_centered_slides}", then: "true", else: "false")},
+            "centeredSlides": {f:if(condition: "{data.tx_hhslider_centered_slides} && {data.tx_hhslider_slides_per_view} > 1", then: "true", else: "false")},
             "effect": "<f:format.raw>{data.tx_hhslider_animation}</f:format.raw>",
             "direction": "{data.tx_hhslider_animation_direction}",
             "loop": {f:if(condition: "{data.tx_hhslider_loop}", then: "true", else: "false")},
