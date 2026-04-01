@@ -68,6 +68,7 @@ class SliderController extends ActionController {
                                 $queryBuilder->expr()->neq('tx_hhslider_child_content_parent', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
                                 $queryBuilder->expr()->eq('tx_hhslider_child_content_parent', $queryBuilder->createNamedParameter($pluginData['uid'], Connection::PARAM_INT))
                             )
+                            ->orderBy('sorting')
                             ->executeQuery()->fetchAllAssociative();
                     }
                     break;
