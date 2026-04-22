@@ -1,10 +1,10 @@
 <?php
 namespace HauerHeinrich\HhSlider\ViewHelpers;
 
-// use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
+// use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use \TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 
 class EditLinkViewHelper extends AbstractTagBasedViewHelper {
     /**
@@ -24,19 +24,15 @@ class EditLinkViewHelper extends AbstractTagBasedViewHelper {
         return $GLOBALS['BE_USER'];
     }
 
-    public function initializeArguments() {
+    public function initializeArguments(): void {
         $this->registerArgument('element', 'array', '', true);
     }
 
-    /**
-     * returning a EditLink-Tag for TYPO3 Backend
-     * @param array $element
-     * @return mixed
-     */
-    public function render() {
+    public function render(): string {
         $element = $this->arguments['element'];
 
         if ($this->doEdit && $this->getBackendUser()->recordEditAccessInternals('tt_content', $element)) {
+            $element['uid'] = '';
             $urlParameters = [
                 'edit' => [
                     'tt_content' => [

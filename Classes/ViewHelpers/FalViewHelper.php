@@ -34,55 +34,42 @@ namespace HauerHeinrich\HhSlider\ViewHelpers;
  * <hh:fal table="tt_content" field="image" id="id_of_element" as="references" />
  */
 
-// use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+// use \TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FalViewHelper extends AbstractViewHelper {
 
-    public function initializeArguments() {
-        $this->registerArguments([
-            ['table', 'string', 'DB table', false, 'tt_content'],
-            ['field', 'string', 'reference field of the content element', false, 'image'],
-            ['id', 'int', 'uid of the content element', true],
-            ['as', 'string', '', false, 'references']
-        ]);
+    public function initializeArguments(): void {
+        $this->registerArgument('table', 'string', 'DB table', false, 'tt_content');
+        $this->registerArgument('field', 'string', 'reference field of the content element', false, 'image');
+        $this->registerArgument('id', 'int', 'uid of the content element', true);
+        $this->registerArgument('as', 'string', '', false, 'references');
     }
 
-    /**
-     * registerArguments
-     *
-     * @param Array $registers
-     * @return void
-     */
-    function registerArguments(Array $registers) {
-        foreach($registers as $registerKey => $registerVal) {
-            $this->registerArgument(...$registerVal);
-        }
-    }
-
-    /**
-     * @param array $arguments
-     * @param \Closure $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
-     *
-     * @return void
-     */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext) {
-        $as = $arguments['as'];
+    public function render(): string {
+        $as = $this->arguments['as'];
         $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
 
-        if (is_numeric($arguments['id'])) {
-            $files = $fileRepository->findByRelation($arguments['table'], $arguments['field'], intval($arguments['id']));
+        if (is_numeric($this->arguments['id'])) {
+            $files = $fileRepository->findByRelation(
+                $this->arguments['table'],
+                $this->arguments['field'],
+                (int)$this->arguments['id']
+            );
         } else {
             $as = 'error';
-            $files = 'Error invalid arguments, argument: "'.$arguments['id'].'"';
+            $files = 'Error invalid arguments, argument: "' . $this->arguments['id'] . '"';
         }
 
-        $templateVariableContainer = $renderingContext->getVariableProvider();
-        $templateVariableContainer->add($as, $files);
-        // $content = $renderChildrenClosure();
-        // $templateVariableContainer->remove($as);
+        $variableProvider = $this->renderingContext->getVariableProvider();
+        $variableProvider->add($as, $files);
+
+        // Optional: Falls du Child-Content rendern willst
+        $output = $this->renderChildren();
+
+        $variableProvider->remove($as);
+
+        return $output;
     }
 }
