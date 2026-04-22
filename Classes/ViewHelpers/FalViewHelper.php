@@ -65,11 +65,6 @@ class FalViewHelper extends AbstractViewHelper {
         $variableProvider = $this->renderingContext->getVariableProvider();
         $variableProvider->add($as, $files);
 
-        // Optional: Falls du Child-Content rendern willst
-        $output = $this->renderChildren();
-
-        $variableProvider->remove($as);
-
-        return $output;
+        return '';
     }
 }

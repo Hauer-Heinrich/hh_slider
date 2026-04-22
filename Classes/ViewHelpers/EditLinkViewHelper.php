@@ -32,11 +32,10 @@ class EditLinkViewHelper extends AbstractTagBasedViewHelper {
         $element = $this->arguments['element'];
 
         if ($this->doEdit && $this->getBackendUser()->recordEditAccessInternals('tt_content', $element)) {
-            $element['uid'] = '';
             $urlParameters = [
                 'edit' => [
                     'tt_content' => [
-                        $element['uid'] => 'edit'
+                        $element['record']->getUid() => 'edit'
                     ]
                 ],
                 'returnUrl' => GeneralUtility::getIndpEnv('REQUEST_URI')

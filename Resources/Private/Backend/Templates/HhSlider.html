@@ -9,7 +9,7 @@
         <ul style="list-style: none;">
             <li>
                 <b>Content Type:</b>
-                <f:switch expression="{record.tx_hhslider_content_type}">
+                <f:switch expression="{record.record.tx_hhslider_content_type}">
                     <f:case value="1">Images</f:case>
                     <f:case value="2">Content-Elements</f:case>
                     <f:case value="3">Folder</f:case>
@@ -17,10 +17,10 @@
                 </f:switch>
             </li>
 
-            <f:switch expression="{record.tx_hhslider_content_type}">
+            <f:switch expression="{record.record.tx_hhslider_content_type}">
                 <f:case value="1">
-                    <f:if condition="{record.assets}">
-                        <hhSlider:fal table="tt_content" field="assets" id="{record.uid}" as="references" />
+                    <f:if condition="{record.record.assets}">
+                        <hhSlider:fal table="tt_content" field="assets" id="{record.record.uid}" as="references" />
                         <f:if condition="{references}">
                             <li class="items">
                                 <f:for each="{references}" as="item">
@@ -31,11 +31,15 @@
                     </f:if>
                 </f:case>
                 <f:case value="2">
-                    <f:comment>{record.tx_hhslider_child_content}</f:comment>
+                    <ul>
+                        <f:for each="{record.record.tx_hhslider_child_content}" as="content">
+                            <li>{content.CType}</li>
+                        </f:for>
+                    </ul>
                 </f:case>
                 <f:case value="3">
                     <li>
-                        <b>Folder:</b> {record.tx_hhslider_folder}
+                        <b>Folder:</b> {record.record.tx_hhslider_folder}
                     </li>
                 </f:case>
                 <f:defaultCase></f:defaultCase>
@@ -43,16 +47,15 @@
         </ul>
     </div>
 
-    <div class="settings">
-        <ul style="list-style: none;">
-            <f:if condition="{record.layout}">
+    <f:if condition="{record.record.layout}">
+        <div class="settings">
+            <ul style="list-style: none;">
                 <li>
-                    <b>Layout:</b> {record.layout}
+                    <b>Layout:</b> {record.record.layout}
                 </li>
-            </f:if>
-
-        </ul>
-    </div>
+            </ul>
+        </div>
+    </f:if>
 </hhSlider:editLink>
 
 </html>
