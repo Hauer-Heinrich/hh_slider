@@ -33,7 +33,7 @@ class EditLinkViewHelper extends AbstractTagBasedViewHelper {
      * @param array $element
      * @return mixed
      */
-    public function render() {
+    public function render(): string {
         $element = $this->arguments['element'];
 
         if ($this->doEdit && $this->getBackendUser()->recordEditAccessInternals('tt_content', $element)) {
