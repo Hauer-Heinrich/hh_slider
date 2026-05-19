@@ -23,8 +23,8 @@ $EM_CONF['hh_slider'] = [
     'author_company' => 'www.hauer-heinrich.de',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-13.4.99',
-            'fluid_styled_content' => '12.4.0-13.4.99',
+            'typo3' => '12.4.0-14.3.99',
+            'fluid_styled_content' => '12.4.0-14.3.99',
         ],
         'conflicts' => [
         ],
