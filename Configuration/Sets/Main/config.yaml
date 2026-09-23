@@ -1,5 +1,5 @@
 name: hauerheinrich/hh-slider
-label: hh_slider, main set
+label: 'Hauer-Heinrich slider, main set'
 
 dependencies:
   - typo3/fluid-styled-content
