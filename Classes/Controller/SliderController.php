@@ -80,7 +80,7 @@ class SliderController extends ActionController {
                         // like "1:/user_uploads/my_directory" becomes [1, "/user_uploads/my_directory"]
                         $folderInfo = \explode(':', $pluginData['tx_hhslider_folder'], 2);
 
-                        // $storage = $resourceFactory->getDefaultStorage(); // DefaultStorageUID = 1
+                        // DefaultStorageUID = 1
                         $storage = $this->storageRepository->getStorageObject(intval($folderInfo[0]));
                         $folder = $storage->getFolder($folderInfo[1]);
                         $items = $storage->getFilesInFolder($folder);
